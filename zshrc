@@ -98,8 +98,8 @@ bindkey '^A' beginning-of-line
 if [[ -e $HOME/.zshrc.local ]]; then
     source $HOME/.zshrc.local
 fi
-if [[ -e $HOME/.current/zshrc.local ]]; then
-    source $HOME/.current/zshrc.local
+if [[ -e $HOME/.current/zshrc ]]; then
+    source $HOME/.current/zshrc
 fi
 
 # hub tab-completion script for zsh.
