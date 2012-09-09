@@ -1,0 +1,7 @@
+cvs -q -z0
+add -kk
+diff -u -N -kk
+rdiff -u -kk
+import -kk
+checkout -P -kk
+update -kk

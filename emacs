@@ -1,0 +1,3 @@
+; no viper mode for the time being...
+;(setq viper-mode t)
+;(require 'viper)

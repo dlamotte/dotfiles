@@ -1,0 +1,11 @@
+xterm*font:             *-fixed-*-*-*-15-*
+xterm*boldFont:         *-fixed-*-*-*-15-*
+!xterm*font:             -misc-monaco-medium-r-normal--0-0-0-0-p-0-iso10646-1
+!xterm*boldFont:         -misc-monaco-medium-r-normal--0-0-0-0-p-0-iso10646-1
+xterm*background:       black
+xterm*foreground:       grey
+xterm*sessionMgt:       false
+xterm*saveLines:        5000
+
+! vim wont be "cleaned" up after it closes
+*titeInhibit:           true

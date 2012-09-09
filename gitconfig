@@ -1,0 +1,26 @@
+[user]
+    name  = Dan LaMotte
+    email = lamotte85@gmail.com
+
+[color]
+    ui = true
+
+[alias]
+    st = status
+    ci = commit
+    co = checkout
+    br = branch
+    di = diff
+    glog = log --graph
+
+[core]
+    excludesfile = ~/.gitignore
+
+[merge]
+    tool = vimdiff
+
+[push]
+    default = matching
+
+[include]
+    path = ~/.current/gitconfig

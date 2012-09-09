@@ -1,0 +1,11 @@
+# use glob syntax
+syntax: glob
+
+*.pyc
+*.swp
+
+CVS/
+.cvsignore
+
+syntax: re
+^.git/

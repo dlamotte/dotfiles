@@ -1,0 +1,40 @@
+set editing-mode vi
+
+# adds punctuation as word delimiters
+set bind-tty-special-chars off
+
+# completion options
+set page-completions on
+set completion-ignore-case on
+set completion-query-items 200
+set show-all-if-ambiguous on
+set show-all-if-unmodified on
+set visible-stats on
+
+# useful stuff for utf-8
+set meta-flag on
+set input-meta on
+set output-meta on
+set convert-meta on
+
+$if mode=vi
+    set keymap vi-command
+    "gg": beginning-of-history
+    "G": end-of-history
+
+    set keymap vi-insert
+    "\C-l": clear-screen
+    "\C-w": backward-kill-word
+    # auto-complete from the history
+    "\C-p": history-search-backward
+    "\C-n": history-search-forward
+    "\C-a": beginning-of-line
+    "\C-e": end-of-line
+$endif
+
+$if Python
+$endif
+
+# IPython needs this to appear at the bottom of the file for clear-screen to
+# work
+set keymap vi

@@ -1,0 +1,2 @@
+# I dont need input support, and I hate having ctrl+space doing things
+unset GTK_IM_MODULE QT_IM_MODULE XMODIFIERS XIM_PROGRAM

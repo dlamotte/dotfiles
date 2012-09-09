@@ -1,0 +1,4 @@
+!
+! There is no Alt_R!!! Its called Multi_key on the microsoft keyboard
+!
+keysym Multi_key = Alt_L

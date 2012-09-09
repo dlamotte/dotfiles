@@ -1,0 +1,40 @@
+caption always "%{= Kk}$USER {at} %H >> %-Lw%{= Kr}%50>%n* %t%{-}%+Lw%< %-=<< %D %M %d (%c.%s)"
+
+#caption        always  "%{yK}   -=%H=- | $LOGNAME | %{yK}%c |  %{yK}%-Lw%{yK}%50>%{Ky}%n%f* %t%{-}%+Lw%<%{- Wk}"
+#caption        always  "%c Flags:%f hardstatus:%h %H Load:%l %w"
+#caption        always  "%-Lw%{= BW}%50>%n%f* %t%{-}%+Lw%<"
+#caption        always  "%?%F%{.R.}%?%3n %t%? [%h]%?"
+#caption        always  "%?%F%{= kw}%{= MW}%?%3n%f %t %? [%h]%?%-=|%{= rW} %H (%l) |%{= yK} %D %d %M %Y %c|%{-}"
+
+#hardstatus     string "%h%? users: %u%?"
+#hardstatus     alwayslastline "%{wk}%?%-Lw%?%{bw}%n*%f %t%?(%u)%?%{wk}%?%+Lw%= %{mk} <at>  %H %{ck}%Y%{wk}-%{ck}%m%{wk}-%{ck}%d %{yk}%D %{gk}%c"
+#hardstatus     alwayslastline "%-Lw%{= BW}%50>%n%f* %t%{-}%+Lw%<"
+#hardstatus     alwayslastline "%{= wk}%-Lw%{= BW}%n%f %t%{-}%{= wk} %+Lw${= wk}%="
+#hardstatus     alwayslastline "%{= dw}%-Lw%{= BW}%n%f %t%{-}%{= dw} %+Lw${= dw}%="
+#hardstatus     alwayslastline "%{= wk}%-Lw%{= BW}%n%f %t%{-}%{= wk}%+Lw%{-}%{= dw} %="
+
+activity "%c activity -> %n%f %t"
+bell "%c bell -> %n%f %t^G"
+vbell_msg " *beep* "
+
+startup_message off
+
+vbell off
+
+defscrollback 5000
+
+multiuser off
+
+# terminfo and termcap for nice 256 color terminal
+# allow bold colors - necessary for some reason
+attrcolor b ".I"
+
+# tell screen how to set colors. AB = background, AF=foreground
+termcapinfo xterm 'Co#256:AB=[48;5;%dm:AF=[38;5;%dm'
+term xterm
+
+# erase background with current bg color
+defbce "on"
+
+# no time delay for esc in vim and finch
+maptimeout 0
