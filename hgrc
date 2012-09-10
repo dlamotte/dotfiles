@@ -2,7 +2,6 @@
 username = Dan LaMotte <lamotte85@gmail.com>
 ssh = ssh -C
 ignore.other = ~/.hgignore
-#merge = hg-diff3-merge
 merge = vimdiff
 
 [email]
@@ -20,11 +19,9 @@ import = --no-commit
 [extensions]
 hgext.bookmarks =
 hgext.bugzilla =
-hgext.children =
 hgext.churn =
 hgext.color =
 hgext.convert =
-hgext.fetch =
 hgext.gpg =
 hgext.graphlog =
 #hgext.inotify =
@@ -41,21 +38,14 @@ hgext.transplant =
 
 hggit = $HOME/.hgexts/hg-git/hggit
 
-# user extensions
-#hgshelve = /home/xyld/.hgexts/hgshelve.py
-#diffstat = /home/xyld/.hgexts/diffstat.py
-#histpush = /home/xyld/.hgexts/histpush.py
-#localbranch = /home/xyld/.hgexts/localbranch.py
-
-#hggit =
-#hgsubversion =
-
 [git]
 intree = True
 
 [pager]
 attend = help, log, glog, annotate, grep, diff, di, show, tip, children,
-    qdiff, slog, nlog, sglog, sheads, heads, outgoing, incoming, tags
+    qdiff, slog, nlog, sglog, sheads, heads, outgoing, incoming, tags,
+    changelog
+pager = less $LESS
 
 [diff]
 git = 1
@@ -63,25 +53,26 @@ showfunc = 1
 nodates = 1
 
 [alias]
+changelog = log --style changelog
 qstatus = status --rev qparent:qtip
 di = diff
 show = log -p -v -r
 describe = log -l 1 --template '{latesttag}.{latesttagdistance}.{node|short}\n'
 
-slog = log --style=/home/xyld/sandbox/mercurial-cli-templates/map-cmdline.slog
-nlog = log --style=/home/xyld/sandbox/mercurial-cli-templates/map-cmdline.nlog
-sglog = glog --style=/home/xyld/sandbox/mercurial-cli-templates/map-cmdline.sglog
+slog = log --style=$HOME/sandbox/mercurial-cli-templates/map-cmdline.slog
+nlog = log --style=$HOME/sandbox/mercurial-cli-templates/map-cmdline.nlog
+sglog = glog --style=$HOME/sandbox/mercurial-cli-templates/map-cmdline.sglog
 
-sheads = heads --template '\033[33;40m{rev} \033[35;40m{branches}\033[37;40m \033[33;40m{tags}\n\033[37;40m{desc|firstline|fill68} \n\033[1;30;40m({date|age} ago by {author|person})\033[0;37;40m\n\n'
+sheads = heads --template '\033[33;40m{rev} \033[35;40m{branches}\033[37;40m \033[33;40m{tags}\n\033[37;40m{desc|firstline|fill68} \n\033[1;30;40m({date|age} by {author|person})\033[0;37;40m\n\n'
 
-, = glog -l7 --template '\033[33;40m{rev} \033[37;40m{desc|firstline|fill68} \n\033[1;30;40m({date|age} ago by {author|person})\033[0;37;40m \033[33;40m{tags}\033[37;40m \033[35;40m{branches}\033[37;40m\n\n'
+, = glog -l7 --template '\033[33;40m{rev} \033[37;40m{desc|firstline|fill68} \n\033[1;30;40m({date|age} by {author|person})\033[0;37;40m \033[33;40m{tags}\033[37;40m \033[35;40m{branches}\033[37;40m\n\n'
 ,, = , -l15
 
 revertall = revert --all --no-backup
 revertit = revert --no-backup
 
-[web]
-cacerts = /etc/ssl/certs/ca-certificates.crt
+[hostfingerprints]
+bitbucket.org = 24:9c:45:8b:9c:aa:ba:55:4e:01:6d:58:ff:e4:28:7d:2a:14:ae:3b
 
 %include ~/.hgrc.local
 %include ~/.current/hgrc
