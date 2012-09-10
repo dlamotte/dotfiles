@@ -1,4 +1,4 @@
-caption always "%{= Kk}$USER {at} %H >> %-Lw%{= Kr}%50>%n* %t%{-}%+Lw%< %-=<< %D %M %d (%c.%s)"
+caption always "%{= Kk} $USER >> %-Lw%{= Kr}%50>%n* %t%{-}%+Lw%< %-=<< %H "
 
 #caption        always  "%{yK}   -=%H=- | $LOGNAME | %{yK}%c |  %{yK}%-Lw%{yK}%50>%{Ky}%n%f* %t%{-}%+Lw%<%{- Wk}"
 #caption        always  "%c Flags:%f hardstatus:%h %H Load:%l %w"
@@ -30,8 +30,13 @@ multiuser off
 attrcolor b ".I"
 
 # tell screen how to set colors. AB = background, AF=foreground
-termcapinfo xterm 'Co#256:AB=[48;5;%dm:AF=[38;5;%dm'
-term xterm
+termcapinfo xterm "Co#256:AB=[48;5;%dm:AF=[38;5;%dm"
+termcapinfo xterm-color "Co#256:AB=[48;5;%dm:AF=[38;5;%dm"
+termcapinfo xterm-256color "Co#256:AB=[48;5;%dm:AF=[38;5;%dm"
+term xterm-256color
+
+# teach screen to set the title
+termcapinfo xterm*|rxvt*|kterm*|Eterm* 'hs:ts=\E]0;:fs=\007:ds=\E]0;\007'
 
 # erase background with current bg color
 defbce "on"
