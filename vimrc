@@ -1,30 +1,45 @@
+syntax on
+
 " if we have a local file to read, we need to read that first for machine
 " specifics
 if filereadable(expand("$HOME/.vimrc.local"))
     source $HOME/.vimrc.local
 endif
 
+" disable connecting to X11 (hangs on putty/ssh session)
+set clipboard=exclude:.*
+
 " force term due to inkpot 256 colors
 set term=xterm-256color
+
+" set the title of the terminal
+set title
 
 " highlight >--- with a better color from inkpot, X(82) vs inkpots X(55)
 au BufEnter * hi SpecialKey cterm=BOLD ctermfg=238 ctermbg=NONE
 
 " make sure our tabs are 4
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set textwidth=79
+setlocal tabstop=4
+setlocal shiftwidth=4
+setlocal softtabstop=4
+setlocal textwidth=79
 
 " ft specifics
+au BufRead,BufNewFile *.as setlocal ft=actionscript
 au BufRead,BufNewFile *.css setlocal tw=0 ts=2 sw=2 sts=2
 au BufRead,BufNewFile *.haml setlocal tw=0 ts=2 sw=2 sts=2
 au BufRead,BufNewFile *.html setlocal tw=0 ts=2 sw=2 sts=2
 au BufRead,BufNewFile *.js setlocal tw=0 ts=2 sw=2 sts=2
+au BufRead,BufNewFile *.jst setlocal ft=jst ts=2 sw=2 sts=2
 au BufRead,BufNewFile *.less setlocal ft=less ts=2 sw=2 sts=2
 au BufRead,BufNewFile *.md setlocal ft=markdown
 au BufRead,BufNewFile *.rb setlocal ts=2 sw=2 sts=2
-au BufRead,BufNewFile *.scss setlocal tw=0 ts=2 sw=2 sts=2
+au BufRead,BufNewFile *.tst setlocal syntax=perl
+au BufRead,BufNewFile *.txt setlocal printoptions+=number:n
+au BufRead,BufNewFile *.scss setlocal ft=scss tw=0 ts=2 sw=2 sts=2
+au BufRead,BufNewFile Build* setlocal noexpandtab filetype=make syntax=make
+au BufRead,BufNewFile hg-editor-*.txt setlocal syntax=hgcommit tw=0
+au BufRead,BufNewFile [Mm]ake* setlocal noexpandtab filetype=make syntax=make
 au BufRead,BufNewFile Rakefile setlocal ts=2 sw=2 sts=2
 
 " make sure indents are correct
@@ -63,10 +78,6 @@ let Tlist_Compact_Format = 1
 let Tlist_Exit_OnlyWindow = 1
 
 set printoptions=number:y,paper:letter,syntax:n
-au BufEnter *.txt set printoptions+=number:n
-au BufRead,BufNewFile hg-editor-*.txt set syntax=hgcommit tw=0
-au BufRead,BufNewFile *.as set filetype=actionscript
-au BufRead,BufNewFile *.scss set filetype=scss
 
 " make :Man command available
 source $VIMRUNTIME/ftplugin/man.vim
