@@ -79,6 +79,7 @@ sys.ps2 = '%s... %s' % (_color.red, _color.normal)
 #
 
 def displayhook(value):
+    import pprint
     if value is not None:
         try:
             import __builtin__
