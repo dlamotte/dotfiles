@@ -1,2 +1,5 @@
+[extensions]
+hggit = $HOME/.hgexts/hg-git/hggit
+
 [web]
 cacerts = /etc/ssl/certs/ca-certificates.crt

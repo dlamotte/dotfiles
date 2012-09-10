@@ -36,8 +36,6 @@ hgext.record =
 hgext.schemes =
 hgext.transplant =
 
-hggit = $HOME/.hgexts/hg-git/hggit
-
 [git]
 intree = True
 
