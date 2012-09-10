@@ -1,14 +1,25 @@
 # zshrc by dlamotte
-source /etc/zsh/zprofile
+
+if [[ -e /etc/zsh/zprofile ]]; then
+    source /etc/zsh/zprofile
+fi
 
 umask 0077
-
-export PATH=$PATH:/sbin:/usr/sbin
-export PATH=~/bin:~/.python/bin:~/.gem/ruby/1.9.1/bin:~/sandbox/node-local/bin:$PATH
 
 if [[ -e $HOME/.current/zshrc.noninteractive ]]; then
     source $HOME/.current/zshrc.noninteractive
 fi
+
+if [[ -e $HOME/.zshrc.noninteractive ]]; then
+    source $HOME/.zshrc.noninteractive
+fi
+
+export PATH=/usr/local/bin:/usr/local/sbin:$PATH:/sbin:/usr/sbin
+if [[ -e /usr/local/share/python ]]; then
+    # python scripts are installed here from homebrew
+    export PATH=/usr/local/share/python:$PATH
+fi
+export PATH=~/bin:~/.python/bin:~/.gem/ruby/1.9.1/bin:$PATH
 
 if [[ $- != *i* ]]; then
     # non-interactive, return now
@@ -18,18 +29,19 @@ fi
 export EDITOR=vim
 export LANG='en_US.utf8'
 export LC_COLLATE='C'
-export LESS="-MRIF"
+export LESS="-MRIFX"
+export LESSOPEN="|lesspipe.sh %s"
 export MANPAGER='vimmanpager'
 export PAGER='less'
+export PYTHONPATH="${PYTHONPATH}${PYTHONPATH+:}${HOME}/.python/lib"
+export PYTHONSTARTUP=~/.pythonrc
+export PYTHONDOCS=$(echo ${PYTHONDOCS} | sed -e 's:/lib::g')
 export TZ='US/Central'
 
 export HISTFILE=~/.histfile
-export HISTSIZE=1000
-export SAVEHIST=1000
+export HISTSIZE=10000
+export SAVEHIST=10000
 
-export PYTHONPATH="${PYTHONPATH}${PYTHONPATH+:}${HOME}/.python/lib"
-export PYTHONSTARTUP='/home/xyld/.pythonrc'
-export PYTHONDOCS=$(echo ${PYTHONDOCS} | sed -e 's:/lib::g')
 
 export PS1="%B%F{red}!%! %F%1~ %F{red}%(?..%? )>> %f%b"
 export PS2="%B%F{red}>>> %f%b"
@@ -54,7 +66,6 @@ alias cscope="cscope -R -q"
 alias wbugz="bugz -b http://bugs.winehq.org/"
 alias rdesktop="rdesktop -g 1024x768 -K -x b"
 alias mq='hg -R $(hg root)/.hg/patches'
-alias chromium_roam="chromium --user-data-dir=$HOME/.config/chromium-roam"
 
 zstyle ':completion:*' completer _expand _complete _ignored
 zstyle ':completion:*' expand prefix suffix
@@ -70,7 +81,7 @@ zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p
 zstyle ':completion:*' squeeze-slashes true
 zstyle ':completion:*' verbose true
 zstyle ':completion::complete:*' use-cache 1 # gentoo item...
-zstyle :compinstall filename '/home/xyld/.zshrc'
+zstyle :compinstall filename "$HOME/.zshrc"
 
 autoload -Uz compinit
 compinit
@@ -95,14 +106,18 @@ bindkey '^N' down-history
 bindkey '^E' end-of-line
 bindkey '^A' beginning-of-line
 
-if [[ -e $HOME/.zshrc.local ]]; then
-    source $HOME/.zshrc.local
-fi
-if [[ -e $HOME/.current/zshrc ]]; then
-    source $HOME/.current/zshrc
-fi
+mac32compile() {
+    export ARCHFLAGS='-arch i386' CFLAGS='-arch i386' CXXFLAGS='-arch i386' LDFLAGS='-arch i386'
+}
 
-# hub tab-completion script for zsh.
+keychain --quiet id_rsa
+source $HOME/.keychain/$(hostname)-sh
+
+#
+# included zshrc configs
+#
+
+# start hub tab-completion script for zsh.
 # This script complements the completion script that ships with git.
 #
 # vim: ft=zsh sw=2 ts=2 et
@@ -126,3 +141,16 @@ if declare -f _git_commands > /dev/null; then
 fi
 
 eval "$(hub alias -s)"
+# end hub tab-completion script for zsh
+
+#
+# end included zshrc configs
+#
+
+if [[ -e $HOME/.current/zshrc ]]; then
+    source $HOME/.current/zshrc
+fi
+
+if [[ -e $HOME/.zshrc.local ]]; then
+    source $HOME/.zshrc.local
+fi
