@@ -26,8 +26,16 @@ if [[ $- != *i* ]]; then
     return
 fi
 
+if locale -a | grep 'en_US.utf8' >/dev/null 2>/dev/null; then
+    export LANG='en_US.utf8'
+elif locale -a | grep 'en_US.UTF-8' >/dev/null 2>/dev/null; then
+    export LANG='en_US.UTF-8'
+else
+    echo "zshrc error: LANG=C, en_US.utf8-ish not found"
+    export LANG='C'
+fi
+
 export EDITOR=vim
-export LANG='en_US.utf8'
 export LC_COLLATE='C'
 export LESS="-MRIFX"
 export LESSOPEN="|lesspipe.sh %s"
