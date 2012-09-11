@@ -1,2 +1,2 @@
-$HOME/bin/keychain --quiet id_rsa
+keychain --quiet id_rsa
 source $HOME/.keychain/$(hostname)-sh
