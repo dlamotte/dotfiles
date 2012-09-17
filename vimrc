@@ -200,10 +200,10 @@ set title
 au BufEnter * hi SpecialKey cterm=BOLD ctermfg=238 ctermbg=NONE
 
 " make sure our tabs are 4
-setlocal tabstop=4
-setlocal shiftwidth=4
-setlocal softtabstop=4
-setlocal textwidth=79
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set textwidth=79
 
 " ft specifics
 au BufRead,BufNewFile *.as setlocal ft=actionscript
