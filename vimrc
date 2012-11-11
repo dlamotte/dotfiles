@@ -205,6 +205,18 @@ set shiftwidth=4
 set softtabstop=4
 set textwidth=79
 
+set relativenumber
+set scrolloff=3
+set ttyfast
+set undofile
+
+" unhighlight
+nnoremap <leader><space> :noh<cr>
+
+" yankring
+nnoremap <silent> <F3> :YRShow<cr>
+inoremap <silent> <F3> <ESC>:YRShow<cr>
+
 " ft specifics
 au BufRead,BufNewFile *.as setlocal ft=actionscript
 au BufRead,BufNewFile *.css setlocal tw=0 ts=2 sw=2 sts=2
