@@ -52,6 +52,7 @@ nodates = 1
 
 [alias]
 changelog = log --style changelog
+cherry = log -r 'reverse(ancestors(.) and not ancestors($1))'
 qstatus = status --rev qparent:qtip
 di = diff
 show = log -p -v -r
