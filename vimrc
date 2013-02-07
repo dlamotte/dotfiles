@@ -205,7 +205,6 @@ set shiftwidth=4
 set softtabstop=4
 set textwidth=79
 
-set relativenumber
 set scrolloff=3
 set ttyfast
 set undofile
