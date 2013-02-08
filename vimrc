@@ -207,7 +207,6 @@ set textwidth=79
 
 set scrolloff=3
 set ttyfast
-set undofile
 
 " unhighlight
 nnoremap <leader><space> :noh<cr>
