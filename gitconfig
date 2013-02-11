@@ -11,6 +11,7 @@
     co = checkout
     br = branch
     di = diff
+    ds = diff --staged
     glog = log --graph
 
 [core]
