@@ -95,9 +95,10 @@ autoload -Uz compinit
 compinit
 
 setopt appendhistory extendedglob
-setopt noclobber vi
-setopt nocheckjobs nohup
 setopt autopushd
+setopt histignorespace
+setopt nocheckjobs nohup
+setopt noclobber vi
 unsetopt autocd beep notify
 
 zmodload -i zsh/complist
