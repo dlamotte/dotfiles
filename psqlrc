@@ -1,1 +1,15 @@
+\set QUIET on
+\set PROMPT1 '%[%033[30;1m%]%m/%/ %[%033[31;1m%]%R%#%[%033[0m%] '
+\set PROMPT2 '%[%033[30;1m%]%m/%/ %[%033[31;1m%]%R%#%[%033[0m%] '
+\set PROMPT3 '%[%033[31;1m%]>>%[%033[0m%] '
+\set HISTCONTROL ignoreboth
+\set HISTSIZE
+
+\pset border 1
+\pset footer on
+\pset linestyle unicode
 \pset null †
+
+\timing on
+\x auto
+\unset QUIET
