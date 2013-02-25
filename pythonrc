@@ -71,8 +71,8 @@ class TermColors(dict):
 
 _color = TermColors()
 
-sys.ps1 = '%s>>> %s' % (_color.red, _color.normal)
-sys.ps2 = '%s... %s' % (_color.red, _color.normal)
+sys.ps1 = '%s>>> %s' % (_color.lightred, _color.normal)
+sys.ps2 = '%s... %s' % (_color.lightred, _color.normal)
 
 #
 # pretty print stdout
