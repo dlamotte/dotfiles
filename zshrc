@@ -15,10 +15,12 @@ if [[ -e $HOME/.zshrc.noninteractive ]]; then
 fi
 
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH:/sbin:/usr/sbin
-if [[ -e /usr/local/share/python ]]; then
-    # python scripts are installed here from homebrew
-    export PATH=/usr/local/share/python:$PATH
-fi
+for dir in /usr/local/share/python /usr/local/opt/coreutils/libexec/gnubin; do
+    if [[ -e $dir ]]; then
+        # python scripts are installed here from homebrew
+        export PATH=$dir:$PATH
+    fi
+done
 export PATH=~/bin:~/.python/bin:~/.gem/ruby/1.9.1/bin:$PATH
 
 if [[ $- != *i* ]]; then
