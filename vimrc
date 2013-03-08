@@ -291,18 +291,6 @@ colorscheme inkpot
 set foldenable
 set foldmethod=marker
 
-fun! <SID>window_width()
-    if ! &diff
-        if winwidth(0) > 80
-            setlocal foldcolumn=2
-        else
-            setlocal foldcolumn=0
-        endif
-    endif
-endfun
-
-au BufEnter,VimResized * :call <SID>window_width()
-
 " nice status bar
 set laststatus=2
 
