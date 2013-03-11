@@ -152,6 +152,7 @@ scmstatus_preexec() {
 scmstatus_update() {
     SCMSTATUS="$(scmstatus.py "$SCMSTATUS_FORMAT")"
 }
+scmstatus_update # init right away
 
 keychain --quiet id_rsa
 source $HOME/.keychain/$(hostname)-sh
