@@ -14,10 +14,12 @@ MKDIR_INSTEADOF_LINK = [
     path.join('.', 'pip'),
 ]
 
-def dolink(dirpath, target, target_prefix=''):
+def dolink(dirpath, target, target_prefix='', excludes=None):
     for fn in sorted(os.listdir(dirpath)):
         localfn = path.join(dirpath, fn)
         if localfn in EXCLUDES:
+            continue
+        if excludes and localfn in excludes:
             continue
 
         targetfn = path.join(target, target_prefix + fn)
@@ -74,7 +76,11 @@ def main(argv):
     opts = argv[1:]
     extras = '--extras' in opts
 
-    dolink('.', target, target_prefix)
+    dolink('.', target, target_prefix, excludes=[
+        path.join('.', 'bin')
+    ])
+    mkdir(path.join(target, 'bin'))
+    dolink('bin', path.join(target, 'bin'))
 
     if extras:
         hgexts = path.join(target, '.hgexts')
