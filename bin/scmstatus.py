@@ -27,6 +27,9 @@ class Tool(object):
             domain = email[email.index('@')+1:]
         except ValueError:
             domain = ''
+
+        if domain.endswith('.com'):
+            domain = domain[:-4]
         return domain
 
     @staticmethod
