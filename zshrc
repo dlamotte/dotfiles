@@ -126,7 +126,7 @@ mac32compile() {
     export ARCHFLAGS='-arch i386' CFLAGS='-arch i386' CXXFLAGS='-arch i386' LDFLAGS='-arch i386'
 }
 
-SCMSTATUS_FORMAT="{email_domain} on {branch} "
+SCMSTATUS_FORMAT="{email_domain} {branch} "
 SCMSTATUS_TOOLS="$(scmstatus.py --tools)"
 scmstatus() {
     echo $SCMSTATUS
