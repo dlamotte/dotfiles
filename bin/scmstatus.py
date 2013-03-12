@@ -1,5 +1,6 @@
 #!/usr/bin/env python2.7
 
+import errno
 import os
 import sys
 from email.utils import parseaddr
@@ -40,8 +41,14 @@ class Hg(Tool):
 
     @property
     def branch(self):
-        with open(path.join(self.dir, '.hg', 'branch')) as fp:
-            return fp.read().rstrip()
+        try:
+            with open(path.join(self.dir, '.hg', 'branch')) as fp:
+                return fp.read().rstrip()
+        except IOError as e:
+            if e.errno == errno.ENOENT:
+                return 'default'
+            else:
+                raise
 
     @property
     def email(self):
@@ -125,4 +132,6 @@ if __name__ == '__main__':
         if '--raise' in sys.argv:
             raise
         else:
-            sys.stderr.write('scmstatus.py error: %s\n' % str(e))
+            sys.stderr.write('scmstatus.py %s: %s\n'
+                % (e.__class__.__name__, str(e))
+            )
