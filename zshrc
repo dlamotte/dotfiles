@@ -21,7 +21,7 @@ for dir in /usr/local/share/python /usr/local/opt/coreutils/libexec/gnubin /usr/
         export PATH=$dir:$PATH
     fi
 done
-export PATH=~/bin:~/.python/bin:~/.gem/ruby/1.9.1/bin:$PATH
+export PATH=~/bin:~/.python/bin:~/.gem/ruby/1.9.1/bin:/usr/local/heroku/bin:$PATH
 
 if [[ $- != *i* ]]; then
     # non-interactive, return now
