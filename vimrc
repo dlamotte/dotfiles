@@ -215,6 +215,10 @@ nnoremap <leader><space> :noh<cr>
 nnoremap <silent> <F3> :YRShow<cr>
 inoremap <silent> <F3> <ESC>:YRShow<cr>
 
+" sparkup
+let g:sparkupExecuteMapping = '<Leader>n'
+let g:sparkupNextMapping = '<Leader>n'
+
 " ft specifics
 au BufRead,BufNewFile *.as setlocal ft=actionscript
 au BufRead,BufNewFile *.css setlocal tw=0 ts=2 sw=2 sts=2
