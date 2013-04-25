@@ -224,6 +224,7 @@ au BufRead,BufNewFile *.as setlocal ft=actionscript
 au BufRead,BufNewFile *.css setlocal tw=0 ts=2 sw=2 sts=2
 au BufRead,BufNewFile *.haml setlocal tw=0 ts=2 sw=2 sts=2
 au BufRead,BufNewFile *.html setlocal tw=0 ts=2 sw=2 sts=2
+au BufRead,BufNewFile *.jinja setlocal ft=htmljinja
 au BufRead,BufNewFile *.js setlocal tw=0 ts=2 sw=2 sts=2
 au BufRead,BufNewFile *.jst setlocal ft=jst ts=2 sw=2 sts=2
 au BufRead,BufNewFile *.less setlocal ft=less ts=2 sw=2 sts=2
