@@ -39,7 +39,7 @@ fi
 
 export EDITOR=vim
 export LC_COLLATE='C'
-export LESS="-MRIFX"
+export LESS="-MSRniFX"
 export LESSOPEN="|lesspipe.sh %s"
 export MANPAGER='vimmanpager'
 export PAGER='less'
