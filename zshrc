@@ -15,7 +15,7 @@ if [[ -e $HOME/.zshrc.noninteractive ]]; then
 fi
 
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH:/sbin:/usr/sbin
-for dir in /usr/local/share/python /usr/local/opt/coreutils/libexec/gnubin /usr/local/share/npm/bin; do
+for dir in /usr/local/share/python /usr/local/opt/ruby/bin /usr/local/opt/coreutils/libexec/gnubin /usr/local/share/npm/bin; do
     if [[ -e $dir ]]; then
         # python scripts are installed here from homebrew
         export PATH=$dir:$PATH
