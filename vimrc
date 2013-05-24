@@ -203,7 +203,7 @@ au BufEnter * hi SpecialKey cterm=BOLD ctermfg=238 ctermbg=NONE
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
-set textwidth=79
+set colorcolumn=80
 
 set scrolloff=3
 set ttyfast
@@ -221,20 +221,20 @@ let g:sparkupNextMapping = '<Leader>n'
 
 " ft specifics
 au BufRead,BufNewFile *.as setlocal ft=actionscript
-au BufRead,BufNewFile *.css setlocal tw=0 ts=2 sw=2 sts=2
-au BufRead,BufNewFile *.haml setlocal tw=0 ts=2 sw=2 sts=2
-au BufRead,BufNewFile *.html setlocal tw=0 ts=2 sw=2 sts=2
-au BufRead,BufNewFile *.jinja setlocal ft=htmljinja ts=2 sw=2 sts=2 tw=0
-au BufRead,BufNewFile *.js setlocal tw=0 ts=2 sw=2 sts=2
+au BufRead,BufNewFile *.css setlocal ts=2 sw=2 sts=2
+au BufRead,BufNewFile *.haml setlocal ts=2 sw=2 sts=2
+au BufRead,BufNewFile *.html setlocal ts=2 sw=2 sts=2
+au BufRead,BufNewFile *.jinja setlocal ft=htmljinja ts=2 sw=2 sts=2
+au BufRead,BufNewFile *.js setlocal ts=2 sw=2 sts=2
 au BufRead,BufNewFile *.jst setlocal ft=jst ts=2 sw=2 sts=2
 au BufRead,BufNewFile *.less setlocal ft=less ts=2 sw=2 sts=2
 au BufRead,BufNewFile *.md setlocal ft=markdown
 au BufRead,BufNewFile *.rb setlocal ts=2 sw=2 sts=2
 au BufRead,BufNewFile *.tst setlocal syntax=perl
 au BufRead,BufNewFile *.txt setlocal printoptions+=number:n
-au BufRead,BufNewFile *.scss setlocal ft=scss tw=0 ts=2 sw=2 sts=2
+au BufRead,BufNewFile *.scss setlocal ft=scss ts=2 sw=2 sts=2
 au BufRead,BufNewFile Build* setlocal noexpandtab filetype=make syntax=make
-au BufRead,BufNewFile hg-editor-*.txt setlocal syntax=hgcommit tw=0
+au BufRead,BufNewFile hg-editor-*.txt setlocal syntax=hgcommit
 au BufRead,BufNewFile [Mm]ake* setlocal noexpandtab filetype=make syntax=make
 au BufRead,BufNewFile Rakefile setlocal ts=2 sw=2 sts=2
 
