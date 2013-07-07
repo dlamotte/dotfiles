@@ -15,13 +15,8 @@ if [[ -e $HOME/.zshrc.noninteractive ]]; then
 fi
 
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH:/sbin:/usr/sbin
-for dir in /usr/local/share/python /usr/local/opt/ruby/bin /usr/local/opt/coreutils/libexec/gnubin /usr/local/share/npm/bin; do
-    if [[ -e $dir ]]; then
-        # python scripts are installed here from homebrew
-        export PATH=$dir:$PATH
-    fi
-done
-export PATH=~/bin:~/.python/bin:~/.gem/ruby/1.9.1/bin:/usr/local/heroku/bin:$PATH
+export PATH=/usr/local/share/python:/usr/local/opt/ruby/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/share/npm/bin:$PATH
+export PATH=~/bin:$PATH
 
 if [[ $- != *i* ]]; then
     # non-interactive, return now
