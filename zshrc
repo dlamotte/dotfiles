@@ -16,7 +16,7 @@ fi
 
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH:/sbin:/usr/sbin
 export PATH=/usr/local/share/python:/usr/local/opt/ruby/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/share/npm/bin:$PATH
-export PATH=/Applications/Xcode.app/Contents/Developer/usr/bin:$PATH
+export PATH=/Applications/Xcode.app/Contents/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin:$PATH
 export PATH=~/bin:$PATH
 
 if [[ $- != *i* ]]; then
