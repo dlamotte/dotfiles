@@ -148,13 +148,6 @@ augroup gentoo
   au BufRead,BufNewFile *.e{build,class} let is_bash=1|setfiletype sh
   au BufRead,BufNewFile *.e{build,class} set ts=4 sw=4 noexpandtab
 
-  " In text files, limit the width of text to 78 characters, but be careful
-  " that we don't override the user's setting.
-  autocmd BufNewFile,BufRead *.txt
-        \ if &tw == 0 && ! exists("g:leave_my_textwidth_alone") |
-        \     setlocal textwidth=78 |
-        \ endif
-
   " When editing a file, always jump to the last cursor position
   autocmd BufReadPost *
         \ if ! exists("g:leave_my_cursor_position_alone") |
