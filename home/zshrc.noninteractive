@@ -1,2 +1,0 @@
-export XSESSION='Xfce4'
-export PATH=~/sandbox/node-local/bin:$PATH

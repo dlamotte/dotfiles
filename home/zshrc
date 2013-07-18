@@ -1,1 +1,1 @@
-alias gitdot="git --git-dir=$HOME/sandbox@github/dotfiles/.git --work-tree=$HOME/sandbox@github/dotfiles/"
+alias gitdot="git --git-dir=$HOME/sandbox/dotfiles/.git --work-tree=$HOME/sandbox/dotfiles/"

@@ -25,3 +25,7 @@
 
 [include]
     path = ~/.current/gitconfig
+
+[remote "origin"]
+    # fetch pull requests from github
+    fetch = +refs/pull/*/head:refs/remotes/origin/pull/*
