@@ -347,19 +347,38 @@ fun! Scm_status()
     return ""
 endfun
 
-" fancy status line
-set statusline=
-set statusline+=%2*%-3.3n%0*                    " buffer number
-set statusline+=%f                              " file name
-set statusline+=%h%1*%m%r%w%0*                  " flags
-set statusline+=[%{strlen(&ft)?&ft:'none'},     " filetype
-set statusline+=%{&encoding},                   " encoding
-set statusline+=%{&fileformat}]                 " file format
-set statusline+=%{Scm_status()}                 " scm status
-set statusline+=%=                              " right align
-set statusline+=%2*0x%-8B                       " current char
-set statusline+=%-14.(%l,%c%V%)                 " offset
-set statusline+=%P                              " percent through file
+" fancy status line (now using vim-airline)
+"set statusline=
+"set statusline+=%2*%-3.3n%0*                    " buffer number
+"set statusline+=%f                              " file name
+"set statusline+=%h%1*%m%r%w%0*                  " flags
+"set statusline+=[%{strlen(&ft)?&ft:'none'},     " filetype
+"set statusline+=%{&encoding},                   " encoding
+"set statusline+=%{&fileformat}]                 " file format
+"set statusline+=%{Scm_status()}                 " scm status
+"set statusline+=%=                              " right align
+"set statusline+=%2*0x%-8B                       " current char
+"set statusline+=%-14.(%l,%c%V%)                 " offset
+"set statusline+=%P                              " percent through file
+let g:airline_detect_modified=1
+let g:airline_detect_paste=1
+"let g:airline_theme='badwolf'
+"let g:airline_theme='laederon'
+let g:airline_theme='simple'
+let g:airline_mode_map = {
+      \ 'n'  : 'normal',
+      \ 'i'  : 'insert',
+      \ 'R'  : 'rplace',
+      \ 'v'  : 'visual',
+      \ 'V'  : 'v-line',
+      \ 'c'  : 'cmd   ',
+      \ '' : 'v-blck',
+      \ }
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '◀'
+let g:airline_linecolumn_prefix = '¶ '
+let g:airline_fugitive_prefix = '⎇ '
+let g:airline_paste_symbol = 'ρ'
 
 " information on wrapping lines
 set listchars=
