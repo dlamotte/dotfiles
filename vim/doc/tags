@@ -1,4 +1,3 @@
-:AirlineTheme	airline.txt	/*:AirlineTheme*
 :MatchDebug	matchit.txt	/*:MatchDebug*
 MatchError	matchit.txt	/*MatchError*
 YRClear-example	yankring.txt	/*YRClear-example*
@@ -11,16 +10,6 @@ YRShow-example	yankring.txt	/*YRShow-example*
 YRYankRange-example	yankring.txt	/*YRYankRange-example*
 [%	matchit.txt	/*[%*
 ]%	matchit.txt	/*]%*
-airline	airline.txt	/*airline*
-airline-commands	airline.txt	/*airline-commands*
-airline-configuration	airline.txt	/*airline-configuration*
-airline-contributions	airline.txt	/*airline-contributions*
-airline-customization	airline.txt	/*airline-customization*
-airline-license	airline.txt	/*airline-license*
-airline-name	airline.txt	/*airline-name*
-airline-themes	airline.txt	/*airline-themes*
-airline-troubleshooting	airline.txt	/*airline-troubleshooting*
-airline.txt	airline.txt	/*airline.txt*
 any-item-example	yankring.txt	/*any-item-example*
 b:match_col	matchit.txt	/*b:match_col*
 b:match_debug	matchit.txt	/*b:match_debug*
