@@ -182,31 +182,76 @@ endif " has("autocmd")
 
 syntax on
 
-" disable connecting to X11 (hangs on putty/ssh session)
-set clipboard=exclude:.*
+"
+" options
+"
 
-" force term due to inkpot 256 colors
-set term=xterm-256color
+" os/terminal
+set clipboard=exclude:.*  " disable connecting to X11 (hangs on putty/ssh session)
+set noswapfile
+set printoptions=number:y,paper:letter,syntax:n
+set term=xterm-256color  " force term due to inkpot 256 colors
+set title  " set the title of the terminal
+set ttyfast
 
-" set the title of the terminal
-set title
+" style/formatting
+set autoindent
+set colorcolumn=80
+set expandtab
+set ignorecase
+set nowrap
+set shiftwidth=4
+set smartindent
+set smarttab
+set softtabstop=4
+set tabstop=4
+
+colorscheme inkpot
 
 " highlight >--- with a better color from inkpot, X(82) vs inkpots X(55)
 au BufEnter * hi SpecialKey cterm=BOLD ctermfg=238 ctermbg=NONE
 
-" make sure our tabs are 4
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set colorcolumn=80
 
+" general
+set cscopetag
+set foldenable
+set foldmethod=marker
+set laststatus=2
+set list
+set listchars=
+set listchars=extends:$,precedes:$,tab:>-,trail:.
 set scrolloff=3
-set ttyfast
+set showcmd
 
-" unhighlight
+
+"
+" key mappings
+"
 nnoremap <leader><space> :noh<cr>
 
-" ft specifics
+" don't outdent comment lines when they are smartindented help smartindent
+inoremap # X#
+
+" q: is annoying
+nmap q: :q
+
+
+"
+" other
+"
+
+source $VIMRUNTIME/ftplugin/man.vim " make :Man command available
+
+" default MANPAGER vimmanpager doesn't play well
+" with the :Man command and we don't want to see raw colour codes
+" so we use sed to strip them.
+let $MANPAGER = "sed -e 's:\\x1B\\[[[:digit:]]\\+m::g'"
+
+
+"
+" auto...
+"
+
 au BufRead,BufNewFile *.as setlocal ft=actionscript
 au BufRead,BufNewFile *.css setlocal ts=2 sw=2 sts=2
 au BufRead,BufNewFile *.haml setlocal ts=2 sw=2 sts=2
@@ -225,64 +270,23 @@ au BufRead,BufNewFile hg-editor-*.txt setlocal syntax=hgcommit
 au BufRead,BufNewFile [Mm]ake* setlocal noexpandtab filetype=make syntax=make
 au BufRead,BufNewFile Rakefile setlocal ts=2 sw=2 sts=2
 
-" make sure indents are correct
-set autoindent
-set smartindent
+" fancier editing of binaries
+augroup Binary
+    au!
+    au BufReadPre  *.bin let &bin=1
+    au BufReadPost *.bin if &bin | silent %!xxd
+    au BufReadPost *.bin set ft=xxd | endif
+    au BufWritePre *.bin if &bin | silent %!xxd -r
+    au BufWritePre *.bin endif
+    au BufWritePost *.bin if &bin | silent %!xxd
+    au BufWritePost *.bin set nomod | endif
+augroup END
 
-" remove actual tabs but make it 'feel' like tabs
-set smarttab
-set expandtab
+"
+" plugins
+"
 
-set ignorecase
-
-" search cscope and tags files
-set cscopetag
-
-" dont wrap really long lines
-set nowrap
-
-" I save enough that I have never really needed this and its become annoying
-" on nfs and slow filesystems (sshfs)
-set noswapfile
-
-" show the contents of the cmd buffer
-set showcmd
-
-" don't outdent comment lines when they are smartindented help smartindent
-inoremap # X#
-
-" select last thing pasted via :set paste (inspired by gv)
-noremap <Leader>v `[v`]
-
-set printoptions=number:y,paper:letter,syntax:n
-
-" make :Man command available
-source $VIMRUNTIME/ftplugin/man.vim
-
-" default MANPAGER vimmanpager doesn't play well
-" with the :Man command and we don't want to see raw colour codes
-" so we use sed to strip them.
-let $MANPAGER = "sed -e 's:\\x1B\\[[[:digit:]]\\+m::g'"
-
-" awesome colorscheme by ciaranm
-colorscheme inkpot
-
-" TODO: try using marker to remember folds, not mkview/loadview
-" remember and load folds
-"au BufWrite * mkview
-
-"if bufname("%") " only if current buffer exists
-"    au BufRead * loadview
-"endif
-set foldenable
-set foldmethod=marker
-
-" nice status bar
-set laststatus=2
-
-" q: is annoying
-nmap q: :q
-
+" airline (theming)
 let g:airline_detect_modified = 1
 let g:airline_detect_paste = 1
 let g:airline_theme = 'badwolf'
@@ -302,37 +306,22 @@ let g:airline_right_sep = '◀'
 let g:airline_linecolumn_prefix = '¶ '
 let g:airline_branch_prefix = '⎇ '
 let g:airline_paste_symbol = 'ρ'
+
+" ctrlp (fuzzy file/buf matching)
 let g:ctrlp_working_path_mode = 'ra'
 
-" tagbar
+" tagbar (tagging)
 nnoremap <leader>t :TagbarOpen<cr>
 let g:tagbar_autoclose = 1
 let g:tagbar_compact = 1
 let g:tagbar_sort = 0
 let g:tagbar_width = 40
 
-" information on wrapping lines
-set listchars=
-set listchars=extends:$,precedes:$,tab:>-,trail:.
-set list
-
-" fancier editing of binaries
-augroup Binary
-    au!
-    au BufReadPre  *.bin let &bin=1
-    au BufReadPost *.bin if &bin | silent %!xxd
-    au BufReadPost *.bin set ft=xxd | endif
-    au BufWritePre *.bin if &bin | silent %!xxd -r
-    au BufWritePre *.bin endif
-    au BufWritePost *.bin if &bin | silent %!xxd
-    au BufWritePost *.bin set nomod | endif
-augroup END
-
-:python << EOF
-import os
-virtualenv = os.environ.get('VIRTUAL_ENV')
-if virtualenv:
-    activate_this = os.path.join(virtualenv, 'bin', 'activate_this.py')
-    if os.path.exists(activate_this):
-        execfile(activate_this, dict(__file__=activate_this))
-EOF
+":python << EOF
+"import os
+"virtualenv = os.environ.get('VIRTUAL_ENV')
+"if virtualenv:
+"    activate_this = os.path.join(virtualenv, 'bin', 'activate_this.py')
+"    if os.path.exists(activate_this):
+"        execfile(activate_this, dict(__file__=activate_this))
+"EOF
