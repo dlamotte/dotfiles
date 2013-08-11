@@ -293,64 +293,6 @@ set laststatus=2
 " q: is annoying
 nmap q: :q
 
-fun! Find_scm_root(path,dir)
-    let l:path = a:path
-    let l:lastpath = ""
-    while strlen(l:path) > 0 && l:path != l:lastpath &&
-        \ ! isdirectory(l:path."/".a:dir )
-        let l:lastpath = l:path
-        let l:path = fnamemodify(l:path,":h")
-    endwhile
-    return l:path
-endfun
-
-fun! Scm_status()
-    let l:path = expand("%:p")
-    let l:type = ""
-    let l:branch = ""
-
-    let l:hgpath = Find_scm_root(l:path,".hg")
-    let l:gitpath = Find_scm_root(l:path,".git")
-    " found hg repo
-    if strlen(l:hgpath) > 1
-        let l:type = "hg"
-        " get branch
-        try
-            let l:branch = readfile(l:hgpath."/.hg/branch", "", 1)[0]
-        catch /E484/
-            let l:branch = "default"
-        endtry
-    elseif strlen(l:gitpath) > 1
-        let l:gitpath .= "/.git"
-        let l:type = "git"
-        " get branch
-        try
-            let l:branch = substitute(readfile(l:gitpath."/HEAD", "", 1)[0],
-                        \ "^.*/", "", "")
-        catch /E484/
-        endtry
-    endif
-
-    if strlen(l:type) > 0
-        return printf("[%s: %s]", l:type, l:branch)
-    endif
-
-    return ""
-endfun
-
-" fancy status line (now using vim-airline)
-"set statusline=
-"set statusline+=%2*%-3.3n%0*                    " buffer number
-"set statusline+=%f                              " file name
-"set statusline+=%h%1*%m%r%w%0*                  " flags
-"set statusline+=[%{strlen(&ft)?&ft:'none'},     " filetype
-"set statusline+=%{&encoding},                   " encoding
-"set statusline+=%{&fileformat}]                 " file format
-"set statusline+=%{Scm_status()}                 " scm status
-"set statusline+=%=                              " right align
-"set statusline+=%2*0x%-8B                       " current char
-"set statusline+=%-14.(%l,%c%V%)                 " offset
-"set statusline+=%P                              " percent through file
 let g:airline_detect_modified = 1
 let g:airline_detect_paste = 1
 let g:airline_theme = 'badwolf'
