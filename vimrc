@@ -206,10 +206,6 @@ set ttyfast
 " unhighlight
 nnoremap <leader><space> :noh<cr>
 
-" sparkup
-let g:sparkupExecuteMapping = '<Leader>n'
-let g:sparkupNextMapping = '<Leader>n'
-
 " ft specifics
 au BufRead,BufNewFile *.as setlocal ft=actionscript
 au BufRead,BufNewFile *.css setlocal ts=2 sw=2 sts=2
@@ -257,12 +253,6 @@ inoremap # X#
 
 " select last thing pasted via :set paste (inspired by gv)
 noremap <Leader>v `[v`]
-
-" start taglist plugin with ctags
-nnoremap <silent> <F8> :Tlist<CR>
-"let Tlist_Auto_Open = 1
-let Tlist_Compact_Format = 1
-let Tlist_Exit_OnlyWindow = 1
 
 set printoptions=number:y,paper:letter,syntax:n
 
