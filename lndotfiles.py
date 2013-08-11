@@ -82,10 +82,19 @@ def main(argv):
     mkdir(path.join(target, 'bin'))
     dolink('bin', path.join(target, 'bin'))
 
-    if extras:
-        hgexts = path.join(target, '.hgexts')
-        mkdir(hgexts)
+    # pull in hgexts
+    hgexts = path.join(target, '.hgexts')
+    mkdir(hgexts)
+    if not path.exists(path.join(hgexts, 'hg-git')):
         system('hg clone ssh://hg@bitbucket.org/durin42/hg-git', hgexts)
+    if not path.exists(path.join(hgexts, 'hg-remotebranches')):
+        system('hg clone ssh://hg@bitbucket.org/durin42/hg-remotebranches', hgexts)
+
+    # pull in sandboxes
+    sandbox = path.join(target, 'sandbox')
+    mkdir(sandbox)
+    if not path.exists(path.join(sandbox, 'mercurial-cli-templates')):
+        system('hg clone ssh://hg@bitbucket.org/sjl/mercurial-cli-templates/', sandbox)
 
     return 0
 
