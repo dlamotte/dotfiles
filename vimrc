@@ -206,10 +206,6 @@ set ttyfast
 " unhighlight
 nnoremap <leader><space> :noh<cr>
 
-" yankring
-nnoremap <silent> <F3> :YRShow<cr>
-inoremap <silent> <F3> <ESC>:YRShow<cr>
-
 " sparkup
 let g:sparkupExecuteMapping = '<Leader>n'
 let g:sparkupNextMapping = '<Leader>n'
@@ -375,6 +371,13 @@ let g:airline_linecolumn_prefix = '¶ '
 let g:airline_branch_prefix = '⎇ '
 let g:airline_paste_symbol = 'ρ'
 let g:ctrlp_working_path_mode = 'ra'
+
+" tagbar
+nnoremap <leader>t :TagbarOpen<cr>
+let g:tagbar_autoclose = 1
+let g:tagbar_compact = 1
+let g:tagbar_sort = 0
+let g:tagbar_width = 40
 
 " information on wrapping lines
 set listchars=
