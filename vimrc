@@ -59,17 +59,18 @@ set showcmd
 set suffixes+=.log,.out,.o,.lo
 set viminfo='20,\"500   " Keep a .viminfo file.
 
-" Don't use Ex mode, use Q for formatting
-map Q gq
-
 
 "
 " key mappings
 "
+
 nnoremap <leader><space> :noh<cr>
 
 " don't outdent comment lines when they are smartindented help smartindent
 inoremap # X#
+
+" Don't use Ex mode, use Q for formatting
+map Q gq
 
 " q: is annoying
 nmap q: :q
