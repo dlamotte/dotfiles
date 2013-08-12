@@ -56,8 +56,9 @@ set nomodeline
 set ruler
 set scrolloff=3
 set showcmd
-set suffixes+=.log,.out,.o,.lo
+set suffixes+=.log,.out
 set viminfo='20,<100,%
+set wildignore=*.pyc,*.obj,*.o,*.lo
 
 
 "
@@ -140,14 +141,14 @@ let g:airline_theme = 'badwolf'
 "let g:airline_theme='laederon'
 "let g:airline_theme='simple' " not very good during splits
 let g:airline_mode_map = {
-      \ 'n'  : 'normal',
-      \ 'i'  : 'insert',
-      \ 'R'  : 'rplace',
-      \ 'v'  : 'visual',
-      \ 'V'  : 'v-line',
-      \ 'c'  : 'cmd   ',
-      \ '' : 'v-blck',
-      \ }
+    \ 'n'  : 'normal',
+    \ 'i'  : 'insert',
+    \ 'R'  : 'rplace',
+    \ 'v'  : 'visual',
+    \ 'V'  : 'v-line',
+    \ 'c'  : 'cmd   ',
+    \ '' : 'v-blck',
+    \ }
 let g:airline_left_sep = '▶'
 let g:airline_right_sep = '◀'
 let g:airline_linecolumn_prefix = '¶ '
@@ -155,7 +156,12 @@ let g:airline_branch_prefix = '⎇ '
 let g:airline_paste_symbol = 'ρ'
 
 " ctrlp (fuzzy file/buf matching)
-let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_custom_ignore = {
+    \ 'dir': '\v[\/]migrations$',
+    \ }
+let g:ctrlp_working_path_mode = 'a'
+let g:ctrlp_use_caching = 1
+let g:ctrlp_clear_cache_on_exit = 0
 
 " tagbar (tagging)
 nnoremap <leader>t :TagbarOpen<cr>
