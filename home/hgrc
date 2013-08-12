@@ -1,6 +1,2 @@
-[extensions]
-hggit = $HOME/.hgexts/hg-git/hggit
-remotebranches = $HOME/.hgexts/hg-remotebranches/hg_remotebranches.py
-
 #[web]
 #cacerts = /etc/ssl/certs/ca-certificates.crt
