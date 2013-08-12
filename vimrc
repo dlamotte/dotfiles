@@ -57,7 +57,7 @@ set ruler
 set scrolloff=3
 set showcmd
 set suffixes+=.log,.out,.o,.lo
-set viminfo='20,\"500   " Keep a .viminfo file.
+set viminfo='20,<100,%
 
 
 "
@@ -110,6 +110,12 @@ autocmd BufRead,BufNewFile hg-editor-*.txt setlocal syntax=hgcommit
 autocmd BufRead,BufNewFile [Mm]ake* setlocal noexpandtab filetype=make syntax=make
 autocmd BufRead,BufNewFile Rakefile setlocal ts=2 sw=2 sts=2
 autocmd FileType crontab set backupcopy=yes
+
+" restore last cursor position
+autocmd BufReadPost *
+      \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+      \     exe "normal g'\"" |
+      \ endif |
 
 " fancier editing of binaries
 augroup Binary
