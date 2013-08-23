@@ -54,6 +54,7 @@ showfunc = 1
 nodates = 1
 
 [alias]
+bm = bookmark
 changelog = log --style changelog
 cherry = log -r 'reverse(ancestors(.) and not ancestors($1))'
 qstatus = status --rev qparent:qtip
