@@ -57,21 +57,23 @@ if [[ -z $LS_COLORS ]]; then
     eval $(dircolors)
 fi
 
-alias rm="rm -i"
-alias cp="cp -i"
-alias mv="mv -i"
-alias ls="ls -F --color=auto"
-alias info="info --vi-keys"
-alias grep="grep --color=auto"
-alias egrep="egrep --color=auto"
-alias acroread="acroread -openInNewWindow"
-alias octave="octave --silent"
 alias bc="bc -ql"
-alias gcc="gcc -pedantic -Wall"
+alias cp="cp -i"
 alias cscope="cscope -R -q"
-alias wbugz="bugz -b http://bugs.winehq.org/"
-alias rdesktop="rdesktop -g 1024x768 -K -x b"
+alias egrep="egrep --color=auto"
+alias gcc="gcc -pedantic -Wall"
+alias grep="grep --color=auto"
+alias info="info --vi-keys"
+alias ls="ls -F --color=auto"
 alias mq='hg -R $(hg root)/.hg/patches'
+alias mv="mv -i"
+alias octave="octave --silent"
+alias rdesktop="rdesktop -g 1024x768 -K -x b"
+alias rm="rm -i"
+
+# Kill all the tabs in Chrome to free up memory
+# [C] explained: http://www.commandlinefu.com/commands/view/402/exclude-grep-from-your-grepped-output-of-ps-alias-included-in-description
+alias chromekill="ps ux | grep '[C]hrome Helper --type=renderer' | grep -v extension-process | tr -s ' ' | cut -d ' ' -f2 | xargs kill"
 
 zstyle ':completion:*' completer _expand _complete _ignored
 zstyle ':completion:*' expand prefix suffix
