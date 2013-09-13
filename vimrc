@@ -155,6 +155,8 @@ let g:airline_linecolumn_prefix = '¶ '
 let g:airline_branch_prefix = '⎇ '
 let g:airline_paste_symbol = 'ρ'
 
+let g:airline_section_z = '0x%-4B %3p%% '.g:airline_linecolumn_prefix.'%3l:%3c'
+
 " ctrlp (fuzzy file/buf matching)
 let g:ctrlp_custom_ignore = {
     \ 'dir': '\v[\/]migrations$',
