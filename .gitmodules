@@ -7,3 +7,6 @@
 [submodule "vim/bundle/tagbar"]
 	path = vim/bundle/tagbar
 	url = git@github.com:majutsushi/tagbar.git
+[submodule "vim/bundle/vim-python-combined"]
+	path = vim/bundle/vim-python-combined
+	url = git@github.com:mitsuhiko/vim-python-combined.git
