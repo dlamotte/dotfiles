@@ -1,6 +1,6 @@
 " pathogen setup vimruntime path
 execute pathogen#infect()
-filetype plugin indent on
+filetype plugin on
 syntax on
 scriptencoding utf-8
 
