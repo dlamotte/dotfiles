@@ -9,7 +9,7 @@ from = Dan LaMotte <lamotte85@gmail.com>
 
 [merge-tools]
 vimdiff.executable = vim
-vimdiff.args = -d -c "wincmd J" "$output" "$local" "$base" "$other"
+vimdiff.args = -d $base $local $output $other -c "wincmd J"
 
 [defaults]
 archive = -t tgz
