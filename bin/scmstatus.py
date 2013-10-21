@@ -131,6 +131,10 @@ usage: %(prog)s format
 if __name__ == '__main__':
     try:
         sys.exit(main(sys.argv))
+
+    except KeyboardInterrupt:
+        pass
+
     except Exception as e:
         if '--raise' in sys.argv:
             raise
