@@ -81,6 +81,9 @@ nmap q: :q
 " other
 "
 
+" make % work in html and other files
+runtime macros/matchit.vim
+
 source $VIMRUNTIME/ftplugin/man.vim " make :Man command available
 
 " default MANPAGER vimmanpager doesn't play well
