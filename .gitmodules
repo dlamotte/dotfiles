@@ -19,9 +19,6 @@
 [submodule "vim/bundle/vim-jinja"]
 	path = vim/bundle/vim-jinja
 	url = git@github.com:mitsuhiko/vim-jinja.git
-[submodule "vim/bundle/py_jump"]
-	path = vim/bundle/py_jump
-	url = git@github.com:vim-scripts/py_jump.vim.git
 [submodule "vim/bundle/vim-repeat"]
 	path = vim/bundle/vim-repeat
 	url = git@github.com:tpope/vim-repeat.git
