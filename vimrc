@@ -56,8 +56,10 @@ set nomodeline
 set ruler
 set scrolloff=3
 set showcmd
+set showmatch
 set suffixes+=.log,.out
 set viminfo='20,<100,%
+set wildmenu
 set wildignore=*.pyc,*.obj,*.o,*.lo
 
 
