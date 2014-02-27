@@ -68,6 +68,7 @@ set wildignore=*.pyc,*.obj,*.o,*.lo
 "
 
 nnoremap <leader><space> :noh<cr>
+nnoremap <leader>sync :syntax sync fromstart<cr>
 
 " don't outdent comment lines when they are smartindented help smartindent
 inoremap # X#
