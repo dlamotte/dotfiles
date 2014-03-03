@@ -43,9 +43,27 @@ remotebranches = $HOME/.hgexts/hg-remotebranches/hg_remotebranches.py
 intree = True
 
 [pager]
-attend = help, log, glog, annotate, grep, diff, di, show, tip, children,
-    qdiff, slog, nlog, sglog, sheads, heads, outgoing, incoming, tags,
+attend = help,
+    annotate,
     changelog
+    children,
+    di,
+    diff,
+    diffremote,
+    glog,
+    grep,
+    heads,
+    incoming,
+    log,
+    nlog,
+    outgoing,
+    qdiff,
+    sglog,
+    sheads,
+    show,
+    slog,
+    tags,
+    tip,
 pager = less $LESS
 
 [diff]
@@ -59,6 +77,7 @@ changelog = log --style changelog
 cherry = log -r 'reverse(ancestors(.) and not ancestors($1))'
 qstatus = status --rev qparent:qtip
 di = diff
+diffremote = diff -r 'ancestor(default/default, $1)::$1'
 show = log -p -v -r
 describe = log -l 1 --template '{latesttag}.{latesttagdistance}.{node|short}\n'
 
