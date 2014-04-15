@@ -40,6 +40,7 @@ export LESSOPEN="|lesspipe.sh %s"
 export MANPAGER='vimmanpager'
 export PAGER='less'
 export PGDATA='/usr/local/var/postgres'
+export PYTHONDONTWRITEBYTECODE=1
 export PYTHONPATH="${PYTHONPATH}${PYTHONPATH+:}${HOME}/.python/lib"
 export PYTHONSTARTUP=~/.pythonrc
 export PYTHONDOCS=$(echo ${PYTHONDOCS} | sed -e 's:/lib::g')
