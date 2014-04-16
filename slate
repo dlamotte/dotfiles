@@ -1,0 +1,85 @@
+# https://github.com/jigish/slate
+
+# Configs
+config defaultToCurrentScreen true
+config nudgePercentOf screenSize
+config resizePercentOf screenSize
+
+# Monitor aliases
+alias mon-laptop 1680x1050
+alias mon-thunderbolt 2560x1440
+
+# Position aliases
+alias m-full        move screenOriginX;screenOriginY                screenSizeX;screenSizeY
+alias m-half-left   move screenOriginX;screenOriginY                screenSizeX/2;screenSizeY
+alias m-half-right  move screenOriginX+screenSizeX/2;screenOriginY  screenSizeX/2;screenSizeY
+alias m-small-right move screenSizeX-screenSizeX/8;screenOriginY    screenSizeX/8;screenSizeY
+alias m-medium-left move screenOriginX;screenOriginY                screenSizeX/4;screenSizeY
+alias m-conversation chain move screenOriginX;screenOriginY+screenSizeY/4 screenSizeX/8;screenSizeY/2 | move screenOriginX+screenSizeX/8;screenOriginY+screenSizeY/4 screenSizeX/8;screenSizeY/2 | move screenOriginX+screenSizeX*2/8;screenOriginY+screenSizeY/4 screenSizeX/8;screenSizeY/2 | move screenOriginX+screenSizeX*3/8;screenOriginY+screenSizeY/4 screenSizeX/8;screenSizeY/2 | move screenOriginX+screenSizeX*4/8;screenOriginY+screenSizeY/4 screenSizeX/8;screenSizeY/2 | move screenOriginX+screenSizeX*5/8;screenOriginY+screenSizeY/4 screenSizeX/8;screenSizeY/2 | move screenOriginX+screenSizeX*6/8;screenOriginY+screenSizeY/4 screenSizeX/8;screenSizeY/2 | move screenOriginX+screenSizeX*7/8;screenOriginY+screenSizeY/4 screenSizeX/8;screenSizeY/2
+
+# laptop layout
+layout laptop 'Chatter Desktop':REPEAT          ${m-medium-left}
+layout laptop 'Google Chrome':REPEAT            ${m-full}
+layout laptop 'iTerm':REPEAT                    ${m-full}
+layout laptop 'Microsoft Outlook':REPEAT        ${m-full}
+layout laptop 'Microsoft Communicator':TITLE_ORDER='Contact List',REPEAT_LAST   ${m-small-right} | ${m-conversation}
+
+# thunderbolt layout
+layout thunderbolt 'Chatter Desktop':REPEAT         ${m-medium-left}
+layout thunderbolt 'Google Chrome':REPEAT           ${m-half-left}
+layout thunderbolt 'iTerm':REPEAT                   ${m-half-right}
+layout thunderbolt 'Microsoft Outlook':REPEAT       ${m-half-right}
+layout thunderbolt 'Microsoft Communicator':TITLE_ORDER='Contact List',REPEAT_LAST  ${m-small-right} | ${m-conversation}
+
+# Default layouts
+default laptop resolutions:${mon-laptop}
+default thunderbolt resolutions:${mon-thunderbolt}
+
+# Force a layout
+bind pad0:ctrl layout laptop
+bind pad.:ctrl layout thunderbolt
+
+# Resize Bindings
+bind l:alt       resize +10% +0
+bind h:alt       resize -10% +0
+bind j:alt       resize +0   -10%
+bind k:alt       resize +0   +10%
+bind l:ctrl;alt  resize -10% +0 bottom-right
+bind h:ctrl;alt  resize +10% +0 bottom-right
+bind j:ctrl;alt  resize +0   +10% bottom-right
+bind k:ctrl;alt  resize +0   -10% bottom-right
+
+# Push Bindings
+bind l:ctrl;cmd  push right bar-resize:screenSizeX/2
+bind h:ctrl;cmd  push left  bar-resize:screenSizeX/2
+bind j:ctrl;cmd  push up    bar-resize:screenSizeY/2
+bind k:ctrl;cmd  push down  bar-resize:screenSizeY/2
+
+# Nudge Bindings
+bind l:shift;alt nudge +10% +0
+bind h:shift;alt nudge -10% +0
+bind j:shift;alt nudge +0   -10%
+bind k:shift;alt nudge +0   +10%
+
+# Throw Bindings -- for multi monitor environments
+#bind 1:ctrl;alt         throw 0 resize
+#bind 2:ctrl;alt         throw 1 resize
+#bind 3:ctrl;alt         throw 2 resize
+#bind right:ctrl;alt;cmd throw right resize
+#bind left:ctrl;alt;cmd  throw left  resize
+#bind up:ctrl;alt;cmd    throw up    resize
+#bind down:ctrl;alt;cmd  throw down  resize
+
+# Focus Bindings
+#bind right:cmd    focus right
+#bind left:cmd     focus left
+#bind up:cmd       focus up
+#bind down:cmd     focus down
+#bind up:cmd;alt   focus behind
+#bind down:cmd;alt focus behind
+
+# Window Hints
+bind esc:cmd hint
+
+# Grid
+bind esc:ctrl grid
