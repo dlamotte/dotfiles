@@ -13,31 +13,32 @@ alias mon-thunderbolt 2560x1440
 alias m-full        move screenOriginX;screenOriginY                screenSizeX;screenSizeY
 alias m-half-left   move screenOriginX;screenOriginY                screenSizeX/2;screenSizeY
 alias m-half-right  move screenOriginX+screenSizeX/2;screenOriginY  screenSizeX/2;screenSizeY
-alias m-small-right move screenSizeX-screenSizeX/8;screenOriginY    screenSizeX/8;screenSizeY
-alias m-medium-left move screenOriginX;screenOriginY                screenSizeX/4;screenSizeY
-alias m-conversation chain move screenOriginX;screenOriginY+screenSizeY/4 screenSizeX/8;screenSizeY/2 | move screenOriginX+screenSizeX/8;screenOriginY+screenSizeY/4 screenSizeX/8;screenSizeY/2 | move screenOriginX+screenSizeX*2/8;screenOriginY+screenSizeY/4 screenSizeX/8;screenSizeY/2 | move screenOriginX+screenSizeX*3/8;screenOriginY+screenSizeY/4 screenSizeX/8;screenSizeY/2 | move screenOriginX+screenSizeX*4/8;screenOriginY+screenSizeY/4 screenSizeX/8;screenSizeY/2 | move screenOriginX+screenSizeX*5/8;screenOriginY+screenSizeY/4 screenSizeX/8;screenSizeY/2 | move screenOriginX+screenSizeX*6/8;screenOriginY+screenSizeY/4 screenSizeX/8;screenSizeY/2 | move screenOriginX+screenSizeX*7/8;screenOriginY+screenSizeY/4 screenSizeX/8;screenSizeY/2
+alias m-small-right move screenSizeX-319;screenOriginY              319;screenSizeY
+alias m-medium-left move screenOriginX;screenOriginY                639;screenSizeY
+alias m-conversation-laptop chain move screenOriginX;screenOriginY+screenSizeY/4 screenSizeX/4;screenSizeY/2 | move screenOriginX+screenSizeX/4;screenOriginY+screenSizeY/4 screenSizeX/4;screenSizeY/2 | move screenOriginX+screenSizeX*2/4;screenOriginY+screenSizeY/4 screenSizeX/4;screenSizeY/2 | move screenOriginX+screenSizeX*3/4;screenOriginY+screenSizeY/4 screenSizeX/4;screenSizeY/2
+alias m-conversation-thunderbolt chain move screenOriginX;screenOriginY+screenSizeY/4 screenSizeX/8;screenSizeY/2 | move screenOriginX+screenSizeX/8;screenOriginY+screenSizeY/4 screenSizeX/8;screenSizeY/2 | move screenOriginX+screenSizeX*2/8;screenOriginY+screenSizeY/4 screenSizeX/8;screenSizeY/2 | move screenOriginX+screenSizeX*3/8;screenOriginY+screenSizeY/4 screenSizeX/8;screenSizeY/2 | move screenOriginX+screenSizeX*4/8;screenOriginY+screenSizeY/4 screenSizeX/8;screenSizeY/2 | move screenOriginX+screenSizeX*5/8;screenOriginY+screenSizeY/4 screenSizeX/8;screenSizeY/2 | move screenOriginX+screenSizeX*6/8;screenOriginY+screenSizeY/4 screenSizeX/8;screenSizeY/2 | move screenOriginX+screenSizeX*7/8;screenOriginY+screenSizeY/4 screenSizeX/8;screenSizeY/2
 
 # laptop layout
 layout laptop 'Chatter Desktop':REPEAT          ${m-medium-left}
 layout laptop 'Google Chrome':REPEAT            ${m-full}
 layout laptop 'iTerm':REPEAT                    ${m-full}
 layout laptop 'Microsoft Outlook':REPEAT        ${m-full}
-layout laptop 'Microsoft Communicator':TITLE_ORDER='Contact List',REPEAT_LAST   ${m-small-right} | ${m-conversation}
+layout laptop 'Microsoft Communicator':TITLE_ORDER='Contact List',REPEAT_LAST   ${m-small-right} | ${m-conversation-laptop}
 
 # thunderbolt layout
 layout thunderbolt 'Chatter Desktop':REPEAT         ${m-medium-left}
 layout thunderbolt 'Google Chrome':REPEAT           ${m-half-left}
 layout thunderbolt 'iTerm':REPEAT                   ${m-half-right}
 layout thunderbolt 'Microsoft Outlook':REPEAT       ${m-half-right}
-layout thunderbolt 'Microsoft Communicator':TITLE_ORDER='Contact List',REPEAT_LAST  ${m-small-right} | ${m-conversation}
+layout thunderbolt 'Microsoft Communicator':TITLE_ORDER='Contact List',REPEAT_LAST  ${m-small-right} | ${m-conversation-thunderbolt}
 
 # Default layouts
 default laptop resolutions:${mon-laptop}
 default thunderbolt resolutions:${mon-thunderbolt}
 
 # Force a layout
-bind pad0:ctrl layout laptop
-bind pad.:ctrl layout thunderbolt
+bind 1:ctrl;alt layout laptop
+bind 2:ctrl;alt layout thunderbolt
 
 # Resize Bindings
 bind l:alt       resize +10% +0
