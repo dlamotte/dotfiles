@@ -51,6 +51,7 @@ bind j:ctrl;alt  resize +0   +10% bottom-right
 bind k:ctrl;alt  resize +0   -10% bottom-right
 
 # Push Bindings
+bind f:ctrl;cmd ${m-full}
 bind l:ctrl;cmd  push right bar-resize:screenSizeX/2
 bind h:ctrl;cmd  push left  bar-resize:screenSizeX/2
 bind j:ctrl;cmd  push up    bar-resize:screenSizeY/2
