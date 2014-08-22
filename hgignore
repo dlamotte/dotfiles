@@ -11,3 +11,4 @@ CVS/
 syntax: re
 ^.git/
 ^env/
+^settings_local\.py$
