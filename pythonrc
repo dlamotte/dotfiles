@@ -1,153 +1,157 @@
-import atexit
-import errno
-import os
-import pprint
-import readline
-import rlcompleter
-import sys
-from code import InteractiveConsole
-from tempfile import mkstemp
-
-#
-# setup history and completion
-#
-
-history_path = os.path.expanduser('~/.python_history')
 try:
-    open(history_path).close()
-except IOError as e:
-    if e.errno == errno.ENOENT:
-        open(history_path, 'w').close()
-    else:
-        raise
-
-readline.read_history_file(history_path)
-readline.set_history_length(1000)
-readline.parse_and_bind('tab: complete')
-atexit.register(readline.write_history_file, history_path)
-
-WELCOME = '''
-pythonrc loaded:
-    _color      ie: '%sthis is red%s' % (_colors.red, _colors.normal)'''.lstrip()
-
-#
-# colors
-#
-
-class TermColors(dict):
-    COLOR_TEMPLATES = (
-        ('black'       , '0;30'),
-        ('red'         , '0;31'),
-        ('green'       , '0;32'),
-        ('brown'       , '0;33'),
-        ('blue'        , '0;34'),
-        ('purple'      , '0;35'),
-        ('cyan'        , '0;36'),
-        ('lightgray'   , '0;37'),
-        ('darkgray'    , '1;30'),
-        ('lightred'    , '1;31'),
-        ('lightgreen'  , '1;32'),
-        ('yellow'      , '1;33'),
-        ('lightblue'   , '1;34'),
-        ('lightpurple' , '1;35'),
-        ('lightcyan'   , '1;36'),
-        ('white'       , '1;37'),
-        ('normal'      , '0'),
-    )
-
-    no_color = ''
-    base = '\001\033[%sm\002'
-
-    def __init__(self):
-        if os.environ.get('TERM') in ('xterm', 'xterm-color', 'xterm-256color', 'linux',
-                                     'screen', 'screen-256color', 'screen-bce'):
-
-            for k, v in self.COLOR_TEMPLATES:
-                setattr(self, k, self.base % v)
-
-        else:
-            for k, v in self.COLOR_TEMPLATES:
-                setattr(self, k, self.no_color)
-
-_color = TermColors()
-
-sys.ps1 = '%s>>> %s' % (_color.lightred, _color.normal)
-sys.ps2 = '%s... %s' % (_color.lightred, _color.normal)
-
-#
-# pretty print stdout
-#
-
-def displayhook(value):
+    get_ipython
+except NameError:
+    # not running under ipython
+    import atexit
+    import errno
+    import os
     import pprint
-    if value is not None:
-        try:
-            import __builtin__
-            __builtin__._ = value
-        except ImportError:
-            __builtins__._ = value
-        pprint.pprint(value)
+    import readline
+    import rlcompleter
+    import sys
+    from code import InteractiveConsole
+    from tempfile import mkstemp
 
-sys.displayhook = displayhook
+    #
+    # setup history and completion
+    #
 
-#
-# django
-#
+    history_path = os.path.expanduser('~/.python_history')
+    try:
+        open(history_path).close()
+    except IOError as e:
+        if e.errno == errno.ENOENT:
+            open(history_path, 'w').close()
+        else:
+            raise
 
-def SECRET_KEY():
-    from random import choice
-    return ''.join([
-        choice('abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)')
-        for i in range(50)
-    ])
+    readline.read_history_file(history_path)
+    readline.set_history_length(1000)
+    readline.parse_and_bind('tab: complete')
+    atexit.register(readline.write_history_file, history_path)
 
-if 'DJANGO_SETTINGS_MODULE' in os.environ:
-    from django.db.models.loading import get_models
-    from django.test.client import Client
-    from django.test.utils import setup_test_environment, teardown_test_environment
-    from django.conf import settings as _settings
+    WELCOME = '''
+    pythonrc loaded:
+        _color      ie: '%sthis is red%s' % (_colors.red, _colors.normal)'''.lstrip()
 
-    class DjangoModels(object):
+    #
+    # colors
+    #
+
+    class TermColors(dict):
+        COLOR_TEMPLATES = (
+            ('black'       , '0;30'),
+            ('red'         , '0;31'),
+            ('green'       , '0;32'),
+            ('brown'       , '0;33'),
+            ('blue'        , '0;34'),
+            ('purple'      , '0;35'),
+            ('cyan'        , '0;36'),
+            ('lightgray'   , '0;37'),
+            ('darkgray'    , '1;30'),
+            ('lightred'    , '1;31'),
+            ('lightgreen'  , '1;32'),
+            ('yellow'      , '1;33'),
+            ('lightblue'   , '1;34'),
+            ('lightpurple' , '1;35'),
+            ('lightcyan'   , '1;36'),
+            ('white'       , '1;37'),
+            ('normal'      , '0'),
+        )
+
+        no_color = ''
+        base = '\001\033[%sm\002'
+
         def __init__(self):
-            for m in get_models():
-                setattr(self, m.__name__, m)
+            if os.environ.get('TERM') in ('xterm', 'xterm-color', 'xterm-256color', 'linux',
+                                         'screen', 'screen-256color', 'screen-bce'):
 
-    _models = DjangoModels()
-    _client = Client()
-    WELCOME += '''
-    _client     ie: Client() == _client...
-    _models     ie: _models.FeatureScorecard...
-    _settings   ie: _settings.DEBUG'''
+                for k, v in self.COLOR_TEMPLATES:
+                    setattr(self, k, self.base % v)
 
-EDITOR = os.environ.get('EDITOR', 'vim')
-EDIT_CMD = '\e'
+            else:
+                for k, v in self.COLOR_TEMPLATES:
+                    setattr(self, k, self.no_color)
 
-class EditableBufferInteractiveConsole(InteractiveConsole):
-    def __init__(self, *args, **kwargs):
-        self.last_buffer = []
-        InteractiveConsole.__init__(self, *args, **kwargs)
+    _color = TermColors()
 
-    def runsource(self, source, *args):
-        self.last_buffer = [source.encode('utf-8')]
-        return InteractiveConsole.runsource(self, source, *args)
+    sys.ps1 = '%s>>> %s' % (_color.lightred, _color.normal)
+    sys.ps2 = '%s... %s' % (_color.lightred, _color.normal)
 
-    def raw_input(self, *args):
-        line = InteractiveConsole.raw_input(self, *args)
-        if line == EDIT_CMD:
-            fd, fn = mkstemp('.py')
-            os.write(fd, b'\n'.join(self.last_buffer))
-            os.close(fd)
-            os.system('%s %s' % (EDITOR, fn))
-            line = open(fn).read()
-            os.unlink(fn)
-            readline.add_history(line)
-            lines = line.splitlines()
-            for i in range(len(lines) - 1):
-                self.push(lines[i])
-            line = lines[-1]
-        return line
+    #
+    # pretty print stdout
+    #
 
-c = EditableBufferInteractiveConsole(locals=locals())
-c.interact(banner=WELCOME)
+    def displayhook(value):
+        import pprint
+        if value is not None:
+            try:
+                import __builtin__
+                __builtin__._ = value
+            except ImportError:
+                __builtins__._ = value
+            pprint.pprint(value)
 
-sys.exit()
+    sys.displayhook = displayhook
+
+    #
+    # django
+    #
+
+    def SECRET_KEY():
+        from random import choice
+        return ''.join([
+            choice('abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)')
+            for i in range(50)
+        ])
+
+    if 'DJANGO_SETTINGS_MODULE' in os.environ:
+        from django.db.models.loading import get_models
+        from django.test.client import Client
+        from django.test.utils import setup_test_environment, teardown_test_environment
+        from django.conf import settings as _settings
+
+        class DjangoModels(object):
+            def __init__(self):
+                for m in get_models():
+                    setattr(self, m.__name__, m)
+
+        _models = DjangoModels()
+        _client = Client()
+        WELCOME += '''
+        _client     ie: Client() == _client...
+        _models     ie: _models.FeatureScorecard...
+        _settings   ie: _settings.DEBUG'''
+
+    EDITOR = os.environ.get('EDITOR', 'vim')
+    EDIT_CMD = '\e'
+
+    class EditableBufferInteractiveConsole(InteractiveConsole):
+        def __init__(self, *args, **kwargs):
+            self.last_buffer = []
+            InteractiveConsole.__init__(self, *args, **kwargs)
+
+        def runsource(self, source, *args):
+            self.last_buffer = [source.encode('utf-8')]
+            return InteractiveConsole.runsource(self, source, *args)
+
+        def raw_input(self, *args):
+            line = InteractiveConsole.raw_input(self, *args)
+            if line == EDIT_CMD:
+                fd, fn = mkstemp('.py')
+                os.write(fd, b'\n'.join(self.last_buffer))
+                os.close(fd)
+                os.system('%s %s' % (EDITOR, fn))
+                line = open(fn).read()
+                os.unlink(fn)
+                readline.add_history(line)
+                lines = line.splitlines()
+                for i in range(len(lines) - 1):
+                    self.push(lines[i])
+                line = lines[-1]
+            return line
+
+    c = EditableBufferInteractiveConsole(locals=locals())
+    c.interact(banner=WELCOME)
+
+    sys.exit()
