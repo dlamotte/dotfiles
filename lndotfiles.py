@@ -12,6 +12,8 @@ EXCLUDES = [
 
 MKDIR_INSTEADOF_LINK = [
     path.join('.', 'pip'),
+    path.join('.', 'ipython'),
+    path.join('.', 'ipython', 'profile_default'),
 ]
 
 def dolink(dirpath, target, target_prefix='', excludes=None):
