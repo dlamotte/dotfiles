@@ -37,3 +37,4 @@
 [remote "origin"]
     # fetch pull requests from github
     fetch = +refs/pull/*/head:refs/remotes/origin/pull/*
+    fetch = +refs/pull-requests/*:refs/remotes/origin/pull-requests/*
