@@ -5,6 +5,9 @@
 [color]
     ui = true
 
+[credential]
+    helper = cache
+
 [alias]
     st = status
     ci = commit
