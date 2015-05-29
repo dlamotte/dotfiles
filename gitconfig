@@ -29,7 +29,7 @@
     trustExitCode = true
 
 [push]
-    default = matching
+    default = simple
 
 [include]
     path = ~/.current/gitconfig
