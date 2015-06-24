@@ -6,7 +6,7 @@
     ui = true
 
 [credential]
-    helper = cache
+    helper = cache --timeout=28800
 
 [alias]
     st = status
