@@ -71,6 +71,7 @@ set wildignore=*.pyc,*.obj,*.o,*.lo
 
 nnoremap <leader><space> :noh<cr>
 nnoremap <leader>sync :syntax sync fromstart<cr>
+nnoremap <leader>b :<C-U>CtrlPBuffer<CR>
 
 " don't outdent comment lines when they are smartindented help smartindent
 inoremap # X#
@@ -80,7 +81,6 @@ map Q gq
 
 " q: is annoying
 nmap q: :q
-nmap <C-B> :<C-U>CtrlPBuffer<CR>
 
 
 "
