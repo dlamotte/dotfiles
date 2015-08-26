@@ -80,6 +80,7 @@ map Q gq
 
 " q: is annoying
 nmap q: :q
+nmap <C-B> :<C-U>CtrlPBuffer<CR>
 
 
 "
