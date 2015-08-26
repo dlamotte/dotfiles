@@ -4,3 +4,4 @@ CVS/
 *.pyc
 tmp/
 tags
+env/
