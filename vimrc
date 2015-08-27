@@ -39,9 +39,6 @@ colorscheme inkpot
 " highlight >--- with a better color from inkpot, X(82) vs inkpots X(55)
 au BufEnter * hi SpecialKey cterm=BOLD ctermfg=238 ctermbg=NONE
 
-" highlight 'FYI' as well as the other kinds of highlighted 'TODO' items
-au WinEnter,VimEnter * :silent! call matchadd('Todo', 'FYI', -1)
-
 " general
 set bs=2
 set cscopetag
