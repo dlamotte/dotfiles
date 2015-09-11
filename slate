@@ -6,7 +6,6 @@ config nudgePercentOf screenSize
 config resizePercentOf screenSize
 
 # Monitor aliases
-alias mon-laptop 1680x1050
 alias mon-thunderbolt 2560x1440
 
 # Position aliases
@@ -36,14 +35,15 @@ layout thunderbolt 'Microsoft Outlook':REPEAT       ${m-half-right}
 layout thunderbolt 'Jabber':TITLE_ORDER='Cisco Jabber',REPEAT_LAST   ${m-medium-right} | ${m-medium-right-convo}
 
 # 2 thunderbolt layout
-layout thunderbolt2 'Chatter Desktop':REPEAT         ${m-medium-left}
-layout thunderbolt2 'Google Chrome':REPEAT           ${m-half-right} 2
+layout thunderbolt2 'Chatter Desktop':REPEAT         ${m-medium-left} 0
+layout thunderbolt2 'Google Chrome':REPEAT           ${m-half-right} 0
 layout thunderbolt2 'iTerm':REPEAT                   ${m-half-left} 1
-layout thunderbolt2 'Microsoft Outlook':REPEAT       ${m-half-left} 2
-layout thunderbolt2 'Jabber':TITLE_ORDER='Cisco Jabber',REPEAT_LAST   ${m-medium-right} | ${m-medium-right-convo}
+layout thunderbolt2 'Microsoft Outlook':REPEAT       ${m-half-left} 0
+layout thunderbolt2 'Jabber':TITLE_ORDER='Cisco Jabber',REPEAT_LAST   ${m-medium-right} 1 | ${m-medium-right-convo} 1
 
 # Default layouts
-default laptop resolutions:${mon-laptop}
+default laptop resolutions:1680x1050
+default laptop resolutions:1440x900 # retina
 default thunderbolt resolutions:${mon-thunderbolt}
 default thunderbolt2 resolutions:${mon-thunderbolt};${mon-thunderbolt}
 
