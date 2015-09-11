@@ -18,15 +18,14 @@ alias m-medium-right move screenSizeX-450;screenOriginY             450;screenSi
 alias m-medium-right-convo move screenOriginX+screenSizeX/2;screenOriginY             screenSizeX/2-455;screenSizeY
 alias m-medium-left move screenOriginX;screenOriginY                639;screenSizeY
 alias m-convo move screenOriginX;screenOriginY             screenSizeX-455;screenSizeY
-alias m-conversation-laptop chain move screenOriginX;screenOriginY+screenSizeY/4 screenSizeX/4;screenSizeY/2 | move screenOriginX+screenSizeX/4;screenOriginY+screenSizeY/4 screenSizeX/4;screenSizeY/2 | move screenOriginX+screenSizeX*2/4;screenOriginY+screenSizeY/4 screenSizeX/4;screenSizeY/2 | move screenOriginX+screenSizeX*3/4;screenOriginY+screenSizeY/4 screenSizeX/4;screenSizeY/2
-alias m-conversation-thunderbolt chain move screenOriginX;screenOriginY+screenSizeY/4 screenSizeX/8;screenSizeY/2 | move screenOriginX+screenSizeX/8;screenOriginY+screenSizeY/4 screenSizeX/8;screenSizeY/2 | move screenOriginX+screenSizeX*2/8;screenOriginY+screenSizeY/4 screenSizeX/8;screenSizeY/2 | move screenOriginX+screenSizeX*3/8;screenOriginY+screenSizeY/4 screenSizeX/8;screenSizeY/2 | move screenOriginX+screenSizeX*4/8;screenOriginY+screenSizeY/4 screenSizeX/8;screenSizeY/2 | move screenOriginX+screenSizeX*5/8;screenOriginY+screenSizeY/4 screenSizeX/8;screenSizeY/2 | move screenOriginX+screenSizeX*6/8;screenOriginY+screenSizeY/4 screenSizeX/8;screenSizeY/2 | move screenOriginX+screenSizeX*7/8;screenOriginY+screenSizeY/4 screenSizeX/8;screenSizeY/2
+alias m-conversation-laptop chain move screenOriginX;screenOriginY+screenSizeY/4 screenSizeX/4;screenSizeY/2 1 | move screenOriginX+screenSizeX/4;screenOriginY+screenSizeY/4 screenSizeX/4;screenSizeY/2 1 | move screenOriginX+screenSizeX*2/4;screenOriginY+screenSizeY/4 screenSizeX/4;screenSizeY/2 1 | move screenOriginX+screenSizeX*3/4;screenOriginY+screenSizeY/4 screenSizeX/4;screenSizeY/2 1
+alias m-conversation-thunderbolt chain move screenOriginX;screenOriginY+screenSizeY/4 screenSizeX/8;screenSizeY/2 1 | move screenOriginX+screenSizeX/8;screenOriginY+screenSizeY/4 screenSizeX/8;screenSizeY/2 1 | move screenOriginX+screenSizeX*2/8;screenOriginY+screenSizeY/4 screenSizeX/8;screenSizeY/2 1 | move screenOriginX+screenSizeX*3/8;screenOriginY+screenSizeY/4 screenSizeX/8;screenSizeY/2 1 | move screenOriginX+screenSizeX*4/8;screenOriginY+screenSizeY/4 screenSizeX/8;screenSizeY/2 1 | move screenOriginX+screenSizeX*5/8;screenOriginY+screenSizeY/4 screenSizeX/8;screenSizeY/2 1 | move screenOriginX+screenSizeX*6/8;screenOriginY+screenSizeY/4 screenSizeX/8;screenSizeY/2 1 | move screenOriginX+screenSizeX*7/8;screenOriginY+screenSizeY/4 screenSizeX/8;screenSizeY/2 1
 
 # laptop layout
 layout laptop 'Chatter Desktop':REPEAT          ${m-medium-left}
 layout laptop 'Google Chrome':REPEAT            ${m-full}
 layout laptop 'iTerm':REPEAT                    ${m-full}
 layout laptop 'Microsoft Outlook':REPEAT        ${m-full}
-layout laptop 'Microsoft Communicator':TITLE_ORDER='Contact List',REPEAT_LAST   ${m-small-right} | ${m-conversation-laptop}
 layout laptop 'Jabber':TITLE_ORDER='Cisco Jabber',REPEAT_LAST   ${m-medium-right} | ${m-convo}
 
 # thunderbolt layout
@@ -34,16 +33,24 @@ layout thunderbolt 'Chatter Desktop':REPEAT         ${m-medium-left}
 layout thunderbolt 'Google Chrome':REPEAT           ${m-half-left}
 layout thunderbolt 'iTerm':REPEAT                   ${m-half-right}
 layout thunderbolt 'Microsoft Outlook':REPEAT       ${m-half-right}
-layout thunderbolt 'Microsoft Communicator':TITLE_ORDER='Contact List',REPEAT_LAST  ${m-small-right} | ${m-conversation-thunderbolt}
 layout thunderbolt 'Jabber':TITLE_ORDER='Cisco Jabber',REPEAT_LAST   ${m-medium-right} | ${m-medium-right-convo}
+
+# 2 thunderbolt layout
+layout thunderbolt2 'Chatter Desktop':REPEAT         ${m-medium-left}
+layout thunderbolt2 'Google Chrome':REPEAT           ${m-half-right} 2
+layout thunderbolt2 'iTerm':REPEAT                   ${m-half-left} 1
+layout thunderbolt2 'Microsoft Outlook':REPEAT       ${m-half-left} 2
+layout thunderbolt2 'Jabber':TITLE_ORDER='Cisco Jabber',REPEAT_LAST   ${m-medium-right} | ${m-medium-right-convo}
 
 # Default layouts
 default laptop resolutions:${mon-laptop}
 default thunderbolt resolutions:${mon-thunderbolt}
+default thunderbolt2 resolutions:${mon-thunderbolt};${mon-thunderbolt}
 
 # Force a layout
 bind 1:ctrl;alt layout laptop
 bind 2:ctrl;alt layout thunderbolt
+bind 3:ctrl;alt layout thunderbolt2
 
 # Resize Bindings
 bind l:alt       resize +10% +0
