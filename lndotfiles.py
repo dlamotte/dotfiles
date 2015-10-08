@@ -32,7 +32,7 @@ def dolink(dirpath, target, target_prefix='', excludes=None):
                 dolink(localfn, targetfn)
 
             else:
-                if path.exists(targetfn):
+                if path.lexists(targetfn):
                     if not (path.islink(targetfn) \
                        and os.readlink(targetfn) == localfnabs):
                         warn('exists: diff -u %s %s' % (targetfn, localfn))
@@ -40,7 +40,7 @@ def dolink(dirpath, target, target_prefix='', excludes=None):
                     os.symlink(localfnabs, targetfn)
 
         else:
-            if path.exists(targetfn):
+            if path.lexists(targetfn):
                 if not (path.islink(targetfn) \
                    and os.readlink(targetfn) == localfnabs):
                     warn('exists: diff -u %s %s' % (targetfn, localfn))
@@ -87,15 +87,15 @@ def main(argv):
     # pull in hgexts
     hgexts = path.join(target, '.hgexts')
     mkdir(hgexts)
-    if not path.exists(path.join(hgexts, 'hg-git')):
+    if not path.lexists(path.join(hgexts, 'hg-git')):
         system('hg clone ssh://hg@bitbucket.org/durin42/hg-git', hgexts)
-    if not path.exists(path.join(hgexts, 'hg-remotebranches')):
+    if not path.lexists(path.join(hgexts, 'hg-remotebranches')):
         system('hg clone ssh://hg@bitbucket.org/durin42/hg-remotebranches', hgexts)
 
     # pull in sandboxes
     sandbox = path.join(target, 'sandbox')
     mkdir(sandbox)
-    if not path.exists(path.join(sandbox, 'mercurial-cli-templates')):
+    if not path.lexists(path.join(sandbox, 'mercurial-cli-templates')):
         system('hg clone ssh://hg@bitbucket.org/sjl/mercurial-cli-templates/', sandbox)
 
     return 0
