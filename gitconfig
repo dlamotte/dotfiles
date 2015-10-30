@@ -14,6 +14,7 @@
     co = checkout
     br = branch
     di = diff
+    diff-branch = "!f() { git diff `git merge-base $1 HEAD` HEAD; }; f"
     ds = diff --staged
     glog = log --graph
     log-graph = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
