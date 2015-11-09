@@ -149,7 +149,7 @@ augroup END
 " airline (theming)
 let g:airline_detect_modified = 1
 let g:airline_detect_paste = 1
-let g:airline_theme = 'badwolf'
+"let g:airline_theme = 'badwolf'
 "let g:airline_theme='laederon'
 "let g:airline_theme='simple' " not very good during splits
 let g:airline_mode_map = {
