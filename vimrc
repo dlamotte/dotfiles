@@ -34,7 +34,11 @@ set smarttab
 set softtabstop=4
 set tabstop=4
 
-colorscheme inkpot
+"colorscheme inkpot
+set background=dark
+let g:solarized_termcolors=256
+let g:solarized_termtrans=1
+colorscheme solarized
 
 " highlight >--- with a better color from inkpot, X(82) vs inkpots X(55)
 au BufEnter * hi SpecialKey cterm=BOLD ctermfg=238 ctermbg=NONE
