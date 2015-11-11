@@ -2,6 +2,7 @@
 CVS/
 .cvsignore
 *.pyc
+.pants.d/
 tmp/
 tags
 env/
