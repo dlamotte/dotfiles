@@ -13,6 +13,7 @@ else
 fi
 
 export EDITOR=vim
+export GOPATH=$HOME/go
 export LC_COLLATE='C'
 export LESS="-MSRniFX"
 export LESSOPEN="|lesspipe.sh %s"
