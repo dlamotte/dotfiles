@@ -122,6 +122,7 @@ autocmd BufRead,BufNewFile Build* setlocal noexpandtab filetype=make syntax=make
 autocmd BufRead,BufNewFile hg-editor-*.txt setlocal syntax=hgcommit
 autocmd BufRead,BufNewFile [Mm]ake* setlocal noexpandtab filetype=make syntax=make
 autocmd BufRead,BufNewFile Rakefile setlocal ts=2 sw=2 sts=2
+autocmd BufRead,BufNewFile Vagrantfile setlocal ft=ruby ts=2 sw=2 sts=2
 autocmd FileType crontab set backupcopy=yes
 
 " restore last cursor position
