@@ -12,6 +12,10 @@ else
     export LANG='C'
 fi
 
+if [[ -z $JAVA_HOME ]]; then
+    export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_66.jdk/Contents/Home
+fi
+
 export EDITOR=vim
 export GOPATH=$HOME/go
 export LC_COLLATE='C'
@@ -31,5 +35,8 @@ export HISTSIZE=10000
 export SAVEHIST=10000
 
 export PS1='%B%F{red}!%! %F{magenta}$(scmstatus)%F%1~ %(?.%? .%F{red}%? )%F{red}>> %f%b'
+export PS1_BACKUP=$PS1
+export PS1_DEMO='%B%F{red}>> %f%b'
 export PS2='%B%F{red}>>> %f%b'
 export RPS1=' %B%F{red}<<%(!..%F) %M%f%b'
+export RPS1_BACKUP=$RPS1

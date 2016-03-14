@@ -126,6 +126,15 @@ scmstatus_update # init right away
 keychain --quiet id_rsa
 source $HOME/.keychain/$(hostname)-sh
 
+demo() {
+    export RPS1=
+    export PS1=$PS1_DEMO
+}
+nodemo() {
+    export RPS1=$RPS1_BACKUP
+    export PS1=$PS1_BACKUP
+}
+
 #
 # included zshrc configs
 #
