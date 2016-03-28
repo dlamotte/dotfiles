@@ -39,6 +39,7 @@ layout thunderbolt2 'Chatter Desktop':REPEAT         ${m-medium-left} 0
 layout thunderbolt2 'Google Chrome':REPEAT           ${m-half-right} 0
 layout thunderbolt2 'iTerm':REPEAT                   ${m-half-left} 1
 layout thunderbolt2 'Microsoft Outlook':REPEAT       ${m-half-left} 0
+layout thunderbolt2 'Slack':REPEAT                   ${m-half-left} 0
 layout thunderbolt2 'Jabber':TITLE_ORDER='Cisco Jabber',REPEAT_LAST   ${m-medium-right} 1 | ${m-medium-right-convo} 1
 
 # Default layouts
