@@ -16,6 +16,7 @@ if [[ -z $JAVA_HOME ]]; then
     export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_66.jdk/Contents/Home
 fi
 
+export ANDROID_HOME=/usr/local/opt/android-sdk
 export EDITOR=vim
 export GOPATH=$HOME/go
 export LC_COLLATE='C'

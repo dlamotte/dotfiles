@@ -41,7 +41,7 @@ hgext.schemes =
 hgext.transplant =
 
 #hggit = $HOME/.hgexts/hg-git/hggit
-remotebranches = $HOME/.hgexts/hg-remotebranches/hg_remotebranches.py
+#remotebranches = $HOME/.hgexts/hg-remotebranches/hg_remotebranches.py
 
 [git]
 intree = True
