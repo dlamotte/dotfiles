@@ -12,7 +12,9 @@ else
     export LANG='C'
 fi
 
-if [[ -z $JAVA_HOME ]]; then
+if [[ -e /Library/Java/JavaVirtualMachines/jdk1.8.0_92.jdk/Contents/ ]]; then
+    export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_92.jdk/Contents/Home
+elif [[ -z $JAVA_HOME ]]; then
     export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_66.jdk/Contents/Home
 fi
 
