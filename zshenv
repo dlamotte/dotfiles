@@ -43,3 +43,5 @@ export PS1_DEMO='%B%F{red}>> %f%b'
 export PS2='%B%F{red}>>> %f%b'
 export RPS1=' %B%F{red}<<%(!..%F) %M%f%b'
 export RPS1_BACKUP=$RPS1
+
+source ~/.zshenv.secrets
