@@ -32,6 +32,7 @@ export PYTHONPATH="${PYTHONPATH}${PYTHONPATH+:}${HOME}/.python/lib"
 export PYTHONSTARTUP=~/.pythonrc
 export PYTHONDOCS=$(echo ${PYTHONDOCS} | sed -e 's:/lib::g')
 export TZ='US/Central'
+export VIRTUAL_ENV_DISABLE_PROMPT=y
 
 export HISTFILE=~/.histfile
 export HISTSIZE=10000
