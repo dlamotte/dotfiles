@@ -37,11 +37,11 @@ export HISTFILE=~/.histfile
 export HISTSIZE=10000
 export SAVEHIST=10000
 
-export PS1='%B%F{red}!%! %F{magenta}$(scmstatus)%F%1~ %(?.%? .%F{red}%? )%F{red}>> %f%b'
-export PS1_BACKUP=$PS1
-export PS1_DEMO='%B%F{red}>> %f%b'
-export PS2='%B%F{red}>>> %f%b'
-export RPS1=' %B%F{red}<<%(!..%F) %M%f%b'
-export RPS1_BACKUP=$RPS1
+#export PS1='%B%F{red}!%! %F{magenta}$(scmstatus)%F%1~ %(?.%? .%F{red}%? )%F{red}>> %f%b'
+#export PS1_BACKUP=$PS1
+#export PS1_DEMO='%B%F{red}>> %f%b'
+#export PS2='%B%F{red}>>> %f%b'
+#export RPS1=' %B%F{red}<<%(!..%F) %M%f%b'
+#export RPS1_BACKUP=$RPS1
 
 source ~/.zshenv.secrets
