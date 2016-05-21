@@ -86,11 +86,19 @@ def main(argv):
 
     # pull in hgexts
     hgexts = path.join(target, '.hgexts')
+    sandbox = path.join(target, 'sandbox')
     mkdir(hgexts)
+    mkdir(sandbox)
     if not path.lexists(path.join(hgexts, 'hg-git')):
         system('hg clone ssh://hg@bitbucket.org/durin42/hg-git', hgexts)
     if not path.lexists(path.join(hgexts, 'hg-remotebranches')):
         system('hg clone ssh://hg@bitbucket.org/durin42/hg-remotebranches', hgexts)
+    if not path.lexists(path.join(target, '.oh-my-zsh')):
+        system('git clone https://github.com/robbyrussell/oh-my-zsh.git .oh-my-zsh', target)
+    if not path.lexists(path.join(sandbox, 'powerline-fonts')):
+        system('git clone https://github.com/powerline/fonts.git powerline-fonts', sandbox)
+    if not path.lexists(path.join(sandbox, 'solarized')):
+        system('git clone https://github.com/altercation/solarized.git', sandbox)
 
     # pull in sandboxes
     sandbox = path.join(target, 'sandbox')
