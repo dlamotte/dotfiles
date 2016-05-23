@@ -4,6 +4,7 @@ import errno
 import os
 import sys
 from os import path
+from subprocess import call
 
 EXCLUDES = [
     path.join('.', '.git'),
@@ -45,7 +46,16 @@ def dolink(dirpath, target, target_prefix='', excludes=None):
                    and os.readlink(targetfn) == localfnabs):
                     warn('exists: diff -u %s %s' % (targetfn, localfn))
             else:
-                os.symlink(localfnabs, targetfn)
+                encrypted = not call([
+                    'grep',
+                    '--quiet',
+                    'GITCRYPT',
+                    localfnabs
+                ])
+                if encrypted:
+                    warn('refusing symlink (encrypted): %s' % localfn)
+                else:
+                    os.symlink(localfnabs, targetfn)
 
 def mkdir(path):
     try:

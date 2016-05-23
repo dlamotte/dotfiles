@@ -45,4 +45,6 @@ export SAVEHIST=10000
 #export RPS1=' %B%F{red}<<%(!..%F) %M%f%b'
 #export RPS1_BACKUP=$RPS1
 
-source ~/.zshenv.secrets
+if [[ -e ~/.zshenv.secrets ]]; then
+    source ~/.zshenv.secrets
+fi
