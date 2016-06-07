@@ -23,21 +23,21 @@ alias m-conversation-thunderbolt chain move screenOriginX;screenOriginY+screenSi
 # laptop layout
 layout laptop 'Chatter Desktop':REPEAT          ${m-medium-left} 0
 layout laptop 'Google Chrome':REPEAT            ${m-full} 0
-layout laptop 'iTerm':REPEAT                    ${m-full} 0
+layout laptop 'iTerm2':REPEAT                   ${m-full} 0
 layout laptop 'Microsoft Outlook':REPEAT        ${m-full} 0
 layout laptop 'Jabber':TITLE_ORDER='Cisco Jabber',REPEAT_LAST   ${m-medium-right} 0 | ${m-convo} 0
 
 # thunderbolt layout
 layout thunderbolt 'Chatter Desktop':REPEAT         ${m-medium-left}
 layout thunderbolt 'Google Chrome':REPEAT           ${m-half-left}
-layout thunderbolt 'iTerm':REPEAT                   ${m-half-right}
+layout thunderbolt 'iTerm2':REPEAT                  ${m-half-right}
 layout thunderbolt 'Microsoft Outlook':REPEAT       ${m-half-right}
 layout thunderbolt 'Jabber':TITLE_ORDER='Cisco Jabber',REPEAT_LAST   ${m-medium-right} | ${m-medium-right-convo}
 
 # 2 thunderbolt layout
 layout thunderbolt2 'Chatter Desktop':REPEAT         ${m-medium-left} 0
 layout thunderbolt2 'Google Chrome':REPEAT           ${m-half-right} 0
-layout thunderbolt2 'iTerm':REPEAT                   ${m-half-left} 1
+layout thunderbolt2 'iTerm2':REPEAT                  ${m-half-left} 1
 layout thunderbolt2 'Microsoft Outlook':REPEAT       ${m-half-left} 0
 layout thunderbolt2 'Slack':REPEAT                   ${m-half-left} 0
 layout thunderbolt2 'Jabber':TITLE_ORDER='Cisco Jabber',REPEAT_LAST   ${m-medium-right} 1 | ${m-medium-right-convo} 1
