@@ -1,7 +1,10 @@
 #!/usr/bin/env python
 
+from __future__ import print_function
+
 import errno
 import os
+import platform
 import sys
 from os import path
 from subprocess import call
@@ -15,6 +18,8 @@ MKDIR_INSTEADOF_LINK = [
     path.join('.', 'pip'),
     path.join('.', 'ipython'),
     path.join('.', 'ipython', 'profile_default'),
+    path.join('.', 'Library'),
+    path.join('.', 'Library', 'Preferences'),
 ]
 
 def dolink(dirpath, target, target_prefix='', excludes=None):
@@ -89,10 +94,15 @@ def main(argv):
     extras = '--extras' in opts
 
     dolink('.', target, target_prefix, excludes=[
-        path.join('.', 'bin')
+        path.join('.', 'bin'),
+        path.join('.', 'Library')
     ])
     mkdir(path.join(target, 'bin'))
     dolink('bin', path.join(target, 'bin'))
+
+    if platform.system() == 'Darwin':
+        dolink(path.join('.', 'Library'), path.join(target, 'Library'))
+        print('run: defaults read com.googlecode.iterm2')
 
     # pull in hgexts
     hgexts = path.join(target, '.hgexts')
