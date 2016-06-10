@@ -47,7 +47,7 @@ if [ -f ~/.dotfiles.update ]; then
     fi
 
     epoch_diff=$(($(_dotfiles_current_epoch) - $DOTFILES_LAST_UPDATED))
-    if [ $epoch_diff -gt 0 ]; then
+    if [ $epoch_diff -gt 1 ]; then
         _dotfiles_upgrade
     fi
 else
