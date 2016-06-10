@@ -22,10 +22,15 @@ MKDIR_INSTEADOF_LINK = [
     path.join('.', 'Library', 'Services'),
 ]
 
-def dolink(dirpath, target, target_prefix='', excludes=None):
+def dolink(dirpath, target, target_prefix='',
+    excludes=None,
+    exclude_startswith=None
+):
     for fn in sorted(os.listdir(dirpath)):
         localfn = path.join(dirpath, fn)
-        if localfn.startswith('.'):
+        print(localfn)
+        if exclude_startswith and localfn.startswith(exclude_startswith):
+            print('  skipping...')
             continue
         if localfn in EXCLUDES:
             continue
@@ -95,10 +100,13 @@ def main(argv):
     opts = argv[1:]
     extras = '--extras' in opts
 
-    dolink('.', target, target_prefix, excludes=[
-        path.join('.', 'bin'),
-        path.join('.', 'Library')
-    ])
+    dolink('.', target, target_prefix,
+        excludes=[
+            path.join('.', 'bin'),
+            path.join('.', 'Library')
+        ],
+        exclude_startswith=path.join('.', '.')
+    )
     mkdir(path.join(target, 'bin'))
     dolink('bin', path.join(target, 'bin'))
 
