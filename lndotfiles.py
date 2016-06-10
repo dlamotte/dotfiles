@@ -28,9 +28,7 @@ def dolink(dirpath, target, target_prefix='',
 ):
     for fn in sorted(os.listdir(dirpath)):
         localfn = path.join(dirpath, fn)
-        print(localfn)
         if exclude_startswith and localfn.startswith(exclude_startswith):
-            print('  skipping...')
             continue
         if localfn in EXCLUDES:
             continue
@@ -99,6 +97,9 @@ def main(argv):
 
     opts = argv[1:]
     extras = '--extras' in opts
+
+    if not path.lexists(path.join(target, '.dotfiles')):
+        os.symlink(path.abspath('.'), path.join(target, '.dotfiles'))
 
     dolink('.', target, target_prefix,
         excludes=[
