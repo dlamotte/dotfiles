@@ -109,6 +109,8 @@ source $ZSH/oh-my-zsh.sh
 # end oh-my-zsh
 #
 
+source $HOME/.zsh/dotfiles.zsh
+
 alias bc="bc -ql"
 alias cp="cp -i"
 alias cscope="cscope -R -q"
