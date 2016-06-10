@@ -10,7 +10,6 @@ from os import path
 from subprocess import call
 
 EXCLUDES = [
-    path.join('.', '.git'),
     path.join('.', 'README.md'),
 ]
 
@@ -26,6 +25,8 @@ MKDIR_INSTEADOF_LINK = [
 def dolink(dirpath, target, target_prefix='', excludes=None):
     for fn in sorted(os.listdir(dirpath)):
         localfn = path.join(dirpath, fn)
+        if localfn.startswith('.'):
+            continue
         if localfn in EXCLUDES:
             continue
         if excludes and localfn in excludes:
