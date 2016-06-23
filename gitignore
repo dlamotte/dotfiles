@@ -4,6 +4,7 @@ CVS/
 *.pyc
 .pants.d/
 .vagrant/
+_*/
 tmp/
 tags
 env/
