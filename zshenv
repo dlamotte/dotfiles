@@ -1,7 +1,7 @@
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH:/sbin:/usr/sbin
 export PATH=/usr/local/share/python:/usr/local/opt/ruby/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/share/npm/bin:$PATH
 export PATH=$PATH:/Applications/Xcode.app/Contents/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
-export PATH=~/bin:$PATH
+export PATH=~/bin:~/go/bin:$PATH
 
 if locale -a | grep 'en_US.utf8' >/dev/null 2>/dev/null; then
     export LANG='en_US.utf8'
