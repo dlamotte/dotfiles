@@ -25,6 +25,7 @@ layout laptop 'Chatter Desktop':REPEAT          ${m-medium-left} 0
 layout laptop 'Google Chrome':REPEAT            ${m-full} 0
 layout laptop 'iTerm2':REPEAT                   ${m-full} 0
 layout laptop 'Microsoft Outlook':REPEAT        ${m-full} 0
+layout laptop 'Slack':REPEAT                    ${m-full} 0
 layout laptop 'Jabber':TITLE_ORDER='Cisco Jabber',REPEAT_LAST   ${m-medium-right} 0 | ${m-convo} 0
 
 # thunderbolt layout
