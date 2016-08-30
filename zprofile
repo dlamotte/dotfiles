@@ -1,3 +1,4 @@
+source $HOME/.zshenv
 if [[ -x $HOME/bin/keychain ]]; then
     $HOME/bin/keychain --quiet id_rsa
 else

@@ -152,11 +152,6 @@ zstyle :compinstall filename "$HOME/.zshrc"
 autoload -Uz compinit
 compinit
 
-autoload -Uz add-zsh-hook
-add-zsh-hook chpwd scmstatus_update
-add-zsh-hook precmd scmstatus_precmd
-add-zsh-hook preexec scmstatus_preexec
-
 setopt appendhistory extendedglob
 setopt autopushd
 setopt histignorespace
@@ -182,34 +177,6 @@ bindkey '^A' beginning-of-line
 mac32compile() {
     export ARCHFLAGS='-arch i386' CFLAGS='-arch i386' CXXFLAGS='-arch i386' LDFLAGS='-arch i386'
 }
-
-SCMSTATUS_FORMAT="{email_domain} {branch} "
-SCMSTATUS_TOOLS="$(scmstatus.py --tools)"
-scmstatus() {
-    echo $SCMSTATUS
-}
-scmstatus_precmd() {
-    local update=0
-
-    for tool in ${(@f)SCMSTATUS_TOOLS}; do
-        case "$__SCMSTATUS_EXEC" in
-            $tool*) update=1; break;;
-        esac
-    done
-
-    if [[ $update == 1 ]]; then
-        scmstatus_update
-    fi
-
-    unset __SCMSTATUS_EXEC
-}
-scmstatus_preexec() {
-    __SCMSTATUS_EXEC=$1
-}
-scmstatus_update() {
-    SCMSTATUS="$(scmstatus.py "$SCMSTATUS_FORMAT")"
-}
-scmstatus_update # init right away
 
 keychain --quiet id_rsa
 source $HOME/.keychain/$(hostname)-sh
