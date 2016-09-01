@@ -174,6 +174,10 @@ bindkey '^N' down-history
 bindkey '^E' end-of-line
 bindkey '^A' beginning-of-line
 
+kube-namespace() {
+    alias kubectl="kubectl --namespace='$1'"
+}
+
 mac32compile() {
     export ARCHFLAGS='-arch i386' CFLAGS='-arch i386' CXXFLAGS='-arch i386' LDFLAGS='-arch i386'
 }
