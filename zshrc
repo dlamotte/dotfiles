@@ -175,7 +175,8 @@ bindkey '^E' end-of-line
 bindkey '^A' beginning-of-line
 
 kube-namespace() {
-    alias kubectl="kubectl --namespace='$1'"
+    export KUBE_NAMESPACE="$1"
+    alias kubectl="kubectl --namespace=""$KUBE_NAMESPACE"""
 }
 
 mac32compile() {

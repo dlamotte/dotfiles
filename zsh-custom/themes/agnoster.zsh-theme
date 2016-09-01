@@ -181,6 +181,14 @@ prompt_virtualenv() {
   fi
 }
 
+# Virtualenv: current working virtualenv
+prompt_kube_namespace() {
+  local virtualenv_path="$VIRTUAL_ENV"
+  if [[ -n $KUBE_NAMESPACE ]]; then
+    prompt_segment cyan black "☸ $KUBE_NAMESPACE"
+  fi
+}
+
 # Status:
 # - was there an error
 # - am I root
@@ -203,6 +211,7 @@ build_prompt() {
   prompt_context
   prompt_dir
   prompt_git
+  prompt_kube_namespace
   prompt_hg
   prompt_end
 }
