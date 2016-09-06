@@ -159,6 +159,7 @@ setopt nocheckjobs nohup
 setopt noclobber vi
 setopt promptsubst # allow commands in prompts
 unsetopt autocd beep notify
+unsetopt share_history
 
 zmodload -i zsh/complist
 
