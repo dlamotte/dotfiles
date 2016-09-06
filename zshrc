@@ -204,6 +204,8 @@ nodemo() {
 eval "$(hub alias -s)"
 # end hub tab-completion script for zsh
 
+source <(kubectl completion zsh)
+
 #
 # end included zshrc configs
 #
