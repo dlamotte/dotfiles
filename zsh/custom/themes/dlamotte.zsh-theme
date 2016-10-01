@@ -259,7 +259,7 @@ _prompt_precmd() {
   }
 
   if [[ $_PROMPT_ASYNC_PID != 0 ]]; then
-    kill -HUP $_PROMPT_ASYNC_PID &>/dev/null
+    kill $_PROMPT_ASYNC_PID &>/dev/null
   fi
 
   prompt_async &!
