@@ -272,8 +272,8 @@ _prompt_zshexit() {
 }
 
 _prompt_async_trapusr1() {
-  PROMPT="%{%f%b%k%}$(cat $_PROMPT_ASYNC_PROMPT) "
-  RPS1="%{%f%b%k%}$(cat $_PROMPT_ASYNC_RPS1)"
+  PROMPT="%{%f%b%k%}$(cat $_PROMPT_ASYNC_PROMPT 2>/dev/null) "
+  RPS1="%{%f%b%k%}$(cat $_PROMPT_ASYNC_RPS1 2>/dev/null)"
   _PROMPT_ASYNC_PID=0
   zle && zle reset-prompt
 }
