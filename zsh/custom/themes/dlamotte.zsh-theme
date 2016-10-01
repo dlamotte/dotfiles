@@ -33,6 +33,12 @@
 # A few utility functions to make it easy and re-usable to draw segmented prompts
 
 CURRENT_BG='NONE'
+# inspired by https://github.com/mitsuhiko/dotfiles/blob/master/zsh/custom/themes/mitsuhiko.zsh-theme
+_PROMPT_ASYNC=0
+_PROMPT_ASYNC_PID=0
+_PROMPT_ASYNC_RETVAL=
+_PROMPT_ASYNC_PROMPT="${TMPDIR-/tmp}/.zsh_tmp_prompt_$$"
+_PROMPT_ASYNC_RPS1="${TMPDIR-/tmp}/.zsh_tmp_rps1_$$"
 
 # Special Powerline characters
 
@@ -151,13 +157,13 @@ prompt_git() {
 
 prompt_hg() {
   local rev status
-  if $(hg id >/dev/null 2>&1); then
-    if $(hg prompt >/dev/null 2>&1); then
-      if [[ $(hg prompt "{status|unknown}") = "?" ]]; then
+  if $(hg id &>/dev/null </dev/null); then
+    if $(hg prompt &>/dev/null </dev/null); then
+      if [[ $(hg prompt "{status|unknown}" </dev/null) = "?" ]]; then
         # if files are not added
         prompt_segment red white
         st='±'
-      elif [[ -n $(hg prompt "{status|modified}") ]]; then
+      elif [[ -n $(hg prompt "{status|modified}" </dev/null) ]]; then
         # if any modification
         prompt_segment yellow black
         st='±'
@@ -165,15 +171,15 @@ prompt_hg() {
         # if working copy is clean
         prompt_segment green black
       fi
-      echo -n $(hg prompt "☿ {rev}@{branch}") $st
+      echo -n $(hg prompt "☿ {rev}@{branch}" </dev/null) $st
     else
       st=""
-      rev=$(hg id -n 2>/dev/null | sed 's/[^-0-9]//g')
-      branch=$(hg id -b 2>/dev/null)
-      if `hg st | grep -q "^\?"`; then
+      rev=$(hg id -n 2>/dev/null </dev/null | sed 's/[^-0-9]//g')
+      branch=$(hg id -b 2>/dev/null </dev/null)
+      if `hg st </dev/null | grep -q "^\?"`; then
         prompt_segment red black
         st='±'
-      elif `hg st | grep -q "^[MA]"`; then
+      elif `hg st </dev/null | grep -q "^[MA]"`; then
         prompt_segment yellow black
         st='±'
       else
@@ -221,7 +227,7 @@ prompt_status() {
 
 ## Main prompt
 build_prompt() {
-  RETVAL=$?
+  RETVAL=${_PROMPT_ASYNC_RETVAL-$?}
   SEGMENT_SIDE=left
   prompt_status
   prompt_virtualenv
@@ -233,10 +239,45 @@ build_prompt() {
 
 build_rps1() {
   SEGMENT_SIDE=right
-  prompt_hg
-  prompt_git
+  if [[ $_PROMPT_ASYNC = 1 ]]; then
+    prompt_hg
+    prompt_git
+  fi
   prompt_where_i_am
 }
 
-PROMPT='%{%f%b%k%}$(build_prompt) '
-RPS1='%{%f%b%k%}$(build_rps1)'
+_prompt_precmd() {
+  _PROMPT_ASYNC_RETVAL=$?
+  PROMPT='%{%f%b%k%}$(build_prompt) '
+  RPS1='%{%f%b%k%}$(build_rps1)'
+
+  prompt_async() {
+    _PROMPT_ASYNC=1
+    build_prompt &>! $_PROMPT_ASYNC_PROMPT
+    build_rps1 &>! $_PROMPT_ASYNC_RPS1
+    kill -USR1 $$
+  }
+
+  if [[ $_PROMPT_ASYNC_PID != 0 ]]; then
+    kill -HUP $_PROMPT_ASYNC_PID &>/dev/null
+  fi
+
+  prompt_async &!
+  _PROMPT_ASYNC_PID=$!
+}
+
+_prompt_zshexit() {
+  rm -f $_PROMPT_ASYNC_PROMPT
+  rm -f $_PROMPT_ASYNC_RPS1
+}
+
+_prompt_async_trapusr1() {
+  PROMPT="%{%f%b%k%}$(cat $_PROMPT_ASYNC_PROMPT) "
+  RPS1="%{%f%b%k%}$(cat $_PROMPT_ASYNC_RPS1)"
+  _PROMPT_ASYNC_PID=0
+  zle && zle reset-prompt
+}
+
+precmd_functions+=(_prompt_precmd)
+zshexit_functions+=(_prompt_zshexit)
+trap '_prompt_async_trapusr1' USR1
