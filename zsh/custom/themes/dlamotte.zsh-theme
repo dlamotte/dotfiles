@@ -1,3 +1,7 @@
+# dlamotte's modifications on top of agnoster theme
+#
+# --------------------------------------------------------------------------
+#
 # vim:ft=zsh ts=2 sw=2 sts=2
 #
 # agnoster's Theme - https://gist.github.com/3712874
@@ -44,7 +48,7 @@ CURRENT_BG='NONE'
   # what font the user is viewing this source code in. Do not replace the
   # escape sequence with a single literal character.
   # Do not change this! Do not make it '\u2b80'; that is the old, wrong code point.
-  SEGMENT_SEPARATOR=$'\ue0b0'
+  LSEGMENT_SEPARATOR=$'\ue0b0'
   RSEGMENT_SEPARATOR=$'\ue0b2'
 }
 
@@ -53,13 +57,25 @@ CURRENT_BG='NONE'
 # rendering default background/foreground.
 prompt_segment() {
   local bg fg
-  [[ -n $1 ]] && bg="%K{$1}" || bg="%k"
-  [[ -n $2 ]] && fg="%F{$2}" || fg="%f"
-  if [[ $CURRENT_BG != 'NONE' && $1 != $CURRENT_BG ]]; then
-    echo -n " %{$bg%F{$CURRENT_BG}%}$SEGMENT_SEPARATOR%{$fg%} "
-  else
-    echo -n "%{$bg%}%{$fg%} "
+
+  if [[ $SEGMENT_SIDE = 'left' ]]; then
+    [[ -n $1 ]] && bg="%K{$1}" || bg="%k"
+    [[ -n $2 ]] && fg="%F{$2}" || fg="%f"
+    SEGMENT_SEPARATOR=$LSEGMENT_SEPARATOR
+    if [[ $CURRENT_BG != 'NONE' && $1 != $CURRENT_BG ]]; then
+      echo -n " %{$bg%F{$CURRENT_BG}%}$SEGMENT_SEPARATOR%{$fg%} "
+    else
+      echo -n "%{$bg%}%{$fg%} "
+    fi
+
+  elif [[ $SEGMENT_SIDE = 'right' ]]; then
+    [[ -n $1 ]] && bgc="$1" || bgc="default"
+    [[ -n $2 ]] && fgc="$2" || fgc="default"
+    SEGMENT_SEPARATOR=$RSEGMENT_SEPARATOR
+    CURRENT_BG=${CURRENT_BG-$1}
+    echo -n " %{%K{$CURRENT_BG}%F{$bgc}%}$SEGMENT_SEPARATOR%{%F{$fgc}%K{$bgc}%} "
   fi
+
   CURRENT_BG=$1
   [[ -n $3 ]] && echo -n $3
 }
@@ -86,7 +102,7 @@ prompt_context() {
 }
 
 prompt_where_i_am() {
-    echo -n " %{%F{black}%}$RSEGMENT_SEPARATOR%{%K{black}%F{off}%} "
+    prompt_segment black
     echo -n "%m "
 }
 
@@ -196,7 +212,7 @@ prompt_kube_namespace() {
 prompt_status() {
   local symbols
   symbols=()
-  [[ $RETVAL -ne 0 ]] && symbols+="%{%F{red}%}✘"
+  [[ $RETVAL -ne 0 ]] && symbols+="%{%F{red}%}✘ $RETVAL"
   [[ $UID -eq 0 ]] && symbols+="%{%F{yellow}%}⚡"
   [[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="%{%F{cyan}%}⚙"
 
@@ -206,18 +222,20 @@ prompt_status() {
 ## Main prompt
 build_prompt() {
   RETVAL=$?
+  SEGMENT_SIDE=left
   prompt_status
   prompt_virtualenv
   prompt_context
   prompt_dir
-  prompt_git
   prompt_kube_namespace
-  prompt_hg
   prompt_end
 }
 
 build_rps1() {
-    prompt_where_i_am
+  SEGMENT_SIDE=right
+  prompt_hg
+  prompt_git
+  prompt_where_i_am
 }
 
 PROMPT='%{%f%b%k%}$(build_prompt) '
