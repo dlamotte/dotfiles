@@ -78,8 +78,7 @@ prompt_segment() {
     [[ -n $1 ]] && bgc="$1" || bgc="default"
     [[ -n $2 ]] && fgc="$2" || fgc="default"
     SEGMENT_SEPARATOR=$RSEGMENT_SEPARATOR
-    CURRENT_BG=${CURRENT_BG-$1}
-    echo -n " %{%K{$CURRENT_BG}%F{$bgc}%}$SEGMENT_SEPARATOR%{%F{$fgc}%K{$bgc}%} "
+    echo -n " %{%F{$bgc}%}$SEGMENT_SEPARATOR%{%F{$fgc}%K{$bgc}%} "
   fi
 
   CURRENT_BG=$1
