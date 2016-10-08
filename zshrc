@@ -30,6 +30,7 @@ ZSH_THEME="dlamotte"
 
 # Uncomment the following line to use case-sensitive completion.
 CASE_SENSITIVE="true"
+DISABLE_UPDATE_PROMPT="true"
 
 # Uncomment the following line to use hyphen-insensitive completion. Case
 # sensitive completion must be off. _ and - will be interchangeable.
