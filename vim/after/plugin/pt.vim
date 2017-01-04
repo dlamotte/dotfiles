@@ -9,3 +9,9 @@ command! -nargs=* -complete=file LPtAdd call pt#Pt('lgrepadd!', <q-args>)
 command! -nargs=* -complete=file PtFile call pt#Pt('grep! -g', <q-args>)
 command! -nargs=* -complete=help PtHelp call pt#PtHelp('grep!',<q-args>)
 command! -nargs=* -complete=help LPtHelp call pt#PtHelp('lgrep!',<q-args>)
+
+cabbrev pt Pt
+cabbrev ptadd PtAdd
+cabbrev ptsearch PtFromSearch
+cabbrev lpt LPt
+cabbrev lptadd LPtAdd
