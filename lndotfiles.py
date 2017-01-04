@@ -101,16 +101,11 @@ def main(argv):
     dolink('.', target, target_prefix,
         excludes=[
             path.join('.', 'bin'),
-            path.join('.', 'Library')
         ],
         exclude_startswith=path.join('.', '.')
     )
     mkdir(path.join(target, 'bin'))
     dolink('bin', path.join(target, 'bin'))
-
-    if platform.system() == 'Darwin':
-        dolink(path.join('.', 'Library'), path.join(target, 'Library'))
-        print('run: defaults read com.googlecode.iterm2')
 
     # pull in hgexts
     hgexts = path.join(target, '.hgexts')
