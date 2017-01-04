@@ -202,12 +202,16 @@ let g:ctrlp_working_path_mode = 'a'
 let g:ctrlp_use_caching = 1
 let g:ctrlp_clear_cache_on_exit = 0
 
+" pt
+let g:pt_prg = "pt --nogroup --nocolor"
+
 " tagbar (tagging)
 nnoremap <leader>t :TagbarOpen<cr>
 let g:tagbar_autoclose = 1
 let g:tagbar_compact = 1
 let g:tagbar_sort = 0
 let g:tagbar_width = 40
+
 
 ":python << EOF
 "import os
