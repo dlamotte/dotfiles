@@ -17,6 +17,7 @@ MKDIR_INSTEADOF_LINK = [
     path.join('.', 'pip'),
     path.join('.', 'ipython'),
     path.join('.', 'ipython', 'profile_default'),
+    path.join('.', 'config'),
 ]
 
 def dolink(dirpath, target, target_prefix='',
