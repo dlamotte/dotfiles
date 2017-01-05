@@ -9,10 +9,14 @@ scriptencoding utf-8
 "
 
 " os/terminal
-set clipboard=exclude:.*  " disable connecting to X11 (hangs on putty/ssh session)
+if !has('nvim')
+    set clipboard=exclude:.*  " disable connecting to X11 (hangs on putty/ssh session)
+endif
 set noswapfile
 set printoptions=number:y,paper:letter,syntax:n
-set term=xterm-256color  " force term due to inkpot 256 colors
+if !has('nvim')
+    set term=xterm-256color  " force term due to inkpot 256 colors
+endif
 set title  " set the title of the terminal
 set ttyfast
 
