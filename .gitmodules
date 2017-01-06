@@ -58,3 +58,6 @@
 [submodule "vim/bundle/pt"]
 	path = vim/bundle/pt
 	url = https://github.com/nazo/pt.vim.git
+[submodule "git_template/hooks"]
+	path = git_template/hooks
+	url = https://github.com/dlamotte/git-hooks.git
