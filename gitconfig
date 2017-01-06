@@ -22,6 +22,9 @@
 [core]
     excludesfile = ~/.gitignore
 
+[init]
+    templateDir = ~/.git_template
+
 [merge]
     #tool = vimdiff
     tool = splice
