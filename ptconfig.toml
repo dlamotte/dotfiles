@@ -1,2 +1,3 @@
 color = true
 color-match = "30;42"
+global-gitignore = true
