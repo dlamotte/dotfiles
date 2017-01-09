@@ -7,10 +7,10 @@ end)
 hs.hotkey.bind(mash, "M", function()
     is_changed = false
     for _, device in pairs(hs.audiodevice.allInputDevices()) do
-        is_muted = device:muted()
+        is_muted = device:inputMuted()
 
         if is_muted then
-            device:setMuted(not is_muted)
+            device:setInputMuted(false)
             is_changed = true
         end
     end
@@ -22,10 +22,10 @@ end,
 function()
     is_changed = false
     for _, device in pairs(hs.audiodevice.allInputDevices()) do
-        is_muted = device:muted()
+        is_muted = device:inputMuted()
 
         if not is_muted then
-            device:setMuted(not is_muted)
+            device:setInputMuted(true)
             is_changed = true
         end
     end
@@ -39,10 +39,10 @@ end
 hs.hotkey.bind(mash, "U", function()
     is_changed = false
     for _, device in pairs(hs.audiodevice.allInputDevices()) do
-        is_muted = device:muted()
+        is_muted = device:inputMuted()
 
         if is_muted then
-            device:setMuted(not is_muted)
+            device:setInputMuted(false)
             is_changed = true
         end
     end
