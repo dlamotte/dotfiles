@@ -4,7 +4,7 @@ hs.hotkey.bind(mash, "W", function()
     hs.alert.show("hello world")
 end)
 
-hs.hotkey.bind({'ctrl'}, "M", function()
+hs.hotkey.bind({'ctrl', 'alt'}, "M", function()
     is_changed = false
     for _, device in pairs(hs.audiodevice.allInputDevices()) do
         is_muted = device:inputMuted()
@@ -36,7 +36,7 @@ function()
 end
 )
 
-hs.hotkey.bind({'ctrl'}, "U", function()
+hs.hotkey.bind({'ctrl', 'alt'}, "U", function()
     is_changed = false
     for _, device in pairs(hs.audiodevice.allInputDevices()) do
         is_muted = device:inputMuted()
