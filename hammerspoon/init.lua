@@ -5,31 +5,49 @@ hs.hotkey.bind(mash, "W", function()
 end)
 
 hs.hotkey.bind(mash, "M", function()
-    device = hs.audiodevice.findDeviceByName('Built-in Microphone')
-    is_muted = device:muted()
+    is_changed = false
+    for _, device in pairs(hs.audiodevice.allInputDevices()) do
+        is_muted = device:muted()
 
-    if is_muted then
-        device:setMuted(not is_muted)
+        if is_muted then
+            device:setMuted(not is_muted)
+            is_changed = true
+        end
+    end
+
+    if is_changed then
         hs.alert.show(' mic unmuted')
     end
 end,
 function()
-    device = hs.audiodevice.findDeviceByName('Built-in Microphone')
-    is_muted = device:muted()
+    is_changed = false
+    for _, device in pairs(hs.audiodevice.allInputDevices()) do
+        is_muted = device:muted()
 
-    if not is_muted then
-        device:setMuted(not is_muted)
+        if not is_muted then
+            device:setMuted(not is_muted)
+            is_changed = true
+        end
+    end
+
+    if is_changed then
         hs.alert.show(' mic muted')
     end
 end
 )
 
 hs.hotkey.bind(mash, "U", function()
-    device = hs.audiodevice.findDeviceByName('Built-in Microphone')
-    is_muted = device:muted()
+    is_changed = false
+    for _, device in pairs(hs.audiodevice.allInputDevices()) do
+        is_muted = device:muted()
 
-    if is_muted then
-        device:setMuted(not is_muted)
+        if is_muted then
+            device:setMuted(not is_muted)
+            is_changed = true
+        end
+    end
+
+    if is_changed then
         hs.alert.show(' mic unmuted')
     end
 end)
