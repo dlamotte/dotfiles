@@ -1,5 +1,9 @@
 local mash = {"ctrl", "alt", "cmd"}
 
+local mb_mic = hs.menubar.new()
+mb_mic:priority(0)
+mb_mic:setTitle('mic unmuted')
+
 hs.hotkey.bind(mash, "W", function()
     hs.alert.show("hello world")
 end)
@@ -17,6 +21,7 @@ hs.hotkey.bind({'ctrl', 'alt'}, "M", function()
 
     if is_changed then
         hs.alert.show(' mic unmuted')
+        mb_mic:setTitle('mic unmuted')
     end
 end,
 function()
@@ -32,6 +37,7 @@ function()
 
     if is_changed then
         hs.alert.show(' mic muted')
+        mb_mic:setTitle('mic muted')
     end
 end
 )
@@ -49,5 +55,6 @@ hs.hotkey.bind({'ctrl', 'alt'}, "U", function()
 
     if is_changed then
         hs.alert.show(' mic unmuted')
+        mb_mic:setTitle('mic unmuted')
     end
 end)
