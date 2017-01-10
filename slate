@@ -12,6 +12,7 @@ alias mon-thunderbolt 2560x1440
 alias m-full        move screenOriginX;screenOriginY                screenSizeX;screenSizeY
 alias m-half-left   move screenOriginX;screenOriginY                screenSizeX/2;screenSizeY
 alias m-half-right  move screenOriginX+screenSizeX/2;screenOriginY  screenSizeX/2;screenSizeY
+alias m-halfish-right-bottom  move screenOriginX+screenSizeX/2+100;screenOriginY+screenSizeY-200  screenSizeX/2-200;screenSizeY
 alias m-small-right move screenSizeX-319;screenOriginY              319;screenSizeY
 alias m-medium-right move screenSizeX-450;screenOriginY             450;screenSizeY
 alias m-medium-right-convo move screenOriginX+screenSizeX/2;screenOriginY             screenSizeX/2-455;screenSizeY
@@ -44,7 +45,7 @@ layout thunderbolt 'Jabber':TITLE_ORDER='Cisco Jabber',REPEAT_LAST   ${m-medium-
 layout thunderbolt2 'Chatter Desktop':REPEAT         ${m-medium-left} 0
 layout thunderbolt2 'Google Chrome':REPEAT           ${m-half-right} 0
 layout thunderbolt2 'iTerm2':REPEAT                  ${m-half-left} 1
-layout thunderbolt2 'Microsoft Outlook':REPEAT       ${m-half-left} 0
+layout thunderbolt2 'Microsoft Outlook':TITLE_ORDER_REGEX='[0-9]+ Reminder',REPEAT_LAST   ${m-halfish-right-bottom} 0 | ${m-half-left} 0
 layout thunderbolt2 'Slack':REPEAT                   ${m-half-left} 0
 layout thunderbolt2 'Gitter':REPEAT                  ${m-half-left} 0
 layout thunderbolt2 'Sococo':REPEAT                  ${m-half-left} 0
