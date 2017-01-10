@@ -27,6 +27,7 @@ layout laptop 'iTerm2':REPEAT                   ${m-full} 0
 layout laptop 'Microsoft Outlook':REPEAT        ${m-full} 0
 layout laptop 'Slack':REPEAT                    ${m-full} 0
 layout laptop 'Gitter':REPEAT                   ${m-full} 0
+layout laptop 'Sococo':REPEAT                   ${m-full} 0
 layout laptop 'Jabber':TITLE_ORDER='Cisco Jabber',REPEAT_LAST   ${m-medium-right} 0 | ${m-convo} 0
 
 # thunderbolt layout
@@ -36,6 +37,7 @@ layout thunderbolt 'iTerm2':REPEAT                  ${m-half-right} 0
 layout thunderbolt 'Microsoft Outlook':REPEAT       ${m-half-left} 0
 layout thunderbolt 'Slack':REPEAT                   ${m-half-left} 0
 layout thunderbolt 'Gitter':REPEAT                  ${m-half-left} 0
+layout thunderbolt 'Sococo':REPEAT                  ${m-half-left} 0
 layout thunderbolt 'Jabber':TITLE_ORDER='Cisco Jabber',REPEAT_LAST   ${m-medium-right} 0 | ${m-medium-right-convo} 0
 
 # 2 thunderbolt layout
@@ -45,6 +47,7 @@ layout thunderbolt2 'iTerm2':REPEAT                  ${m-half-left} 1
 layout thunderbolt2 'Microsoft Outlook':REPEAT       ${m-half-left} 0
 layout thunderbolt2 'Slack':REPEAT                   ${m-half-left} 0
 layout thunderbolt2 'Gitter':REPEAT                  ${m-half-left} 0
+layout thunderbolt2 'Sococo':REPEAT                  ${m-half-left} 0
 layout thunderbolt2 'Jabber':TITLE_ORDER='Cisco Jabber',REPEAT_LAST   ${m-medium-right} 1 | ${m-medium-right-convo} 1
 
 # Default layouts
