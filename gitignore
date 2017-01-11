@@ -4,6 +4,7 @@ CVS/
 *.pyc
 .pants.d/
 .vagrant/
+*.egg-info/
 _*/
 tmp/
 tags
