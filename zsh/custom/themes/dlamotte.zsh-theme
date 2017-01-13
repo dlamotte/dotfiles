@@ -106,6 +106,12 @@ prompt_context() {
   fi
 }
 
+prompt_jira_issue() {
+    if [[ -n "$JIRA_ISSUE" ]]; then
+        prompt_segment blue white "$JIRA_ISSUE"
+    fi
+}
+
 prompt_where_i_am() {
     prompt_segment black
     echo -n "%m "
@@ -242,6 +248,7 @@ build_rps1() {
     prompt_hg
     prompt_git
   fi
+  prompt_jira_issue
   prompt_where_i_am
 }
 
