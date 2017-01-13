@@ -27,7 +27,7 @@ end tell
 ]]
 
 function Outlook.bind(scripts)
-    for i, d in ipairs(scripts) do
+    for _, d in ipairs(scripts) do
         hs.hotkey.bind(d.mod, d.key,
             function()
                 local app = hs.window.focusedWindow():application()
