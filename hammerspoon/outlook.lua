@@ -30,7 +30,7 @@ function Outlook.bind(scripts)
     for i, d in ipairs(scripts) do
         hs.hotkey.bind(d.mod, d.key,
             function()
-                local app = hs.application.frontmostApplication()
+                local app = hs.window.focusedWindow():application()
                 if app:title() ~= 'Microsoft Outlook' then
                     return
                 end
