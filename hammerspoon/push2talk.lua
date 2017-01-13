@@ -112,7 +112,7 @@ function Push2Talk:start()
         self.mb = hs.menubar.new()
     end
 
-    self.mb:priority(0)
+    self.mb:priority(hs.menubar.priorities.system - 1)
     self:bind()
     self:mute(true)
 end
