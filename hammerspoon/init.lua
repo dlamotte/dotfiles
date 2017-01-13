@@ -9,8 +9,6 @@ local HOME = os.getenv('HOME')
 push2talk = require('push2talk').new({'ctrl', 'alt'}, 'M', 'U')
 push2talk:start()
 
-local OUTLOOK_SCRIPT_PREFIX = HOME ..
-    '/applescripts/outlook/outlook_assign_category_'
 require('outlook').bind({
     {mod = {'alt'}, key = '1', label = 'Red'},
     {mod = {'alt'}, key = '2', label = 'Yellow'},
