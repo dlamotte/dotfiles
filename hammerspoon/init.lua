@@ -4,8 +4,6 @@ hs.hotkey.bind({'ctrl', 'alt'}, 'R',
     end
 )
 
-local HOME = os.getenv('HOME')
-
 push2talk = require('push2talk').new({'ctrl', 'alt'}, 'M', 'U')
 push2talk:start()
 
