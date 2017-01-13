@@ -1,3 +1,4 @@
+-- first so when you break things, you can still reload with a hotkey
 hs.hotkey.bind({'ctrl', 'alt'}, 'R',
     function()
         hs.reload()

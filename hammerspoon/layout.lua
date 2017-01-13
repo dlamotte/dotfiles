@@ -53,7 +53,7 @@ function Layout:bind()
 end
 
 function Layout:detect()
-    local screens = hs.screen.allScreens()
+    local screens = self:screens()
 
     if #screens == 1 then
         if screens[1]:fullFrame() == self.res_1440_900 then
@@ -71,8 +71,19 @@ function Layout:detect()
     end
 end
 
+function Layout:identify()
+    -- identify screens, useful for debugging
+    for i, screen in ipairs(self:screens()) do
+        hs.alert.show(
+            i .. ' -> ' .. screen:id(),
+            hs.alert.defaultStyle,
+            screen
+        )
+    end
+end
+
 function Layout:render(onlyapp)
-    local screens = hs.screen.allScreens()
+    local screens = self:screens()
     for _, def in ipairs(self.layouts) do
         local app = hs.application.get(def.app)
         local layout = def.layouts[self.layout]
@@ -153,6 +164,28 @@ function Layout:render(onlyapp)
             end
         end
     end
+end
+
+function Layout:screens()
+    -- sort screens in position order (left to right)
+    local iter = hs.fnutils.sortByKeyValues(
+        hs.screen.allScreens(),
+        function(a, b)
+            local ax, ay = a:position()
+            local bx, by = b:position()
+            -- true = a should appear before b
+            return ax < bx
+        end
+    )
+
+    local screens = {}
+    local i = 1
+    for _, screen in iter do
+        screens[i] = screen
+        i = i + 1
+    end
+
+    return screens
 end
 
 function Layout:start()
