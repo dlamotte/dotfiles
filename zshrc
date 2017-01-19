@@ -173,6 +173,13 @@ bindkey '^N' down-history
 bindkey '^E' end-of-line
 bindkey '^A' beginning-of-line
 
+make-my-webcam-work() {
+    echo sudo killall AppleCameraAssistant
+    sudo killall AppleCameraAssistant
+    echo sudo killall VDCAssistant
+    sudo killall VDCAssistant
+}
+
 kube-namespace() {
     if [[ -z "$1" ]]; then
         unset KUBE_NAMESPACE
