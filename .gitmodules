@@ -61,3 +61,6 @@
 [submodule "git_template/hooks"]
 	path = git_template/hooks
 	url = https://github.com/dlamotte/git-hooks.git
+[submodule "vim/bundle/vim-terraform"]
+	path = vim/bundle/vim-terraform
+	url = https://github.com/hashivim/vim-terraform.git
