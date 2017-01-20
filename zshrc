@@ -119,7 +119,7 @@ alias mv="mv -i"
 alias octave="octave --silent"
 alias rdesktop="rdesktop -g 1024x768 -K -x b"
 alias rm="rm -i"
-alias tf="terraform"
+alias tf="terragrunt"
 
 # transition to neovim...
 alias vim="nvim"
