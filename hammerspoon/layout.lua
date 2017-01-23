@@ -95,10 +95,10 @@ function Layout:render(onlyapp)
         end
 
         if app then
-            local screen = screens[layout[1]]
-            local position = layout[2]
-
             for _, win in ipairs(app:allWindows()) do
+                local screen = screens[layout[1]]
+                local position = layout[2]
+
                 if def.windows then
                     local title = win:title()
                     for _, defwin in ipairs(def.windows) do

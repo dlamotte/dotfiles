@@ -39,7 +39,7 @@ layout = require('layout').new(
                 thunderbolt2 = {1, 'half-left'},
             },
             windows = {
-                {re = '[0-9]+ Reminders', layouts = {
+                {re = '[0-9]+ Reminder', layouts = {
                     laptop       = {1, 'fullish-bottom'},
                     thunderbolt  = {1, 'halfish-right-bottom'},
                     thunderbolt2 = {1, 'halfish-right-bottom'},
