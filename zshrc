@@ -124,7 +124,9 @@ alias tf="terraform"
 alias tg="terragrunt"
 
 # transition to neovim...
-alias vim="nvim"
+if nvim -version &>/dev/null; then
+    alias vim="nvim"
+fi
 
 # Empty the Trash on all mounted volumes and the main HDD
 # Also, clear Apple’s System Logs to improve shell startup speed
