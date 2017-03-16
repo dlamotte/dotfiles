@@ -113,6 +113,7 @@ alias egrep="egrep --color=auto"
 alias gcc="gcc -pedantic -Wall"
 alias grep="grep --color=auto"
 alias info="info --vi-keys"
+alias lock='/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resources/CG\Session -suspend'
 alias ls="ls -F --color=auto"
 alias mq='hg -R $(hg root)/.hg/patches'
 alias mv="mv -i"
