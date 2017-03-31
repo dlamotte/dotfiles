@@ -1,24 +1,24 @@
 " vim-plug
 call plug#begin('~/.vim/plugged')
-Plug 'JulesWang/css.vim'
+Plug 'JulesWang/css.vim', { 'for': 'css' }
 Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
-Plug 'ap/vim-css-color'
-Plug 'bling/vim-airline'
+Plug 'ap/vim-css-color', { 'for': 'css' }
+Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'briancollins/vim-jst'
-Plug 'ekalinin/Dockerfile.vim'
-Plug 'fatih/vim-go'
-Plug 'groenewege/vim-less'
-Plug 'hashivim/vim-terraform'
+Plug 'briancollins/vim-jst', { 'for': 'jst' }
+Plug 'ekalinin/Dockerfile.vim', { 'for': 'Dockerfile' }
+Plug 'fatih/vim-go', { 'for': 'go' }
+Plug 'groenewege/vim-less', { 'for': 'less' }
+Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
 Plug 'kien/ctrlp.vim'
 Plug 'majutsushi/tagbar'
-Plug 'mitsuhiko/vim-jinja'
-Plug 'mitsuhiko/vim-python-combined'
+Plug 'mitsuhiko/vim-jinja', { 'for': 'jinja' }
+Plug 'mitsuhiko/vim-python-combined', { 'for': 'python' }
 Plug 'nazo/pt.vim'
-Plug 'othree/html5.vim'
-Plug 'pangloss/vim-javascript'
-Plug 'pearofducks/ansible-vim'
+Plug 'othree/html5.vim', { 'for': 'html' }
+Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+Plug 'pearofducks/ansible-vim', { 'for': 'ansible' }
 Plug 'sjl/splice.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
@@ -36,12 +36,12 @@ scriptencoding utf-8
 
 " os/terminal
 if !has('nvim')
-    set clipboard=exclude:.*  " disable connecting to X11 (hangs on putty/ssh session)
+  set clipboard=exclude:.*  " disable connecting to X11 (hangs on putty/ssh session)
 endif
 set noswapfile
 set printoptions=number:y,paper:letter,syntax:n
 if !has('nvim')
-    set term=xterm-256color  " force term due to inkpot 256 colors
+  set term=xterm-256color  " force term due to inkpot 256 colors
 endif
 set title  " set the title of the terminal
 set ttyfast
