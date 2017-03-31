@@ -1,6 +1,3 @@
-" pathogen setup vimruntime path
-"execute pathogen#infect()
-
 " vim-plug
 call plug#begin('~/.vim/plugged')
 Plug 'JulesWang/css.vim'
