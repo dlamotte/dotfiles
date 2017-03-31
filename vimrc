@@ -1,5 +1,34 @@
 " pathogen setup vimruntime path
-execute pathogen#infect()
+"execute pathogen#infect()
+
+" vim-plug
+call plug#begin('~/.vim/plugged')
+Plug 'JulesWang/css.vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'altercation/vim-colors-solarized'
+Plug 'ap/vim-css-color'
+Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'briancollins/vim-jst'
+Plug 'ekalinin/Dockerfile.vim'
+Plug 'fatih/vim-go'
+Plug 'groenewege/vim-less'
+Plug 'hashivim/vim-terraform'
+Plug 'kien/ctrlp.vim'
+Plug 'majutsushi/tagbar'
+Plug 'mitsuhiko/vim-jinja'
+Plug 'mitsuhiko/vim-python-combined'
+Plug 'nazo/pt.vim'
+Plug 'othree/html5.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'pearofducks/ansible-vim'
+Plug 'sjl/splice.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+call plug#end()
+
 filetype plugin on
 syntax on
 scriptencoding utf-8
