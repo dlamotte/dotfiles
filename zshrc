@@ -173,6 +173,10 @@ bindkey '^N' down-history
 bindkey '^E' end-of-line
 bindkey '^A' beginning-of-line
 
+gocd() {
+    cd $(go list -f '{{.Dir}}' .../$1 | head -1)
+}
+
 make-my-webcam-work() {
     echo sudo killall AppleCameraAssistant
     sudo killall AppleCameraAssistant
