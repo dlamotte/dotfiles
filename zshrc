@@ -19,6 +19,9 @@ if [[ $- != *i* ]]; then
     return
 fi
 
+# needs to happen before our own theme to avoid wonkiness
+eval "$(direnv hook zsh)"
+
 #
 # begin oh-my-zsh
 #
@@ -219,8 +222,6 @@ eval "$(hub alias -s)"
 # end hub tab-completion script for zsh
 
 source <(kubectl completion zsh)
-
-eval "$(direnv hook zsh)"
 
 #
 # end included zshrc configs
