@@ -220,6 +220,8 @@ eval "$(hub alias -s)"
 
 source <(kubectl completion zsh)
 
+eval "$(direnv hook zsh)"
+
 #
 # end included zshrc configs
 #
