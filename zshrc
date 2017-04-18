@@ -176,6 +176,10 @@ bindkey '^N' down-history
 bindkey '^E' end-of-line
 bindkey '^A' beginning-of-line
 
+aws-decode() {
+    aws sts decode-authorization-message --encoded-message "$@" | jq '.DecodedMessage' -r | jq -C '' | less
+}
+
 gocd() {
     cd $(go list -f '{{.Dir}}' .../$1 | head -1)
 }
