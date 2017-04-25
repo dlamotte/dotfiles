@@ -68,6 +68,17 @@ function Push2Talk.new(key_mod, key_push2talk, key_unmute)
     self.key_mod = key_mod
     self.key_push2talk = key_push2talk
     self.key_unmute = key_unmute
+    self.timer = hs.timer.doEvery(10, function() self:alert_unmuted() end)
+
+    self.style = hs.fnutils.copy(hs.alert.defaultStyle)
+    self.style.fillColor = {
+        alpha = 0.7,
+        red = 1
+    }
+    self.style.strokeColor = {
+        alpha = 1,
+        red = 1
+    }
     return self
 end
 
@@ -102,9 +113,14 @@ function Push2Talk:mute(force)
     if is_changed then
         hs.alert.show(' mic muted')
         self.mb:setIcon(self.icon_muted)
+        self.timer:stop()
     end
 
     return is_changed
+end
+
+function Push2Talk:alert_unmuted()
+    hs.alert.show(' mic unmuted', self.style)
 end
 
 function Push2Talk:start()
@@ -129,8 +145,9 @@ function Push2Talk:unmute()
     end
 
     if is_changed then
-        hs.alert.show(' mic unmuted')
+        self:alert_unmuted()
         self.mb:setIcon(self.icon_unmuted)
+        self.timer:start()
     end
 
     return is_changed
