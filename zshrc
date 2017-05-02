@@ -123,6 +123,7 @@ alias mv="mv -i"
 alias octave="octave --silent"
 alias rdesktop="rdesktop -g 1024x768 -K -x b"
 alias rm="rm -i"
+alias ssh-no-known-hosts="ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=ERROR"
 alias tf="terraform"
 alias tg="terragrunt"
 
