@@ -208,9 +208,7 @@ prompt_virtualenv() {
   fi
 }
 
-# Virtualenv: current working virtualenv
 prompt_kube_namespace() {
-  local virtualenv_path="$VIRTUAL_ENV"
   if [[ -n $KUBE_NAMESPACE ]]; then
     prompt_segment cyan black "☸ $KUBE_NAMESPACE"
   fi
