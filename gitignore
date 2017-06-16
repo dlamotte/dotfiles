@@ -1,11 +1,11 @@
 *~
 CVS/
-.cvsignore
+/.cvsignore
 *.pyc
-.pants.d/
-.vagrant/
+/.pants.d/
+/.vagrant/
 *.egg-info/
 _*/
-tmp/
-tags
-env/
+/tmp/
+/tags
+/env/
