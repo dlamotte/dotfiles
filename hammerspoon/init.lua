@@ -16,6 +16,14 @@ layout = require('layout').new(
     },
     {
         {
+            app = 'Cisco WebEx Meeting Center',
+            layouts = {
+                laptop       = {1, 'full'},
+                thunderbolt  = {1, 'full'},
+                thunderbolt2 = {2, 'full'},
+            }
+        },
+        {
             app = 'Google Chrome',
             layouts = {
                 laptop       = {1, 'full'},
@@ -44,6 +52,14 @@ layout = require('layout').new(
                     thunderbolt  = {1, 'halfish-right-bottom'},
                     thunderbolt2 = {1, 'halfish-right-bottom'},
                 }}
+            }
+        },
+        {
+            app = 'Microsoft Teams',
+            layouts = {
+                laptop       = {1, 'full'},
+                thunderbolt  = {1, 'half-left'},
+                thunderbolt2 = {1, 'half-left'},
             }
         },
         {
