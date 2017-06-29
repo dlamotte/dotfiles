@@ -106,6 +106,12 @@ prompt_context() {
   fi
 }
 
+prompt_aws_profile() {
+    if [[ -n "$AWS_PROFILE" ]]; then
+        prompt_segment yellow white "☁ $AWS_PROFILE"
+    fi
+}
+
 prompt_jira_issue() {
     if [[ -n "$JIRA_ISSUE" ]]; then
         prompt_segment blue white "$JIRA_ISSUE"
@@ -247,6 +253,7 @@ build_rps1() {
     prompt_git
   fi
   prompt_jira_issue
+  prompt_aws_profile
   prompt_where_i_am
 }
 
