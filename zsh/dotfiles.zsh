@@ -34,6 +34,7 @@ function _dotfiles_upgrade() {
     cd ~/.dotfiles
     if git pull --rebase --stat origin master; then
         printf "${GREEN}%s${NORMAL}\n" 'dotfiles: upgraded'
+        ./lndotfiles.py
     else
         printf "${RED}%s${NORMAL}\n" 'dotfiles: error upgrading'
     fi
