@@ -110,7 +110,9 @@ source $ZSH/oh-my-zsh.sh
 source $HOME/.zsh/dotfiles.zsh
 
 # include configurations
-source ~/.zshrc.d/*
+for fn in ~/.zshrc.d/*; do
+    source $fn
+done
 
 keychain --quiet id_rsa
 source $HOME/.keychain/$(hostname)-sh
