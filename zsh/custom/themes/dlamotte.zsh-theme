@@ -108,7 +108,7 @@ prompt_context() {
 
 prompt_aws_profile() {
     if [[ -n "$AWS_PROFILE" ]]; then
-        prompt_segment yellow white "☁ $AWS_PROFILE"
+        prompt_segment cyan black "☁ $AWS_PROFILE"
     fi
 }
 
