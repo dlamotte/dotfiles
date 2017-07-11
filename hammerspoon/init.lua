@@ -49,8 +49,8 @@ layout = require('layout').new(
             windows = {
                 {re = '[0-9]+ Reminder', layouts = {
                     laptop       = {1, 'fullish-bottom'},
-                    thunderbolt  = {1, 'halfish-right-bottom'},
-                    thunderbolt2 = {1, 'halfish-right-bottom'},
+                    thunderbolt  = {1, 'midish-top'},
+                    thunderbolt2 = {1, 'midish-top'},
                 }}
             }
         },

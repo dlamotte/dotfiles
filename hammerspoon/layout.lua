@@ -144,6 +144,12 @@ function Layout:render(onlyapp)
                     new.y1 = new.y1 + new.y2 - 200
                     update = true
 
+                elseif position == 'midish-top' then
+                    new.x1 = new.x1 + 100
+                    new.x2 = frame.x2 / 2 - 200
+                    new.y1 = 100
+                    update = true
+
                 elseif position == 'jabber' then
                     new.x1 = frame.x2 - 450
                     new.w = 450
