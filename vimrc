@@ -19,6 +19,7 @@ Plug 'nazo/pt.vim'
 Plug 'othree/html5.vim', { 'for': 'html' }
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'pearofducks/ansible-vim', { 'for': 'ansible' }
+Plug 'tangledhelix/vim-kickstart', { 'for': 'kickstart' }
 Plug 'sjl/splice.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
