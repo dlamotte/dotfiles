@@ -75,7 +75,7 @@ colorscheme solarized
 au BufEnter * hi SpecialKey cterm=BOLD ctermfg=238 ctermbg=NONE
 
 " general
-set bs=2
+set backspace=2
 set cscopetag
 set foldenable
 set foldmethod=marker
