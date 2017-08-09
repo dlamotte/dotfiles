@@ -152,6 +152,7 @@ autocmd BufRead,BufNewFile *.txt setlocal printoptions+=number:n
 autocmd BufRead,BufNewFile *.scss setlocal ft=scss ts=2 sw=2 sts=2
 autocmd BufRead,BufNewFile *.yml setlocal ts=2 sw=2 sts=2
 autocmd BufRead,BufNewFile *.yaml setlocal ts=2 sw=2 sts=2
+autocmd BufRead,BufNewFile *.yaml.tmpl setlocal ft=yaml ts=2 sw=2 sts=2
 autocmd BufRead,BufNewFile Build* setlocal noexpandtab filetype=make syntax=make
 autocmd BufRead,BufNewFile Jenkinsfile setlocal ft=groovy
 autocmd BufRead,BufNewFile hg-editor-*.txt setlocal syntax=hgcommit
