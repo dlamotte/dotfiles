@@ -77,6 +77,7 @@ au BufEnter * hi SpecialKey cterm=BOLD ctermfg=238 ctermbg=NONE
 " general
 set backspace=2
 set cscopetag
+set nofileignorecase " so Build* doesn't match build.go
 set foldenable
 set foldmethod=marker
 set history=50
