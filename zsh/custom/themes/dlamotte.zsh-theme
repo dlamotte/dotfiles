@@ -123,6 +123,15 @@ prompt_where_i_am() {
     echo -n "%m "
 }
 
+prompt_git_user() {
+    if $(git rev-parse --is-inside-work-tree &>/dev/null); then
+        repo_user="$(git config --local user.email | sed 's/[^@]*//')"
+        if [[ -n $repo_user ]]; then
+            prompt_segment cyan black $repo_user
+        fi
+    fi
+}
+
 # Git: branch/detached head, dirty status
 prompt_git() {
 
@@ -251,6 +260,7 @@ build_rps1() {
   if [[ $_PROMPT_ASYNC = 1 ]]; then
     prompt_hg
     prompt_git
+    prompt_git_user
   fi
   prompt_jira_issue
   prompt_aws_profile
