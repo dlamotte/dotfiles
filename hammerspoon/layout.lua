@@ -56,21 +56,42 @@ function Layout:detect()
     local screens = self:screens()
 
     if #screens == 1 then
-        local screen = screens[1]
-        if screen:fullFrame() == self.res_1440_900
-           or screen:name() == 'Color LCD' then
+        if self.isLaptopScreen(screens[1]) then
             self.layout = 'laptop'
 
-        elseif screen:fullFrame() == self.res_1680_1050 then
+        elseif self.isThunderboltScreen(screens[1]) then
             self.layout = 'thunderbolt'
 
         else
             self.layout = 'laptop'
         end
+    elseif #screens == 2 then
+        if self.isLaptopScreen(screens[1])
+           and self.isThunderboltScreen(screens[2]) then
+            self.layout = 'laptop_thunderbolt'
+        else
+            self.layout = 'thunderbolt2'
+        end
     else
         -- currently, only other case I care to handle
         self.layout = 'thunderbolt2'
     end
+end
+
+function Layout.isLaptopScreen(screen)
+    local frame = screen:fullFrame()
+
+    return frame.w == 1440 and frame.h == 900
+end
+
+function Layout.isThunderboltScreen(screen)
+    local frame = screen:fullFrame()
+
+    -- honestly, I dont know what I'm doing... the first set is the actual
+    -- dimenions, but the second set is the dimensions when hooked up with
+    -- the laptop
+    return (frame.w == 1680 and frame.h == 1050)
+           or (frame.w == 2560 and frame.h == 1440)
 end
 
 function Layout:identify()
@@ -135,7 +156,8 @@ function Layout:render(onlyapp)
 
                 elseif position == 'fullish-bottom' then
                     new.x1 = new.x1 + 100
-                    new.x2 = frame.x2 - 200
+                    new.x2 = frame.x2 - 100
+                    new.y1 = new.y2 - 200
                     update = true
 
                 elseif position == 'halfish-right-bottom' then
