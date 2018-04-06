@@ -169,7 +169,7 @@ function Layout:render(onlyapp)
                 elseif position == 'midish-top' then
                     new.x1 = new.x1 + 100
                     new.x2 = frame.x2 / 2 - 200
-                    new.y1 = 100
+                    new.y1 = 300
                     update = true
 
                 elseif position == 'jabber' then
