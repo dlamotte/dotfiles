@@ -56,7 +56,8 @@ function Layout:detect()
     local screens = self:screens()
 
     if #screens == 1 then
-        if self.isLaptopScreen(screens[1]) then
+        if self.isLaptopScreen(screens[1])
+           or screens[1]:name() == 'Color LCD' then
             self.layout = 'laptop'
 
         elseif self.isThunderboltScreen(screens[1]) then
