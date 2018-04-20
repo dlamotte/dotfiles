@@ -224,8 +224,8 @@ prompt_virtualenv() {
 }
 
 prompt_kube_namespace() {
-  if [[ -n $KUBE_NAMESPACE ]]; then
-    prompt_segment cyan black "☸ $KUBE_NAMESPACE"
+  if [[ -n $KUBECTL_CONTEXT || -n $KUBECTL_NAMESPACE ]]; then
+    prompt_segment cyan black "☸ $KUBECTL_CONTEXT/$KUBECTL_NAMESPACE"
   fi
 }
 
