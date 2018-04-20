@@ -63,7 +63,7 @@ EOF
             local _namespace_list=($(\kubectl --context=${KUBECTL_CONTEXT} \
                 get namespaces -o template \
                 --template="{{range .items}}{{.metadata.name}} {{end}}"))
-            if [[ ! ${_namespace_list[(r)$2]} ]]; then
+            if [[ $? != 0 && ! ${_namespace_list[(r)$2]} ]]; then
                 echo "error: namespace ${2} not found in context ${KUBECTL_CONTEXT}" >&2
                 KUBECTL_CONTEXT=${_current_context}
                 KUBECTL_NAMESPACE=${_current_namespace}
