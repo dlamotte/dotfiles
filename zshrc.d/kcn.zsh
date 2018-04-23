@@ -29,6 +29,7 @@ EOD
 # https://github.com/kubernetes/kubernetes/issues/27308#issuecomment-309207951
         cat <<\EOF
 alias kubectl="kubectl \"--context=\${KUBECTL_CONTEXT:-\$(\kubectl config current-context)}\" \${KUBECTL_NAMESPACE/[[:alnum:]-]*/--namespace=\${KUBECTL_NAMESPACE}}"
+alias stern="stern \"--context=\${KUBECTL_CONTEXT:-\$(\kubectl config current-context)}\" \${KUBECTL_NAMESPACE/[[:alnum:]-]*/--namespace=\${KUBECTL_NAMESPACE}}"
 EOF
     else
         alias kubectl >/dev/null || echo "warning: kubectl alias not installed; add 'source <(kcn --alias)' to .zshrc" >&2
