@@ -89,7 +89,7 @@ set noincsearch
 set laststatus=2
 set list
 set listchars=
-set listchars=extends:$,precedes:$,tab:>-,trail:.
+set listchars=extends:$,precedes:$,tab:>\ ,trail:.
 set mouse=
 set nocompatible
 set nomodeline
