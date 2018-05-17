@@ -75,7 +75,7 @@ let g:solarized_termtrans=1
 colorscheme solarized
 
 " highlight >--- with a better color from inkpot, X(82) vs inkpots X(55)
-au BufEnter * hi SpecialKey cterm=BOLD ctermfg=238 ctermbg=NONE
+au BufEnter * hi SpecialKey cterm=BOLD ctermfg=237 ctermbg=NONE
 
 " general
 set backspace=2
@@ -89,7 +89,7 @@ set noincsearch
 set laststatus=2
 set list
 set listchars=
-set listchars=extends:$,precedes:$,tab:>\ ,trail:.
+set listchars=extends:$,precedes:$,tab:¬\ ,trail:.
 set mouse=
 set nocompatible
 set nomodeline
