@@ -28,6 +28,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-git'
 Plug 'mxw/vim-jsx'
 Plug 'leafgarland/typescript-vim'
+Plug 'google/vim-jsonnet'
 call plug#end()
 
 filetype plugin on
@@ -166,6 +167,7 @@ autocmd BufRead,BufNewFile [Mm]ake* setlocal noexpandtab filetype=make syntax=ma
 autocmd BufRead,BufNewFile Rakefile setlocal ts=2 sw=2 sts=2
 autocmd BufRead,BufNewFile Vagrantfile setlocal ft=ruby ts=2 sw=2 sts=2
 autocmd FileType crontab set backupcopy=yes
+autocmd FileType jsonnet set ts=2 sw=2 sts=2
 
 " golang
 au FileType go nmap <leader>r <Plug>(go-run)
