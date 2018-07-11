@@ -70,6 +70,15 @@ layout = require('layout').new(
             }
         },
         {
+            app = 'Mumble',
+            layouts = {
+                laptop              = {1, 'full'},
+                laptop_thunderbolt  = {1, 'full'},
+                thunderbolt         = {2, 'half-right'},
+                thunderbolt2        = {2, 'half-right'},
+            }
+        },
+        {
             app = 'Slack',
             layouts = {
                 laptop              = {1, 'full'},
