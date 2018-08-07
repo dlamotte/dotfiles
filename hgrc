@@ -101,7 +101,7 @@ revertall = revert --all --no-backup
 revertit = revert --no-backup
 
 [hostfingerprints]
-bitbucket.org = 3f:d3:c5:17:23:3c:cd:f5:2d:17:76:06:93:7e:ee:97:42:21:14:aa
+bitbucket.org = dc:7b:54:e3:23:0b:0a:54:95:9f:64:25:16:20:49:9c:87:a4:3f:ba
 
 [schemes]
 bb = ssh://hg@bitbucket.org/
