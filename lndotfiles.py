@@ -11,6 +11,7 @@ from subprocess import call
 
 EXCLUDES = [
     path.join('.', 'README.md'),
+    path.join('.', 'contrib'),
 ]
 
 MKDIR_INSTEADOF_LINK = [
