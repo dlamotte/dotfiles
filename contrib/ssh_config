@@ -1,0 +1,5 @@
+host *
+    forwardx11 no
+    controlmaster auto
+    #controlpath ~/.ssh/master-%h-%p-%r
+    controlpath ~/.ssh/%h-%p-%r
