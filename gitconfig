@@ -39,10 +39,6 @@
 [include]
     path = ~/.current/gitconfig
 
-#[remote "origin"]
-    # fetch pull requests from github
-    #fetch = +refs/pull/*/head:refs/remotes/origin/pull/*
-
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
