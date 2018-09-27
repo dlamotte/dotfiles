@@ -1,6 +1,35 @@
 #!/usr/bin/env bash
 
-brew install \
+set -eu -o pipefail
+
+run() {
+    echo "run: $@"
+    "$@"
+}
+
+cask_fails=()
+
+for cask in \
+    authy \
+    docker \
+    gimp \
+    gitter \
+    google-chrome \
+    hammerspoon \
+    java \
+    keybase \
+    osxfuse \
+    recordit \
+    slack \
+    vagrant \
+    virtualbox \
+    vlc \
+    wireshark \
+    xquartz; do
+    run brew cask install $cask || true
+done
+
+run brew install \
     awscli \
     bash \
     curl \
@@ -75,22 +104,5 @@ brew install \
     xz \
     yarn
 
-brew cask install \
-    docker \
-    gimp \
-    gitter \
-    google-chrome \
-    hammerspoon \
-    java \
-    keybase \
-    microsoft-remote-desktop-beta \
-    osxfuse \
-    recordit \
-    slack \
-    vagrant \
-    virtualbox \
-    vlc \
-    wireshark \
-    xquartz
-
 # XXX logitech-control-center
+# XXX microsoft-remote-desktop-beta
