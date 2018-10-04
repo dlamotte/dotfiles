@@ -108,7 +108,22 @@ prompt_context() {
 
 prompt_aws_profile() {
     if [[ -n "$AWS_PROFILE" ]]; then
-        prompt_segment cyan black "☁ $AWS_PROFILE"
+        bg=cyan
+        fg=black
+        if [[ $CAAS_ENV == prod ]]; then
+            bg=red
+            fg=white
+
+        elif [[ $CAAS_ENV == stag ]]; then
+            bg=yellow
+
+        elif [[ $CAAS_ENV == devel ]]; then
+            bg=green
+
+        elif [[ $CAAS_ENV == perf ]]; then
+            bg=blue
+        fi
+        prompt_segment $bg $fg "☁ $AWS_PROFILE${CAAS_ENV+ }${CAAS_ENV}"
     fi
 }
 
