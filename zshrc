@@ -114,8 +114,10 @@ for fn in ~/.zshrc.d/*; do
     source $fn
 done
 
-keychain --quiet id_rsa
+keychain --quiet github
 source $HOME/.keychain/$(hostname)-sh
+
+eval "$(goenv init -)"
 
 if [[ -e $HOME/.current/zshrc ]]; then
     source $HOME/.current/zshrc
