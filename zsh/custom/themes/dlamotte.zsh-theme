@@ -240,7 +240,7 @@ prompt_virtualenv() {
 
 prompt_kube_namespace() {
   if [[ -n $KUBECTL_CONTEXT || -n $KUBECTL_NAMESPACE ]]; then
-    prompt_segment cyan black "☸ $KUBECTL_CONTEXT/$KUBECTL_NAMESPACE"
+    prompt_segment cyan black "☸ $(echo $KUBECTL_CONTEXT | perl -npe 's/^(.{6}).*(.{4})$/$1+$2/')/$KUBECTL_NAMESPACE"
   fi
 }
 
