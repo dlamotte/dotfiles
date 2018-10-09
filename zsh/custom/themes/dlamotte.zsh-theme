@@ -123,7 +123,8 @@ prompt_aws_profile() {
         elif [[ $CAAS_ENV == perf ]]; then
             bg=blue
         fi
-        prompt_segment $bg $fg "☁ $AWS_PROFILE${CAAS_ENV+ }${CAAS_ENV}"
+        region=${AWS_REGION-${AWS_DEFAULT_REGION}}
+        prompt_segment $bg $fg "☁ $AWS_PROFILE${CAAS_ENV+ }${CAAS_ENV}${region+ }${region}"
     fi
 }
 
