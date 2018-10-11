@@ -1,9 +1,6 @@
 local Layout = {}
 Layout.__index = Layout
 
-Layout.res_1440_900 = hs.geometry.rect(0.0,0.0,1440.0,900.0)   -- laptop
-Layout.res_1680_1050 = hs.geometry.rect(0.0,0.0,1680.0,1050.0) -- thunderbolt
-
 function Layout.new(hotkeys, layouts)
     local self = setmetatable({}, Layout)
     self.hotkeys = hotkeys
@@ -60,39 +57,35 @@ function Layout:detect()
            or screens[1]:name() == 'Color LCD' then
             self.layout = 'laptop'
 
-        elseif self.isThunderboltScreen(screens[1]) then
-            self.layout = 'thunderbolt'
+        elseif self.isExternalScreen(screens[1]) then
+            self.layout = 'external'
 
         else
             self.layout = 'laptop'
         end
     elseif #screens == 2 then
         if self.isLaptopScreen(screens[1])
-           and self.isThunderboltScreen(screens[2]) then
-            self.layout = 'laptop_thunderbolt'
+           and self.isExternalScreen(screens[2]) then
+            self.layout = 'laptop_external'
         else
-            self.layout = 'thunderbolt2'
+            self.layout = 'external2'
         end
     else
         -- currently, only other case I care to handle
-        self.layout = 'thunderbolt2'
+        self.layout = 'external2'
     end
 end
 
 function Layout.isLaptopScreen(screen)
     local frame = screen:fullFrame()
 
-    return frame.w == 1440 and frame.h == 900
+    return frame.w == 1680 and frame.h == 1050
 end
 
-function Layout.isThunderboltScreen(screen)
+function Layout.isExternalScreen(screen)
     local frame = screen:fullFrame()
 
-    -- honestly, I dont know what I'm doing... the first set is the actual
-    -- dimenions, but the second set is the dimensions when hooked up with
-    -- the laptop
-    return (frame.w == 1680 and frame.h == 1050)
-           or (frame.w == 2560 and frame.h == 1440)
+    return frame.w == 2560 and frame.h == 1440
 end
 
 function Layout:identify()
