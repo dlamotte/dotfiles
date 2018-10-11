@@ -29,9 +29,9 @@ layout = require('layout').new(
             app = 'Google Chrome',
             layouts = {
                 laptop              = {1, 'full'},
-                laptop_external     = {2, 'half-right'},
+                laptop_external     = {2, 'half-left'},
                 external            = {1, 'half-right'},
-                external2           = {2, 'half-right'},
+                external2           = {2, 'half-left'},
             }
         },
         {
@@ -47,9 +47,9 @@ layout = require('layout').new(
             app = 'Slack',
             layouts = {
                 laptop              = {1, 'full'},
-                laptop_external     = {2, 'half-left'},
+                laptop_external     = {2, 'half-right'},
                 external            = {1, 'half-left'},
-                external2           = {2, 'half-left'},
+                external2           = {2, 'half-right'},
             }
         },
     }
