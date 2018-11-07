@@ -118,6 +118,7 @@ keychain --quiet github
 source $HOME/.keychain/$(hostname)-sh
 
 eval "$(goenv init -)"
+eval "$(jenv init -)"
 
 if [[ -e $HOME/.current/zshrc ]]; then
     source $HOME/.current/zshrc
