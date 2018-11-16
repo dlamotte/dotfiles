@@ -110,21 +110,20 @@ prompt_aws_profile() {
     if [[ -n "$AWS_PROFILE" ]]; then
         bg=cyan
         fg=black
-        if [[ $CAAS_ENV == prod ]]; then
+        if [[ $CC_ENV == prod ]]; then
             bg=red
             fg=white
 
-        elif [[ $CAAS_ENV == stag ]]; then
+        elif [[ $CC_ENV == stag ]]; then
             bg=yellow
 
-        elif [[ $CAAS_ENV == devel ]]; then
+        elif [[ $CC_ENV == devel ]]; then
             bg=green
 
-        elif [[ $CAAS_ENV == perf ]]; then
+        elif [[ $CC_ENV == perf ]]; then
             bg=blue
         fi
-        region=${AWS_REGION-${AWS_DEFAULT_REGION}}
-        prompt_segment $bg $fg "☁ $AWS_PROFILE${CAAS_ENV+ }${CAAS_ENV}${region+ }${region}"
+        prompt_segment $bg $fg "☁ $AWS_PROFILE${CC_ENV+ }${CC_ENV}${CC_REGION+ }${CC_REGION}${CC_ZONE+ }${CC_ZONE}"
     fi
 }
 
