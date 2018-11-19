@@ -123,7 +123,7 @@ prompt_aws_profile() {
         elif [[ $CC_ENV == perf ]]; then
             bg=blue
         fi
-        prompt_segment $bg $fg "☁ $AWS_PROFILE${CC_ENV+ }${CC_ENV}${CC_REGION+ }${CC_REGION}${CC_ZONE+ }${CC_ZONE}"
+        prompt_segment $bg $fg "☁ $AWS_PROFILE${CC_ENV+ }${CC_ENV}${CC_DEFAULT_REGION+ }${CC_DEFAULT_REGION}${CC_DEFAULT_ZONE+ }${CC_DEFAULT_ZONE}"
     fi
 }
 
