@@ -1,5 +1,6 @@
-bindkey -M viins '^r' history-incremental-search-backward
-bindkey -M vicmd '^r' history-incremental-search-backward
+# http://chneukirchen.org/blog/archive/2012/02/10-new-zsh-tricks-you-may-not-know.html
+bindkey -M viins '^r' history-incremental-pattern-search-backward
+bindkey -M vicmd '^r' history-incremental-pattern-search-backward
 
 bindkey -M viins '^H' backward-delete-char
 bindkey -M viins '^U' kill-whole-line
