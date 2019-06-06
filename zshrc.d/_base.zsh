@@ -17,7 +17,7 @@ alias rdesktop="rdesktop -g 1024x768 -K -x b"
 setopt appendhistory extendedglob
 setopt autopushd
 setopt histignorespace
-setopt nocheckjobs nohup
+setopt checkjobs hup checkrunningjobs
 setopt noclobber vi
 setopt promptsubst # allow commands in prompts
 unsetopt autocd beep notify
