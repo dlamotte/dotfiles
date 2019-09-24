@@ -34,7 +34,7 @@ function _dotfiles_upgrade() {
     cd ~/.dotfiles
     if git pull --rebase --stat origin master; then
         printf "${GREEN}%s${NORMAL}\n" 'dotfiles: upgraded'
-        git log --pretty=oneline --abbrev-commit "HEAD@{1}..HEAD"
+        git --no-pager log --pretty=oneline --abbrev-commit "HEAD@{1}..HEAD"
         ./lndotfiles.py
     else
         printf "${RED}%s${NORMAL}\n" 'dotfiles: error upgrading'
