@@ -114,10 +114,10 @@ def main(argv):
     sandbox = path.join(target, 'sandbox')
     mkdir(hgexts)
     mkdir(sandbox)
-    if not path.lexists(path.join(hgexts, 'hg-git')):
-        system('hg clone ssh://hg@bitbucket.org/durin42/hg-git', hgexts)
-    if not path.lexists(path.join(hgexts, 'hg-remotebranches')):
-        system('hg clone ssh://hg@bitbucket.org/durin42/hg-remotebranches', hgexts)
+    #if not path.lexists(path.join(hgexts, 'hg-git')):
+    #    system('hg clone ssh://hg@bitbucket.org/durin42/hg-git', hgexts)
+    #if not path.lexists(path.join(hgexts, 'hg-remotebranches')):
+    #    system('hg clone ssh://hg@bitbucket.org/durin42/hg-remotebranches', hgexts)
     if not path.lexists(path.join(target, '.oh-my-zsh')):
         system('git clone https://github.com/robbyrussell/oh-my-zsh.git .oh-my-zsh', target)
     if not path.lexists(path.join(sandbox, 'powerline-fonts')):
@@ -128,8 +128,8 @@ def main(argv):
     # pull in sandboxes
     sandbox = path.join(target, 'sandbox')
     mkdir(sandbox)
-    if not path.lexists(path.join(sandbox, 'mercurial-cli-templates')):
-        system('hg clone ssh://hg@bitbucket.org/sjl/mercurial-cli-templates/', sandbox)
+    #if not path.lexists(path.join(sandbox, 'mercurial-cli-templates')):
+    #    system('hg clone ssh://hg@bitbucket.org/sjl/mercurial-cli-templates/', sandbox)
 
     return 0
 
