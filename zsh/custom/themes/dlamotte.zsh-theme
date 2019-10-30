@@ -110,7 +110,7 @@ prompt_aws_profile() {
     local env=${CC_ENV-$CAAS_ENV}
     local region=${CC_DEFAULT_REGION-${AWS_REGION-$AWS_DEFAULT_REGION}}
 
-    if [[ -n "$AWS_PROFILE" ]]; then
+    if [[ -n "$AWS_PROFILE" || -n "$env" ]]; then
         bg=cyan
         fg=black
         if [[ $env == prod ]]; then
