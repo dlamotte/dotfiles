@@ -22,6 +22,9 @@
 [core]
     excludesfile = ~/.gitignore
 
+[diff]
+    noprefix = true
+
 #[init]
 #    templateDir = ~/.git_template
 
