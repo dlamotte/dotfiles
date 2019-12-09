@@ -6,6 +6,9 @@ bindkey -M viins '^H' backward-delete-char
 bindkey -M viins '^U' kill-whole-line
 bindkey -M viins '^Y' yank
 
+zle -N edit-command-line
+bindkey -M vicmd v edit-command-line
+
 bindkey '^P' up-history
 bindkey '^N' down-history
 bindkey '^E' end-of-line
