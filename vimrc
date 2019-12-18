@@ -142,6 +142,9 @@ let $MANPAGER = "sed -e 's:\\x1B\\[[[:digit:]]\\+m::g'"
 "
 
 autocmd BufRead,BufNewFile *.as setlocal ft=actionscript
+autocmd BufRead,BufNewFile *.c setlocal ts=2 sw=2 sts=2 nocin
+autocmd BufRead,BufNewFile *.cc setlocal ts=2 sw=2 sts=2 nocin
+autocmd BufRead,BufNewFile *.h setlocal ts=2 sw=2 sts=2 nocin
 autocmd BufRead,BufNewFile *.css setlocal ts=2 sw=2 sts=2
 autocmd BufRead,BufNewFile *.haml setlocal ts=2 sw=2 sts=2
 autocmd BufRead,BufNewFile *.html setlocal ts=2 sw=2 sts=2
