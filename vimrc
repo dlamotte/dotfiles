@@ -153,6 +153,7 @@ autocmd BufRead,BufNewFile *.js setlocal ts=2 sw=2 sts=2
 autocmd BufRead,BufNewFile *.jst setlocal ft=jst ts=2 sw=2 sts=2
 autocmd BufRead,BufNewFile *.less setlocal ft=less ts=2 sw=2 sts=2
 autocmd BufRead,BufNewFile *.md setlocal ft=markdown
+autocmd BufRead,BufNewFile *.proto setlocal ts=2 sw=2 sts=2
 autocmd BufRead,BufNewFile *.rb setlocal ts=2 sw=2 sts=2
 autocmd BufRead,BufNewFile *.tf setlocal ts=2 sw=2 sts=2
 autocmd BufRead,BufNewFile *.tst setlocal syntax=perl
