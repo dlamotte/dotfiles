@@ -39,6 +39,9 @@
 [push]
     default = simple
 
+[pull]
+    ff = only
+
 [include]
     path = ~/.current/gitconfig
 
