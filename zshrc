@@ -22,6 +22,10 @@ fi
 # needs to happen before our own theme to avoid wonkiness
 eval "$(direnv hook zsh)"
 
+if (( ! ${fpath[(I)/usr/local/share/zsh/site-functions]} )); then
+  FPATH=/usr/local/share/zsh/site-functions:$FPATH
+fi
+
 #
 # begin oh-my-zsh
 #
@@ -74,7 +78,7 @@ ZSH_CUSTOM=$HOME/.zsh/custom
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(django docker fabric pip python vagrant)
+plugins=(django docker fabric git github pip python vagrant)
 
 source $ZSH/oh-my-zsh.sh
 
