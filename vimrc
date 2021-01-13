@@ -29,6 +29,7 @@ Plug 'tpope/vim-git'
 Plug 'mxw/vim-jsx'
 Plug 'leafgarland/typescript-vim'
 Plug 'google/vim-jsonnet'
+Plug 'chrisbra/unicode.vim'
 call plug#end()
 
 filetype plugin on

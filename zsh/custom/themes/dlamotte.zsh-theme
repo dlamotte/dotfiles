@@ -141,6 +141,13 @@ prompt_where_i_am() {
     echo -n "%m "
 }
 
+prompt_vault() {
+    whoami=$(vault token lookup -format json 2>/dev/null | jq .data.meta.role -r)
+    if [[ $whoami == "admin" ]]; then
+        prompt_segment red white "🔒 admin"
+    fi
+}
+
 prompt_git_user() {
     if $(git rev-parse --is-inside-work-tree &>/dev/null); then
         repo_user="$(git config --local user.email | sed 's/[^@]*//')"
@@ -276,6 +283,7 @@ build_prompt() {
 build_rps1() {
   SEGMENT_SIDE=right
   if [[ $_PROMPT_ASYNC = 1 ]]; then
+    prompt_vault
     prompt_hg
     prompt_git
     prompt_git_user
