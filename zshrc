@@ -34,6 +34,7 @@ fi
 export ZSH=$HOME/.oh-my-zsh
 
 ZSH_THEME="dlamotte"
+DISABLE_MAGIC_FUNCTIONS=true
 
 # Uncomment the following line to use case-sensitive completion.
 CASE_SENSITIVE="true"
