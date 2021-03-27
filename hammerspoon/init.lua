@@ -77,3 +77,5 @@ layout:start()
 --     {mod = {'alt'}, key = '5', label = 'Purple'},
 --     {mod = {'alt'}, key = '6', label = nil}
 -- })
+
+require('temp-fan')
