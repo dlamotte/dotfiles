@@ -12,9 +12,8 @@ end
 -- Update the fan and temp. Needs iStats CLI tool from homebrew.
 function updateStats()
   local fanSpeed = os.capture(istats .. " fan speed --value-only")
-  local temp = os.capture(istats .. " cpu temp --value-only")
   local batt = os.capture(istats .. " battery charge --value-only")
-  statsMenu:setTitle(batt .. "% - " .. fanSpeed .. " RPM - " .. temp .. "°C")
+  statsMenu:setTitle(batt .. "% - " .. fanSpeed .. " RPM")
 end
 
 statsMenu = hs.menubar.new()
