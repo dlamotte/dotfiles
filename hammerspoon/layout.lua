@@ -13,23 +13,36 @@ function Layout:action(name)
     local win = hs.window.focusedWindow()
     local screen = win:screen()
     local frame = screen:frame()
+    local winFrame = screen:absoluteToLocal(win:frame())
     local update = false
+    local split = 2
+
+    frame = screen:absoluteToLocal(frame)
+
+    if self.isg9(screen) then
+        split = 3
+    end
+
+    local section = frame.w / split
+    local currentSection = math.floor((winFrame.x1 + 10) / section)
 
     if name == 'full' then
         update = true
 
     elseif name == 'push-right' then
-        frame.w = frame.w / 2
-        frame.x1 = frame.x1 + frame.w
+        frame.w = math.floor(frame.w / split)
+        frame.x1 = math.floor(frame.w * math.min(currentSection + 1, split))
         update = true
 
     elseif name == 'push-left' then
-        frame.w = frame.w / 2
+        frame.w = math.floor(frame.w / split)
+        frame.x1 = math.floor(frame.w * math.max(currentSection - 1, 0))
         update = true
 
     end
 
     if update then
+        frame = screen:localToAbsolute(frame)
         win:setFrame(frame, 0)
     end
 end
@@ -60,13 +73,21 @@ function Layout:detect()
         elseif self.isExternalScreen(screens[1]) then
             self.layout = 'external'
 
+        elseif self.isg9(screens[1]) then
+            self.layout = 'g9'
+
         else
             self.layout = 'laptop'
         end
     elseif #screens == 2 then
-        if self.isLaptopScreen(screens[1])
-           and self.isExternalScreen(screens[2]) then
-            self.layout = 'laptop_external'
+        if self.isLaptopScreen(screens[1]) then
+            if self.isExternalScreen(screens[2]) then
+                self.layout = 'laptop_external'
+            elseif self.isg9(screens[2]) then
+                self.layout = 'g9'
+            else
+                self.layout = 'external2'
+            end
         else
             self.layout = 'external2'
         end
@@ -86,6 +107,12 @@ function Layout.isExternalScreen(screen)
     local frame = screen:fullFrame()
 
     return frame.w == 2560 and frame.h == 1440
+end
+
+function Layout.isg9(screen)
+    local frame = screen:fullFrame()
+
+    return frame.w == 5120 and frame.h == 1440
 end
 
 function Layout:identify()
@@ -146,6 +173,20 @@ function Layout:render(onlyapp)
                 elseif position == 'half-right' then
                     new.w = new.w / 2
                     new.x1 = new.x1 + new.w
+                    update = true
+
+                elseif position == 'third-left' then
+                    new.w = new.w / 3
+                    update = true
+
+                elseif position == 'third-mid' then
+                    new.w = new.w / 3
+                    new.x1 = new.x1 + new.w
+                    update = true
+
+                elseif position == 'third-right' then
+                    new.w = new.w / 3
+                    new.x1 = new.x1 + new.w * 2
                     update = true
 
                 elseif position == 'fullish-bottom' then
