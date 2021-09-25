@@ -24,7 +24,8 @@ layout = require('layout').new(
         {mod = {'ctrl', 'alt'}, key = '2', layout = 'external'},
         {mod = {'ctrl', 'alt'}, key = '3', layout = 'external2'},
         {mod = {'ctrl', 'alt'}, key = '4', layout = 'laptop_external'},
-        {mod = {'ctrl', 'alt'}, key = '5', layout = 'g9'}
+        {mod = {'ctrl', 'alt'}, key = '5', layout = 'laptop_g9'},
+        {mod = {'ctrl', 'alt'}, key = '6', layout = 'g9'}
     },
     {
         {
@@ -34,7 +35,8 @@ layout = require('layout').new(
                 laptop_external     = {2, 'half-right'},
                 external            = {1, 'half-right'},
                 external2           = {2, 'half-right'},
-                g9                  = {2, 'third-right'},
+                laptop_g9           = {2, 'third-right'},
+                g9                  = {1, 'third-right'},
             }
         },
         {
@@ -44,7 +46,8 @@ layout = require('layout').new(
                 laptop_external     = {2, 'half-left'},
                 external            = {1, 'half-right'},
                 external2           = {2, 'half-left'},
-                g9                  = {2, 'third-left'},
+                laptop_g9           = {2, 'third-left'},
+                g9                  = {1, 'third-left'},
             },
             windows = {
                 {
@@ -54,7 +57,8 @@ layout = require('layout').new(
                         laptop_external     = {2, 'half-left'},
                         external            = {1, 'half-right'},
                         external2           = {2, 'half-left'},
-                        g9                  = {1, 'full'},
+                        laptop_g9           = {1, 'full'},
+                        g9                  = {1, 'third-left'},
                     }
                 }
             }
@@ -66,7 +70,8 @@ layout = require('layout').new(
                 laptop_external     = {1, 'full'},
                 external            = {1, 'half-left'},
                 external2           = {1, 'half-right'},
-                g9                  = {2, 'third-mid'},
+                laptop_g9           = {2, 'third-mid'},
+                g9                  = {1, 'third-mid'},
             }
         },
         {
@@ -76,7 +81,8 @@ layout = require('layout').new(
                 laptop_external     = {2, 'half-right'},
                 external            = {1, 'half-left'},
                 external2           = {2, 'half-right'},
-                g9                  = {2, 'third-right'},
+                laptop_g9           = {2, 'third-right'},
+                g9                  = {1, 'third-right'},
             }
         },
     }

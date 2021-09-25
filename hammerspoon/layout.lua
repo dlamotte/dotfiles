@@ -84,7 +84,7 @@ function Layout:detect()
             if self.isExternalScreen(screens[2]) then
                 self.layout = 'laptop_external'
             elseif self.isg9(screens[2]) then
-                self.layout = 'g9'
+                self.layout = 'laptop_g9'
             else
                 self.layout = 'external2'
             end
