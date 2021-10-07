@@ -107,26 +107,18 @@ prompt_context() {
 }
 
 prompt_aws_profile() {
-    local env=${CC_ENV-$CAAS_ENV}
-    local region=${CC_DEFAULT_REGION-${AWS_REGION-$AWS_DEFAULT_REGION}}
+    local region=${AWS_REGION-$AWS_DEFAULT_REGION}
 
-    if [[ -n "$AWS_PROFILE" || -n "$env" ]]; then
+    if [[ -n "$AWS_PROFILE" ]]; then
         bg=cyan
         fg=black
-        if [[ $env == prod ]]; then
-            bg=red
-            fg=white
-
-        elif [[ $env == stag ]]; then
-            bg=yellow
-
-        elif [[ $env == devel ]]; then
-            bg=green
-
-        elif [[ $env == perf ]]; then
-            bg=blue
+        if [[ -n ${AWS_PROFILE_BG[$AWS_PROFILE]} ]]; then
+            bg=${AWS_PROFILE_BG[$AWS_PROFILE]}
+            if [[ $bg == "red" ]]; then
+                fg=white
+            fi
         fi
-        prompt_segment $bg $fg "☁ $AWS_PROFILE${env+ }${env}${region+ }${region}${CC_DEFAULT_ZONE+ }${CC_DEFAULT_ZONE}"
+        prompt_segment $bg $fg "☁ $AWS_PROFILE${region+ }${region}"
     fi
 }
 
