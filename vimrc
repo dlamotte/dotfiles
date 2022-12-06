@@ -8,7 +8,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'briancollins/vim-jst', { 'for': 'jst' }
 Plug 'ekalinin/Dockerfile.vim', { 'for': 'Dockerfile' }
-Plug 'fatih/vim-go', { 'for': 'go' }
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'groenewege/vim-less', { 'for': 'less' }
 Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
 Plug 'kien/ctrlp.vim'
@@ -168,6 +168,7 @@ autocmd BufRead,BufNewFile Jenkinsfile setlocal ft=groovy
 autocmd BufRead,BufNewFile hg-editor-*.txt setlocal syntax=hgcommit
 autocmd BufRead,BufNewFile inv/* setlocal syntax=ansible_hosts
 autocmd BufRead,BufNewFile inventory/* setlocal syntax=ansible_hosts
+autocmd BufRead,BufNewFile go.mod setlocal noexpandtab
 autocmd BufRead,BufNewFile [Mm]ake* setlocal noexpandtab filetype=make syntax=make
 autocmd BufRead,BufNewFile Rakefile setlocal ts=2 sw=2 sts=2
 autocmd BufRead,BufNewFile Vagrantfile setlocal ft=ruby ts=2 sw=2 sts=2
