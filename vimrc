@@ -175,6 +175,16 @@ autocmd BufRead,BufNewFile Vagrantfile setlocal ft=ruby ts=2 sw=2 sts=2
 autocmd FileType crontab set backupcopy=yes
 autocmd FileType jsonnet set ts=2 sw=2 sts=2
 
+" gitgutter
+highlight GitGutterAdd ctermbg=none
+highlight GitGutterChange ctermbg=none
+highlight GitGutterDelete ctermbg=none
+highlight SignColumn ctermbg=none
+
+" AFAICT, gitgutter is busted because it never updates; force it to run
+" when writing the file
+au BufWritePost * :GitGutter
+
 " golang
 au FileType go nmap <leader>r <Plug>(go-run)
 au FileType go nmap <leader>b <Plug>(go-build)
