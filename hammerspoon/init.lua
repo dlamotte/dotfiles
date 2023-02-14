@@ -85,6 +85,17 @@ layout = require('layout').new(
                 g9                  = {1, 'third-right'},
             }
         },
+        {
+            app = 'zoom.us',
+            layouts = {
+                laptop              = {1, 'full'},
+                laptop_external     = {2, 'half-right'},
+                external            = {1, 'half-left'},
+                external2           = {2, 'half-right'},
+                laptop_g9           = {2, 'third-mid-wide'},
+                g9                  = {1, 'third-mid-wide'},
+            }
+        },
     }
 )
 layout:start()

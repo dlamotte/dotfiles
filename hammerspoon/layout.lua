@@ -184,6 +184,12 @@ function Layout:render(onlyapp)
                     new.x1 = new.x1 + new.w
                     update = true
 
+                elseif position == 'third-mid-wide' then
+                    new.w = new.w / 5
+                    new.x1 = new.x1 + new.w
+                    new.x2 = frame.x2 - new.w
+                    update = true
+
                 elseif position == 'third-right' then
                     new.w = new.w / 3
                     new.x1 = new.x1 + new.w * 2
