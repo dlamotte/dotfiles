@@ -29,6 +29,13 @@ function Layout:action(name)
     if name == 'full' then
         update = true
 
+    elseif name == 'focus' then
+        col = math.floor(screen:frame().w / 5)
+        frame.w = col * 3
+        frame.x1 = col
+        frame.x2 = frame.x1 + frame.w
+        update = true
+
     elseif name == 'push-right' then
         frame.w = math.floor(frame.w / split)
         frame.x1 = math.floor(frame.w * math.min(currentSection + 1, split))

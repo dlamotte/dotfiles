@@ -17,6 +17,7 @@ end)
 
 layout = require('layout').new(
     {
+        {mod = {'ctrl', 'cmd', 'shift'}, key = 'F', action = 'focus'},
         {mod = {'ctrl', 'cmd'}, key = 'F', action = 'full'},
         {mod = {'ctrl', 'cmd'}, key = 'L', action = 'push-right'},
         {mod = {'ctrl', 'cmd'}, key = 'H', action = 'push-left'},
