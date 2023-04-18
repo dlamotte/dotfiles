@@ -30,6 +30,7 @@ Plug 'mxw/vim-jsx'
 Plug 'leafgarland/typescript-vim'
 Plug 'google/vim-jsonnet'
 Plug 'chrisbra/unicode.vim'
+Plug 'jremmen/vim-ripgrep'
 call plug#end()
 
 filetype plugin on
