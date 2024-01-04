@@ -1,4 +1,5 @@
 eval "$(goenv init -)"
+export PATH="$GOENV_ROOT/shims:$PATH"
 
 _reinit_goenv_version=$(go version)
 _reinit_goenv_when_changed() {
