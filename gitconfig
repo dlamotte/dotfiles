@@ -33,7 +33,7 @@
     tool = splice
 
 [mergetool "splice"]
-    cmd = "vim -f $BASE $LOCAL $REMOTE $MERGED -c 'SpliceInit'"
+    cmd = "vim -f $BASE $LOCAL $REMOTE $MERGED -c 'Splice9Init'"
     trustExitCode = true
 
 [push]

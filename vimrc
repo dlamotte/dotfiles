@@ -20,7 +20,6 @@ Plug 'othree/html5.vim', { 'for': 'html' }
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'pearofducks/ansible-vim', { 'for': 'ansible' }
 Plug 'tangledhelix/vim-kickstart', { 'for': 'kickstart' }
-Plug 'sjl/splice.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
@@ -31,6 +30,8 @@ Plug 'leafgarland/typescript-vim'
 Plug 'google/vim-jsonnet'
 Plug 'chrisbra/unicode.vim'
 Plug 'jremmen/vim-ripgrep'
+" Plug 'sjl/splice.vim'
+Plug 'errael/splice9'
 call plug#end()
 
 filetype plugin on
