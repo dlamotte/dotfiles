@@ -10,3 +10,5 @@ _*/
 /tags
 /env/
 /bin/
+
+go.work
