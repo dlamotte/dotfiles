@@ -32,6 +32,7 @@ Plug 'chrisbra/unicode.vim'
 Plug 'jremmen/vim-ripgrep'
 " Plug 'sjl/splice.vim'
 Plug 'errael/splice9'
+Plug 'yasuhiroki/github-actions-yaml.vim'
 call plug#end()
 
 filetype plugin on
