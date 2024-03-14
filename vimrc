@@ -282,7 +282,22 @@ let g:tagbar_width = 40
 " recognized. this fixes it some
 autocmd FileType yaml* syntax clear yamlFlowString
 
+"
+" coc + typescript
+"
 let g:coc_global_extensions = ['coc-tsserver']
+autocmd FileType yaml* syntax clear yamlFlowString
+
+" Remap keys for applying codeAction to the current line.
+nmap <leader>ac <Plug>(coc-codeaction)
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf <Plug>(coc-fix-current)
+
+" GoTo code navigation.
+nmap <silent> cd <Plug>(coc-definition)
+nmap <silent> cy <Plug>(coc-type-definition)
+nmap <silent> ci <Plug>(coc-implementation)
+nmap <silent> cr <Plug>(coc-references)
 
 ":python << EOF
 "import os
