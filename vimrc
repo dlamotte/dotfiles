@@ -285,7 +285,7 @@ autocmd FileType yaml* syntax clear yamlFlowString
 "
 " coc + typescript
 "
-let g:coc_global_extensions = ['coc-tsserver']
+let g:coc_global_extensions = ['coc-go', 'coc-tsserver']
 autocmd FileType yaml* syntax clear yamlFlowString
 
 " Remap keys for applying codeAction to the current line.
