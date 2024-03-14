@@ -179,6 +179,7 @@ autocmd BufRead,BufNewFile Rakefile setlocal ts=2 sw=2 sts=2
 autocmd BufRead,BufNewFile Vagrantfile setlocal ft=ruby ts=2 sw=2 sts=2
 autocmd FileType crontab set backupcopy=yes
 autocmd FileType jsonnet set ts=2 sw=2 sts=2
+autocmd FileType typescript* set ts=2 sw=2 sts=2
 
 " gitgutter
 highlight GitGutterAdd ctermbg=none
