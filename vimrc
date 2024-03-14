@@ -277,6 +277,9 @@ let g:tagbar_compact = 1
 let g:tagbar_sort = 0
 let g:tagbar_width = 40
 
+" yaml syntax is busted when VAR='blah' is used. First ' does not get
+" recognized. this fixes it some
+autocmd FileType yaml* syntax clear yamlFlowString
 
 ":python << EOF
 "import os
