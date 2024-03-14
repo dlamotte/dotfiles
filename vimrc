@@ -33,6 +33,7 @@ Plug 'jremmen/vim-ripgrep'
 " Plug 'sjl/splice.vim'
 Plug 'errael/splice9'
 Plug 'yasuhiroki/github-actions-yaml.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 filetype plugin on
@@ -280,6 +281,8 @@ let g:tagbar_width = 40
 " yaml syntax is busted when VAR='blah' is used. First ' does not get
 " recognized. this fixes it some
 autocmd FileType yaml* syntax clear yamlFlowString
+
+let g:coc_global_extensions = ['coc-tsserver']
 
 ":python << EOF
 "import os
