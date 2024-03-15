@@ -33,7 +33,7 @@ Plug 'jremmen/vim-ripgrep'
 " Plug 'sjl/splice.vim'
 Plug 'errael/splice9'
 Plug 'yasuhiroki/github-actions-yaml.vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': 'typescript*'}
 call plug#end()
 
 filetype plugin on
