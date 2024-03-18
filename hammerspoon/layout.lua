@@ -6,6 +6,7 @@ function Layout.new(hotkeys, layouts)
     self.hotkeys = hotkeys
     self.layout = nil
     self.layouts = layouts
+    self.log = hs.logger.new("layout", "info")
     return self
 end
 
@@ -71,37 +72,19 @@ end
 
 function Layout:detect()
     local screens = self:screens()
+    local dim = ""
 
-    if #screens == 1 then
-        if self.isLaptopScreen(screens[1])
-           or screens[1]:name() == 'Color LCD' then
-            self.layout = 'laptop'
-
-        elseif self.isExternalScreen(screens[1]) then
-            self.layout = 'external'
-
-        elseif self.isg9(screens[1]) then
-            self.layout = 'g9'
-
-        else
-            self.layout = 'laptop'
+    for _, screen in ipairs(self:screens()) do
+        local frame = screen:fullFrame()
+        if string.len(dim) > 0 then
+            dim = dim .. "+"
         end
-    elseif #screens == 2 then
-        if self.isLaptopScreen(screens[1]) then
-            if self.isExternalScreen(screens[2]) then
-                self.layout = 'laptop_external'
-            elseif self.isg9(screens[2]) then
-                self.layout = 'laptop_g9'
-            else
-                self.layout = 'external2'
-            end
-        else
-            self.layout = 'external2'
-        end
-    else
-        -- currently, only other case I care to handle
-        self.layout = 'external2'
+        dim = dim .. tostring(math.tointeger(frame.w)) .. "x" .. tostring(math.tointeger(frame.h))
     end
+
+    self.layout = dim
+
+    self.log.i("detected layout " .. self.layout)
 end
 
 function Layout.isLaptopScreen(screen)
@@ -113,7 +96,7 @@ end
 function Layout.isExternalScreen(screen)
     local frame = screen:fullFrame()
 
-    return frame.w == 2560 and frame.h == 1440
+    return frame.w == 1920 and frame.h == 1080
 end
 
 function Layout.isg9(screen)

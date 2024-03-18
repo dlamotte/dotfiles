@@ -1,3 +1,5 @@
+hs.logger.defaultLogLevel = "info"
+
 -- first so when you break things, you can still reload with a hotkey
 hs.hotkey.bind({'ctrl', 'alt'}, 'R',
     function()
@@ -14,6 +16,8 @@ hs.hotkey.bind({'ctrl', 'alt'}, 'b',
 hs.screen.watcher.new(function()
     hs.brightness.set(100)
 end)
+
+local external_laptop = "1920x1080+1728x1117"
 
 layout = require('layout').new(
     {
@@ -49,6 +53,7 @@ layout = require('layout').new(
                 external2           = {2, 'half-left'},
                 laptop_g9           = {2, 'third-left'},
                 g9                  = {1, 'third-left'},
+                [external_laptop]   = {2, 'full'},
             },
             windows = {
                 {
@@ -60,6 +65,7 @@ layout = require('layout').new(
                         external2           = {2, 'half-left'},
                         laptop_g9           = {1, 'full'},
                         g9                  = {1, 'third-left'},
+                        [external_laptop]   = {2, 'full'},
                     }
                 }
             }
@@ -73,6 +79,7 @@ layout = require('layout').new(
                 external2           = {1, 'half-right'},
                 laptop_g9           = {2, 'third-mid'},
                 g9                  = {1, 'third-mid'},
+                [external_laptop]   = {1, 'full'},
             }
         },
         {
@@ -84,6 +91,7 @@ layout = require('layout').new(
                 external2           = {2, 'half-right'},
                 laptop_g9           = {2, 'third-right'},
                 g9                  = {1, 'third-right'},
+                [external_laptop]   = {2, 'full'},
             }
         },
         {
@@ -95,6 +103,7 @@ layout = require('layout').new(
                 external2           = {2, 'half-right'},
                 laptop_g9           = {2, 'third-mid-wide'},
                 g9                  = {1, 'third-mid-wide'},
+                [external_laptop]   = {1, 'full'},
             }
         },
     }
