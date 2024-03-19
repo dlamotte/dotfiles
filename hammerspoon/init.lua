@@ -18,6 +18,7 @@ hs.screen.watcher.new(function()
 end)
 
 local external_laptop = "1920x1080+1728x1117"
+local laptop_external = "1728x1117+1920x1080"
 
 layout = require('layout').new(
     {
@@ -54,6 +55,7 @@ layout = require('layout').new(
                 laptop_g9           = {2, 'third-left'},
                 g9                  = {1, 'third-left'},
                 [external_laptop]   = {2, 'full'},
+                [laptop_external]   = {1, 'full'},
             },
             windows = {
                 {
@@ -66,6 +68,7 @@ layout = require('layout').new(
                         laptop_g9           = {1, 'full'},
                         g9                  = {1, 'third-left'},
                         [external_laptop]   = {2, 'full'},
+                        [laptop_external]   = {1, 'full'},
                     }
                 }
             }
@@ -80,6 +83,7 @@ layout = require('layout').new(
                 laptop_g9           = {2, 'third-mid'},
                 g9                  = {1, 'third-mid'},
                 [external_laptop]   = {1, 'full'},
+                [laptop_external]   = {2, 'full'},
             }
         },
         {
@@ -92,6 +96,7 @@ layout = require('layout').new(
                 laptop_g9           = {2, 'third-right'},
                 g9                  = {1, 'third-right'},
                 [external_laptop]   = {2, 'full'},
+                [laptop_external]   = {1, 'full'},
             }
         },
         {
@@ -103,7 +108,8 @@ layout = require('layout').new(
                 external2           = {2, 'half-right'},
                 laptop_g9           = {2, 'third-mid-wide'},
                 g9                  = {1, 'third-mid-wide'},
-                [external_laptop]   = {1, 'full'},
+                [external_laptop]   = {2, 'full'},
+                [laptop_external]   = {1, 'full'},
             }
         },
     }
