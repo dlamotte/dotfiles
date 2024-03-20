@@ -64,7 +64,7 @@ endif
 
 " style/formatting
 set autoindent
-set colorcolumn=79
+set colorcolumn=140
 set expandtab
 set ignorecase
 set nowrap
