@@ -19,6 +19,7 @@ end)
 
 local external_laptop = "1920x1080+1728x1117"
 local laptop_external = "1728x1117+1920x1080"
+local g9 = "5120x1440"
 
 layout = require('layout').new(
     {
@@ -42,7 +43,7 @@ layout = require('layout').new(
                 external            = {1, 'half-right'},
                 external2           = {2, 'half-right'},
                 laptop_g9           = {2, 'third-right'},
-                g9                  = {1, 'third-right'},
+                [g9]                = {1, 'third-right'},
             }
         },
         {
@@ -53,7 +54,7 @@ layout = require('layout').new(
                 external            = {1, 'half-right'},
                 external2           = {2, 'half-left'},
                 laptop_g9           = {2, 'third-left'},
-                g9                  = {1, 'third-left'},
+                [g9]                = {1, 'third-left'},
                 [external_laptop]   = {2, 'full'},
                 [laptop_external]   = {1, 'full'},
             },
@@ -66,7 +67,7 @@ layout = require('layout').new(
                         external            = {1, 'half-right'},
                         external2           = {2, 'half-left'},
                         laptop_g9           = {1, 'full'},
-                        g9                  = {1, 'third-left'},
+                        [g9]                = {1, 'third-left'},
                         [external_laptop]   = {2, 'full'},
                         [laptop_external]   = {1, 'full'},
                     }
@@ -81,7 +82,7 @@ layout = require('layout').new(
                 external            = {1, 'half-left'},
                 external2           = {1, 'half-right'},
                 laptop_g9           = {2, 'third-mid'},
-                g9                  = {1, 'third-mid'},
+                [g9]                = {1, 'third-mid'},
                 [external_laptop]   = {1, 'full'},
                 [laptop_external]   = {2, 'full'},
             }
@@ -94,7 +95,7 @@ layout = require('layout').new(
                 external            = {1, 'half-left'},
                 external2           = {2, 'half-right'},
                 laptop_g9           = {2, 'third-right'},
-                g9                  = {1, 'third-right'},
+                [g9]                = {1, 'third-right'},
                 [external_laptop]   = {2, 'full'},
                 [laptop_external]   = {1, 'full'},
             }
@@ -107,7 +108,15 @@ layout = require('layout').new(
                 external            = {1, 'half-left'},
                 external2           = {2, 'half-right'},
                 laptop_g9           = {2, 'third-mid-wide'},
-                g9                  = {1, 'third-mid-wide'},
+                [g9]                = {1, 'third-mid-wide'},
+                [external_laptop]   = {2, 'full'},
+                [laptop_external]   = {1, 'full'},
+            }
+        },
+        {
+            app = 'Discord',
+            layouts = {
+                [g9]                = {1, 'third-right'},
                 [external_laptop]   = {2, 'full'},
                 [laptop_external]   = {1, 'full'},
             }
