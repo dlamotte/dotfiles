@@ -308,3 +308,5 @@ nmap <silent> cr <Plug>(coc-references)
 "    if os.path.exists(activate_this):
 "        execfile(activate_this, dict(__file__=activate_this))
 "EOF
+
+source ~/.vimrc.local
