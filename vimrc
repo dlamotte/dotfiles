@@ -194,7 +194,7 @@ au BufWritePost * :GitGutter
 " golang
 au FileType go nmap <leader>r <Plug>(go-run)
 au FileType go nmap <leader>b <Plug>(go-build)
-au FileType go nmap <leader>t <Plug>(go-test)
+au FileType go nmap <leader>t :GoTest!<cr>
 au FileType go nmap <leader>tc <Plug>(go-test-compile)
 au FileType go nmap <leader>T <Plug>(go-test-func)
 au FileType go nmap <leader>TF <Plug>(go-test-file)
