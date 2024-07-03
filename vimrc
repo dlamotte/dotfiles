@@ -63,8 +63,9 @@ if &term ==? "xterm"
 endif
 
 " style/formatting
+let g:my_textwidth = 100
 set autoindent
-set colorcolumn=100
+execute 'set colorcolumn=' . g:my_textwidth
 set expandtab
 set ignorecase
 set nowrap
@@ -73,6 +74,7 @@ set smartindent
 set smarttab
 set softtabstop=4
 set tabstop=4
+execute 'set textwidth=' . g:my_textwidth
 
 "colorscheme inkpot
 set background=dark
