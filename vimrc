@@ -290,6 +290,10 @@ autocmd FileType yaml* syntax clear yamlFlowString
 " coc + typescript
 "
 let g:coc_global_extensions = ['coc-go', 'coc-tsserver']
+let g:coc_user_config = {}
+" example config; see :help coc-config (when in typescript file)
+"let g:coc_user_config['diagnostic.hintSign'] = '!!'
+
 autocmd FileType yaml* syntax clear yamlFlowString
 
 " Remap keys for applying codeAction to the current line.
@@ -297,11 +301,15 @@ nmap <leader>ac <Plug>(coc-codeaction)
 " Apply AutoFix to problem on the current line.
 nmap <leader>qf <Plug>(coc-fix-current)
 
+nnoremap <leader>ld :CocDiagnostics<cr>
+
 " GoTo code navigation.
 nmap <silent> cd <Plug>(coc-definition)
 nmap <silent> cy <Plug>(coc-type-definition)
 nmap <silent> ci <Plug>(coc-implementation)
 nmap <silent> cr <Plug>(coc-references)
+nmap <silent> dn <Plug>(coc-diagnostic-next)
+nmap <silent> dp <Plug>(coc-diagnostic-prev)
 
 ":python << EOF
 "import os
