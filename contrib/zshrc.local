@@ -1,0 +1,37 @@
+export GITHUB_USER=dlamotte
+
+# to update:
+#   ~/.netrc
+#   ~/.npmrc
+#   docker login ghcr.io
+export GITHUB_TOKEN=...
+
+export AWS_DEFAULT_REGION=us-west-2
+
+declare -A AWS_PROFILE_BG
+AWS_PROFILE_BG[audit-admin]="red"
+AWS_PROFILE_BG[prod]="yellow"
+AWS_PROFILE_BG[prod-admin]="red"
+AWS_PROFILE_BG[staging-admin]="green"
+
+export GOPRIVATE=github.com/organization
+
+# enable kubectl auto-completion
+source <(kubectl completion zsh)
+
+#
+# helpers
+#
+
+function awsprofile() {
+    local profile="$1"
+
+    export AWS_PROFILE="$profile"
+    secondsLeft=$(aws configure get sso_start_url | xargs -I {} grep -h {} ~/.aws/sso/cache/*.json | jq .expiresAt | xargs -I {} bash -c 'echo "$(TZ="UTC" date -d "$1" +%s) - $(date +%s)" | bc' -- {})
+    if (( $secondsLeft < 0 )); then
+        aws sso login
+    elif ! aws sts get-caller-identity &>/dev/null; then
+        aws sso login
+    fi
+    #aws sts get-caller-identity &>/dev/null || aws sso login --profile "$profile"
+}
