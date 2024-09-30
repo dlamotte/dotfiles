@@ -43,7 +43,7 @@
     ff = only
 
 [include]
-    path = ~/.current/gitconfig
+    path = ~/.gitconfig.local
 
 [filter "lfs"]
 	clean = git-lfs clean -- %f
