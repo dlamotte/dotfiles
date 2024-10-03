@@ -112,8 +112,14 @@ prompt_aws_profile() {
     if [[ -n "$AWS_PROFILE" ]]; then
         bg=cyan
         fg=black
+        suffix=$(echo $AWS_PROFILE | cut -f2 -d /)
         if [[ -n ${AWS_PROFILE_BG[$AWS_PROFILE]} ]]; then
             bg=${AWS_PROFILE_BG[$AWS_PROFILE]}
+            if [[ $bg == "red" ]]; then
+                fg=white
+            fi
+        elif [[ -n ${AWS_PROFILE_BG_SUFFIX[$suffix]} ]]; then
+            bg=${AWS_PROFILE_BG_SUFFIX[$suffix]}
             if [[ $bg == "red" ]]; then
                 fg=white
             fi
