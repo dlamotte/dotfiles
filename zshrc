@@ -119,6 +119,8 @@ for fn in ~/.zshrc.d/*; do
     source $fn
 done
 
+source ~/.iterm2_shell_integration.zsh
+
 keychain --quiet github
 source $HOME/.keychain/$(hostname)-sh
 
