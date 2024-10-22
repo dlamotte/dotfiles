@@ -218,6 +218,12 @@ let g:go_highlight_fields = 1
 let g:go_highlight_types = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
+let g:go_fmt_command = "goimports"
+" separate imports from this repo from others
+au FileType go let b:go_fmt_options = {
+    \ 'goimports': '-local ' .
+    \ trim(system('{cd '. shellescape(expand('%:h')) .' && go list -m | head -n1;}')),
+    \ }
 
 " restore last cursor position
 autocmd BufReadPost *
