@@ -18,10 +18,11 @@ hs.screen.watcher.new(function()
 end)
 
 local external_laptop = "1920x1080+1728x1117"
-local laptop_external = "1728x1117+1920x1080"
 local external_only = "1920x1080"
 local g9 = "5120x1440"
 local g9_external = "1728x1117+5120x1440"
+local laptop_external = "1728x1117+1920x1080"
+local laptop_only = "1728x1117"
 
 layout = require('layout').new(
     {
@@ -40,7 +41,7 @@ layout = require('layout').new(
         {
             app = 'Google Chrome',
             layouts = {
-                laptop              = {1, 'full'},
+                [laptop_only]       = {1, 'full'},
                 laptop_external     = {2, 'half-left'},
                 external            = {1, 'half-right'},
                 external2           = {2, 'half-left'},
@@ -55,7 +56,7 @@ layout = require('layout').new(
                 {
                     re = "(personal)",
                     layouts = {
-                        laptop              = {1, 'full'},
+                        [laptop_only]       = {1, 'full'},
                         laptop_external     = {2, 'half-left'},
                         external            = {1, 'half-right'},
                         external2           = {2, 'half-left'},
@@ -72,7 +73,7 @@ layout = require('layout').new(
         {
             app = 'iTerm2',
             layouts = {
-                laptop              = {1, 'full'},
+                [laptop_only]       = {1, 'full'},
                 laptop_external     = {1, 'full'},
                 external            = {1, 'half-left'},
                 external2           = {1, 'half-right'},
@@ -87,7 +88,7 @@ layout = require('layout').new(
         {
             app = 'Slack',
             layouts = {
-                laptop              = {1, 'full'},
+                [laptop_only]       = {1, 'full'},
                 laptop_external     = {2, 'half-right'},
                 external            = {1, 'half-left'},
                 external2           = {2, 'half-right'},
@@ -102,7 +103,7 @@ layout = require('layout').new(
         {
             app = 'zoom.us',
             layouts = {
-                laptop              = {1, 'full'},
+                [laptop_only]       = {1, 'full'},
                 laptop_external     = {2, 'half-right'},
                 external            = {1, 'half-left'},
                 external2           = {2, 'half-right'},
