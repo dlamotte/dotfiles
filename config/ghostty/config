@@ -1,0 +1,13 @@
+font-family = "Meslo LG S for Powerline"
+font-size = 18
+
+theme = "iTerm2 Solarized Dark"
+
+confirm-close-surface = false
+cursor-style = block
+cursor-style-blink = false
+
+shell-integration = zsh
+shell-integration-features = no-cursor
+
+copy-on-select = true
