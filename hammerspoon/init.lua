@@ -86,6 +86,21 @@ layout = require('layout').new(
             }
         },
         {
+            app = 'Ghostty',
+            layouts = {
+                [laptop_only]       = {1, 'full'},
+                laptop_external     = {1, 'full'},
+                external            = {1, 'half-left'},
+                external2           = {1, 'half-right'},
+                laptop_g9           = {2, 'third-mid'},
+                [g9]                = {1, 'third-mid'},
+                [g9_external]       = {2, 'third-mid'},
+                [external_laptop]   = {1, 'full'},
+                [laptop_external]   = {2, 'full'},
+                [external_only]     = {1, 'full'},
+            }
+        },
+        {
             app = 'Slack',
             layouts = {
                 [laptop_only]       = {1, 'full'},
