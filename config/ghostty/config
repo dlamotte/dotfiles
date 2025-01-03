@@ -1,5 +1,6 @@
 font-family = "Meslo LG S for Powerline"
 font-size = 18
+font-thicken = true
 
 theme = "iTerm2 Solarized Dark"
 
