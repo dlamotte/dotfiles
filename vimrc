@@ -34,6 +34,10 @@ Plug 'jremmen/vim-ripgrep'
 Plug 'errael/splice9'
 Plug 'yasuhiroki/github-actions-yaml.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': 'typescript*'}
+Plug 'github/copilot.vim'
+"Plug 'zbirenbaum/copilot.lua' " might need nvim
+"Plug 'zbirenbaum/copilot-cmp'
+Plug 'dense-analysis/ale'
 call plug#end()
 
 filetype plugin on
