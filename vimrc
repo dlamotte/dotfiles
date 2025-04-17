@@ -322,8 +322,8 @@ nmap <silent> dn <Plug>(coc-diagnostic-next)
 nmap <silent> dp <Plug>(coc-diagnostic-prev)
 
 " copilot
-imap <silent><script><expr> <C-J> copilot#Accept("")
-let g:copilot_no_tab_map = v:true
+" ability to press tab and ignore the suggestion
+inoremap <silent> <A-Tab> <Tab>
 
 ":python << EOF
 "import os
