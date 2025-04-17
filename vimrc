@@ -321,6 +321,10 @@ nmap <silent> cr <Plug>(coc-references)
 nmap <silent> dn <Plug>(coc-diagnostic-next)
 nmap <silent> dp <Plug>(coc-diagnostic-prev)
 
+" copilot
+imap <silent><script><expr> <C-J> copilot#Accept("")
+let g:copilot_no_tab_map = v:true
+
 ":python << EOF
 "import os
 "virtualenv = os.environ.get('VIRTUAL_ENV')
