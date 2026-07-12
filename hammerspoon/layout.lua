@@ -7,6 +7,7 @@ function Layout.new(hotkeys, layouts)
     self.layout = nil
     self.layouts = layouts
     self.log = hs.logger.new("layout", "info")
+
     return self
 end
 
@@ -64,6 +65,7 @@ function Layout:bind()
         elseif d.layout then
             hs.hotkey.bind(d.mod, d.key, function()
                 self.layout = d.layout
+                print("forcing layout: " .. self.layout)
                 self:render()
             end)
         end
@@ -121,6 +123,9 @@ function Layout:render(onlyapp)
     for _, def in ipairs(self.layouts) do
         local app = hs.application.get(def.app)
         local layout = def.layouts[self.layout]
+        if layout == nil then
+            goto continue
+        end
 
         if onlyapp and app ~= onlyapp then
             app = nil
@@ -224,6 +229,8 @@ function Layout:render(onlyapp)
                 end
             end
         end
+
+        ::continue::
     end
 end
 
