@@ -22,8 +22,27 @@ local external_only = "1920x1080"
 local g9 = "5120x1440"
 local g9_external = "1728x1117+5120x1440"
 local laptop_external = "1728x1117+1920x1080"
-local laptop_only = "1728x1117"
-local personal_only = "1512x982"
+local laptop_16_only = "1728x1117"
+local laptop_14_only = "1512x982"
+
+local screens = hs.screen.allScreens()
+local res_attached = laptop_16_only
+for _, screen in ipairs(screens) do
+    if string.find(screen:name(), "Built%-in") then
+        local frame = screen:fullFrame()
+        res_attached = tostring(math.tointeger(frame.w)) .. "x" .. tostring(math.tointeger(frame.h))
+    end
+end
+
+local detected_laptop = ""
+if laptop_16_only == res_attached then
+    detected_laptop = "laptop 16 detected (can be 14, if lid closed)"
+elseif laptop_14_only == res_attached then
+    detected_laptop = "laptop 14 detected"
+else
+    detected_laptop = "unknown attached screen size"
+end
+print("attached res: " .. res_attached .. ", " .. detected_laptop)
 
 layout = require('layout').new(
     {
@@ -31,23 +50,15 @@ layout = require('layout').new(
         {mod = {'ctrl', 'cmd'}, key = 'F', action = 'full'},
         {mod = {'ctrl', 'cmd'}, key = 'L', action = 'push-right'},
         {mod = {'ctrl', 'cmd'}, key = 'H', action = 'push-left'},
-        {mod = {'ctrl', 'alt'}, key = '1', layout = 'laptop'},
-        {mod = {'ctrl', 'alt'}, key = '2', layout = 'external'},
-        {mod = {'ctrl', 'alt'}, key = '3', layout = 'external2'},
-        {mod = {'ctrl', 'alt'}, key = '4', layout = 'laptop_external'},
-        {mod = {'ctrl', 'alt'}, key = '5', layout = 'laptop_g9'},
-        {mod = {'ctrl', 'alt'}, key = '6', layout = 'g9'}
+        {mod = {'ctrl', 'alt'}, key = '1', layout = g9},
+        {mod = {'ctrl', 'alt'}, key = '2', layout = res_attached},
     },
     {
         {
             app = 'Google Chrome',
             layouts = {
-                [laptop_only]       = {1, 'full'},
-                [personal_only]     = {1, 'full'},
-                laptop_external     = {2, 'half-left'},
-                external            = {1, 'half-right'},
-                external2           = {2, 'half-left'},
-                laptop_g9           = {2, 'third-left'},
+                [laptop_16_only]    = {1, 'full'},
+                [laptop_14_only]    = {1, 'full'},
                 [g9]                = {1, 'third-left'},
                 [g9_external]       = {2, 'third-left'},
                 [external_laptop]   = {2, 'full'},
@@ -58,12 +69,8 @@ layout = require('layout').new(
                 {
                     re = "(personal)",
                     layouts = {
-                        [laptop_only]       = {1, 'full'},
-                        [personal_only]     = {1, 'full'},
-                        laptop_external     = {2, 'half-left'},
-                        external            = {1, 'half-right'},
-                        external2           = {2, 'half-left'},
-                        laptop_g9           = {1, 'full'},
+                        [laptop_16_only]    = {1, 'full'},
+                        [laptop_14_only]    = {1, 'full'},
                         [g9]                = {1, 'third-left'},
                         [g9_external]       = {2, 'third-left'},
                         [external_laptop]   = {2, 'full'},
@@ -76,12 +83,8 @@ layout = require('layout').new(
         {
             app = 'iTerm2',
             layouts = {
-                [laptop_only]       = {1, 'full'},
-                [personal_only]     = {1, 'full'},
-                laptop_external     = {1, 'full'},
-                external            = {1, 'half-left'},
-                external2           = {1, 'half-right'},
-                laptop_g9           = {2, 'third-mid'},
+                [laptop_16_only]    = {1, 'full'},
+                [laptop_14_only]    = {1, 'full'},
                 [g9]                = {1, 'third-mid'},
                 [g9_external]       = {2, 'third-mid'},
                 [external_laptop]   = {1, 'full'},
@@ -92,12 +95,8 @@ layout = require('layout').new(
         {
             app = 'Ghostty',
             layouts = {
-                [laptop_only]       = {1, 'full'},
-                [personal_only]     = {1, 'full'},
-                laptop_external     = {1, 'full'},
-                external            = {1, 'half-left'},
-                external2           = {1, 'half-right'},
-                laptop_g9           = {2, 'third-mid'},
+                [laptop_16_only]    = {1, 'full'},
+                [laptop_14_only]    = {1, 'full'},
                 [g9]                = {1, 'third-mid'},
                 [g9_external]       = {2, 'third-mid'},
                 [external_laptop]   = {1, 'full'},
@@ -108,12 +107,8 @@ layout = require('layout').new(
         {
             app = 'Slack',
             layouts = {
-                [laptop_only]       = {1, 'full'},
-                [personal_only]     = {1, 'full'},
-                laptop_external     = {2, 'half-right'},
-                external            = {1, 'half-left'},
-                external2           = {2, 'half-right'},
-                laptop_g9           = {2, 'third-right'},
+                [laptop_16_only]    = {1, 'full'},
+                [laptop_14_only]    = {1, 'full'},
                 [g9]                = {1, 'third-right'},
                 [g9_external]       = {2, 'third-right'},
                 [external_laptop]   = {2, 'full'},
@@ -124,12 +119,8 @@ layout = require('layout').new(
         {
             app = 'zoom.us',
             layouts = {
-                [laptop_only]       = {1, 'full'},
-                [personal_only]     = {1, 'full'},
-                laptop_external     = {2, 'half-right'},
-                external            = {1, 'half-left'},
-                external2           = {2, 'half-right'},
-                laptop_g9           = {2, 'third-mid-wide'},
+                [laptop_16_only]    = {1, 'full'},
+                [laptop_14_only]    = {1, 'full'},
                 [g9]                = {1, 'third-mid-wide'},
                 [g9_external]       = {2, 'third-mid-wide'},
                 [external_laptop]   = {2, 'full'},
