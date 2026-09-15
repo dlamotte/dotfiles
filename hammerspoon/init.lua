@@ -138,6 +138,16 @@ layout = require('layout').new(
                 [external_only]     = {1, 'full'},
             }
         },
+        {
+            app = 'Outlook',
+            layouts = {
+                [g9]                = {1, 'third-left'},
+                [g9_external]       = {2, 'third-left'},
+                [external_laptop]   = {2, 'full'},
+                [laptop_external]   = {1, 'full'},
+                [external_only]     = {1, 'full'},
+            }
+        },
     }
 )
 layout:start()
